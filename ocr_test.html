@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCR Test</title>
+</head>
+<body>
+    <img src="file:///C:/Users/ASUS/.gemini/antigravity/brain/cca2bed5-c072-4d91-aea7-773b359d20ae/media__1777694244274.jpg" id="img1" style="max-width: 100%;">
+    <img src="file:///C:/Users/ASUS/.gemini/antigravity/brain/cca2bed5-c072-4d91-aea7-773b359d20ae/media__1777695203371.png" id="img2" style="max-width: 100%;">
+    <div id="ocr_result1">Loading OCR 1...</div>
+    <div id="ocr_result2">Loading OCR 2...</div>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script>
+        Tesseract.recognize(
+          document.getElementById('img1').src,
+          'ind', // Indonesian
+          { logger: m => console.log(m) }
+        ).then(({ data: { text } }) => {
+          document.getElementById('ocr_result1').innerText = "OCR 1: \n" + text;
+        }).catch(err => {
+          Tesseract.recognize(
+            document.getElementById('img1').src,
+            'eng'
+          ).then(({ data: { text } }) => {
+            document.getElementById('ocr_result1').innerText = "OCR 1 (eng): \n" + text;
+          });
+        });
+
+        Tesseract.recognize(
+          document.getElementById('img2').src,
+          'eng'
+        ).then(({ data: { text } }) => {
+          document.getElementById('ocr_result2').innerText = "OCR 2: \n" + text;
+        });
+    </script>
+</body>
+</html>
