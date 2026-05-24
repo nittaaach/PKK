@@ -8,7 +8,7 @@
                 <div class="row d-flex justify-content-center text-center">
                     <div class="col-lg-8">
                         <h1>Katalog PKK</h1>
-                        <p class="mb-0">Produk UMKM RW 12</p>
+                        <p class="mb-0">Produk UMKM PKK Cipinang Melayu</p>
                     </div>
                 </div>
             </div>

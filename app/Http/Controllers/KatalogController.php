@@ -25,10 +25,10 @@ class KatalogController extends Controller
 
     public function index()
     {
-        // Ambil semua data dari tabel katalog_pkk
-        $katalog = KatalogModels::orderBy('created_at', 'desc')->get();
-        // Kembalikan ke view (contoh: resources/views/katalog/index.blade.php)
-        return view('pkk.katalog', compact('katalog'));
+        // Ambil semua data dari tabel katalog
+        $katalog = KatalogModels::with('fotoProduk')->orderBy('created_at', 'desc')->get();
+        // Kembalikan ke view admin.katalog
+        return view('admin.katalog', compact('katalog'));
     }
 
     public function store_pkk(Request $request)
@@ -184,11 +184,18 @@ class KatalogController extends Controller
 
     public function destroy_pkk($id)
     {
-        $katalog = KatalogModels::findOrFail($id);
-        if ($katalog->foto && Storage::disk('public')->exists($katalog->foto)) {
-            Storage::disk('public')->delete($katalog->foto);
+        $katalog = KatalogModels::with('fotoProduk')->findOrFail($id);
+        
+        // Hapus file foto dari storage
+        foreach ($katalog->fotoProduk as $foto) {
+            if ($foto->path_foto && Storage::disk('public')->exists($foto->path_foto)) {
+                Storage::disk('public')->delete($foto->path_foto);
+            }
         }
+        
+        // Hapus record katalog (relasi fotokatalog terhapus secara otomatis karena cascade onDelete)
         $katalog->delete();
+        
         return redirect()->back()->with('success', 'Data katalog berhasil dihapus!');
     }
 }

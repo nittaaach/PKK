@@ -175,6 +175,20 @@
                                     accept="image/png, image/jpeg, image/jpg">
                                 <small class="text-muted">Format: .jpg, .jpeg, .png (max 2MB)</small>
                             </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Pilih Dokumentasi (opsional)</label>
+                                <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+                                    @foreach($dokumentasi_list ?? [] as $dok)
+                                        <div class="form-check mb-2 d-flex align-items-center">
+                                            <input class="form-check-input" type="checkbox" name="dokumentasi_ids[]" value="{{ $dok->id }}" id="dokAdd{{ $dok->id }}" style="margin-right: 10px;">
+                                            <label class="form-check-label d-flex align-items-center m-0" for="dokAdd{{ $dok->id }}" style="cursor:pointer;">
+                                                <img src="{{ asset('storage/' . $dok->foto) }}" alt="dok" style="height: 40px; width: 40px; object-fit: cover; margin-right: 10px; border-radius: 5px;">
+                                                {{ $dok->caption ?? 'Tanpa Caption' }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -246,6 +260,23 @@
                                         <img src="{{ asset('storage/' . $item->tanda_tangan) }}" alt="TTD"
                                             style="height: 40px;" class="mt-1">
                                     @endif
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Pilih Dokumentasi (opsional)</label>
+                                    <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+                                        @php
+                                            $selected_doks = json_decode($item->dokumentasi_ids, true) ?? [];
+                                        @endphp
+                                        @foreach($dokumentasi_list ?? [] as $dok)
+                                            <div class="form-check mb-2 d-flex align-items-center">
+                                                <input class="form-check-input" type="checkbox" name="dokumentasi_ids[]" value="{{ $dok->id }}" id="dokEdit{{ $item->id }}_{{ $dok->id }}" {{ in_array($dok->id, $selected_doks) ? 'checked' : '' }} style="margin-right: 10px;">
+                                                <label class="form-check-label d-flex align-items-center m-0" for="dokEdit{{ $item->id }}_{{ $dok->id }}" style="cursor:pointer;">
+                                                    <img src="{{ asset('storage/' . $dok->foto) }}" alt="dok" style="height: 40px; width: 40px; object-fit: cover; margin-right: 10px; border-radius: 5px;">
+                                                    {{ $dok->caption ?? 'Tanpa Caption' }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>

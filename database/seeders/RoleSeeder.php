@@ -70,6 +70,13 @@ class RoleSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'id_drole' => 9,
+                'id_daftar_anggota' => 9,
+                'id_users' => 9,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

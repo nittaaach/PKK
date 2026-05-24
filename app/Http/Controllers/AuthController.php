@@ -46,6 +46,7 @@ class AuthController extends Controller
             'Pokja_2'    => 'pokja_2',
             'Pokja_3'    => 'pokja_3',
             'Pokja_4'    => 'pokja_4',
+            'Admin'      => 'admin',
             default => 'web',
         };
 
@@ -80,6 +81,7 @@ class AuthController extends Controller
             'Pokja_2' => redirect('pokja_2/dashboard'),
             'Pokja_3' => redirect('pokja_3/dashboard'),
             'Pokja_4' => redirect('pokja_4/dashboard'),
+            'Admin' => redirect('admin/dashboard'),
             default    => tap(back(), fn() => Auth::guard($guard)->logout())
                 ->with('error', 'Tidak ada hak akses'),
         };
@@ -96,6 +98,7 @@ class AuthController extends Controller
         Auth::guard('pokja_2')->logout();
         Auth::guard('pokja_3')->logout();
         Auth::guard('pokja_4')->logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

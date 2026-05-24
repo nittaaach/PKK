@@ -28,6 +28,7 @@ class DroleSeeder extends Seeder
             ['role' => 'pokja_2', 'created_at' => $now, 'updated_at' => $now],
             ['role' => 'pokja_3', 'created_at' => $now, 'updated_at' => $now],
             ['role' => 'pokja_4', 'created_at' => $now, 'updated_at' => $now],
+            ['role' => 'admin', 'created_at' => $now, 'updated_at' => $now],
         ]);
     }
 }

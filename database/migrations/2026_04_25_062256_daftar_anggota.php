@@ -31,7 +31,8 @@ return new class extends Migration
                 'Pokja 2',
                 'Pokja 3',
                 'Pokja 4',
-                'Anggota'
+                'Anggota',
+                'Admin'
             ])->default('Anggota');
 
             // Kedudukan/Fungsi

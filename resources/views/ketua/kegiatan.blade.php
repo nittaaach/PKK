@@ -23,7 +23,7 @@
             <div class="dt-responsive table-responsive">
                 <table id="basic-btn" class="table table-striped table-bordered" style="width:100%;">
                     <thead>
-                        <tr><th>NO</th><th>NAMA</th><th>JABATAN</th><th>KATEGORI</th><th>TANGGAL</th><th>TEMPAT</th><th>URAIAN</th><th>TANDA TANGAN</th></tr>
+                        <tr><th>NO</th><th>NAMA</th><th>JABATAN</th><th>KATEGORI</th><th>TANGGAL</th><th>TEMPAT</th><th>URAIAN</th><th>TANDA TANGAN</th><th>DOKUMENTASI</th></tr>
                     </thead>
                     <tbody>
                         @foreach ($kegiatan as $item)
@@ -39,6 +39,21 @@
                                     @if ($item->tanda_tangan)
                                         <img src="{{ asset('storage/' . $item->tanda_tangan) }}" style="width:80px;height:60px;object-fit:contain;">
                                     @else - @endif
+                                </td>
+                                <td>
+                                    @php
+                                        $dok_ids = json_decode($item->dokumentasi_ids, true) ?? [];
+                                        $dok_list = $dok_ids ? \App\Models\Dokumentasi::whereIn('id', $dok_ids)->get() : collect();
+                                    @endphp
+                                    @if($dok_list->isNotEmpty())
+                                        <div class="d-flex flex-wrap gap-1">
+                                        @foreach($dok_list as $dok)
+                                            <img src="{{ asset('storage/' . $dok->foto) }}" style="width:50px;height:40px;object-fit:cover;border-radius:4px;" title="{{ $dok->caption }}">
+                                        @endforeach
+                                        </div>
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -12,6 +12,7 @@ use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\DataUmumController;
 use App\Http\Controllers\BukuKeuanganController;
 use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\GaleriController;
 // use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //route for auth
@@ -145,6 +146,15 @@ Route::middleware(['auth:sekretaris', 'role:Sekretaris'])->group(function () {
     Route::post('/sekretaris/data_potensi', [DataUmumController::class, 'store_data_potensi'])->name('data_potensi.store_sekretaris');
     Route::put('/sekretaris/data_potensi/{id}', [DataUmumController::class, 'update_data_potensi'])->name('data_potensi.update_sekretaris');
     Route::delete('/sekretaris/data_potensi/{id}', [DataUmumController::class, 'destroy_data_potensi'])->name('data_potensi.destroy_sekretaris');
+});
+
+//================ Auth Group: Admin ================
+Route::middleware(['auth:admin', 'role:Admin'])->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('Admin.dashboard');
+    Route::get('/admin/katalog', [KatalogController::class, 'index'])->name('admin.katalog');
+    Route::post('/admin/katalog', [KatalogController::class, 'store_pkk'])->name('katalog.store_pkk');
+    Route::put('/admin/katalog/{id}', [KatalogController::class, 'update_pkk'])->name('katalog.update_pkk');
+    Route::delete('/admin/katalog/{id}', [KatalogController::class, 'destroy_pkk'])->name('katalog.destroy_pkk');
 });
 
 //================ Auth Group: Pokja 1 ================
@@ -287,6 +297,10 @@ Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
 Route::get('/katalog', [KatalogController::class, 'katalog'])->name('katalog');
 Route::get('/detail_katalog/{id}', [KatalogController::class, 'detail_katalog'])->name('detail_katalog');
 Route::get('/struktural', [HomeController::class, 'struktural'])->name('struktural');
+Route::get('/galeri', [GaleriController::class, 'galeri'])->name('galeri');
+Route::get('/galeri/{id}', [GaleriController::class, 'detailgaleri'])->name('galeri.detail');
+Route::get('/kegiatan/akan-datang', [KegiatanController::class, 'kegiatanAkanDatang'])->name('kegiatan.akan_datang');
+Route::get('/kegiatan/terlaksana', [KegiatanController::class, 'kegiatanTerlaksana'])->name('kegiatan.terlaksana');
 
 // Dynamic route to serve storage files (useful for shared hosting without symlink support)
 Route::get('storage/{filename}', function ($filename) {

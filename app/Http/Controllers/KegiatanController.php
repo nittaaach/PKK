@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\KegiatanModels;
+use App\Models\Dokumentasi;
 
 class KegiatanController extends Controller
 {
     public function kegiatan_sekretaris()
     {
-        return view('sekretaris.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Sekretaris')->get()]);
+        return view('sekretaris.kegiatan', [
+            'kegiatan' => KegiatanModels::where('role', 'Sekretaris')->get(),
+            'dokumentasi_list' => Dokumentasi::where('role', 'Sekretaris')->get()
+        ]);
     }
 
     public function print_report(Request $request)
@@ -43,19 +47,31 @@ class KegiatanController extends Controller
     }
     public function kegiatan_pokja1()
     {
-        return view('pokja_1.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_1')->get()]);
+        return view('pokja_1.kegiatan', [
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_1')->get(),
+            'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 1')->get()
+        ]);
     }
     public function kegiatan_pokja2()
     {
-        return view('pokja_2.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_2')->get()]);
+        return view('pokja_2.kegiatan', [
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_2')->get(),
+            'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 2')->get()
+        ]);
     }
     public function kegiatan_pokja3()
     {
-        return view('pokja_3.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_3')->get()]);
+        return view('pokja_3.kegiatan', [
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_3')->get(),
+            'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 3')->get()
+        ]);
     }
     public function kegiatan_pokja4()
     {
-        return view('pokja_4.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_4')->get()]);
+        return view('pokja_4.kegiatan', [
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_4')->get(),
+            'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 4')->get()
+        ]);
     }
 
     public function store_kegiatan(Request $request)
@@ -68,10 +84,17 @@ class KegiatanController extends Controller
             'tempat' => 'nullable|string|max:255',
             'uraian' => 'required|string',
             'tanda_tangan' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'dokumentasi_ids' => 'nullable|array',
+            'dokumentasi_ids.*' => 'exists:dokumentasis,id'
         ]);
         $validated['role'] = Auth::user()->role ?? 'Sekretaris';
         if ($request->hasFile('tanda_tangan')) {
             $validated['tanda_tangan'] = $request->file('tanda_tangan')->store('tanda_tangan', 'public');
+        }
+        if (isset($validated['dokumentasi_ids'])) {
+            $validated['dokumentasi_ids'] = json_encode($validated['dokumentasi_ids']);
+        } else {
+            $validated['dokumentasi_ids'] = json_encode([]);
         }
         KegiatanModels::create($validated);
         return back()->with('success', 'Kegiatan berhasil ditambahkan!');
@@ -87,9 +110,16 @@ class KegiatanController extends Controller
             'tempat' => 'nullable|string|max:255',
             'uraian' => 'required|string',
             'tanda_tangan' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'dokumentasi_ids' => 'nullable|array',
+            'dokumentasi_ids.*' => 'exists:dokumentasis,id'
         ]);
         if ($request->hasFile('tanda_tangan')) {
             $validated['tanda_tangan'] = $request->file('tanda_tangan')->store('tanda_tangan', 'public');
+        }
+        if (isset($validated['dokumentasi_ids'])) {
+            $validated['dokumentasi_ids'] = json_encode($validated['dokumentasi_ids']);
+        } else {
+            $validated['dokumentasi_ids'] = json_encode([]);
         }
         KegiatanModels::where('id', $id)->update($validated);
         return back()->with('success', 'Kegiatan berhasil diupdate!');
@@ -143,5 +173,41 @@ class KegiatanController extends Controller
     public function kegiatan_wakil_pokja4()
     {
         return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_4')->get(), 'source_label' => 'Pokja 4']);
+    }
+
+    // ==================== HALAMAN PUBLIK ====================
+    public function kegiatanAkanDatang(Request $request)
+    {
+        $query = KegiatanModels::where('tanggal_kegiatan', '>=', now()->toDateString())
+            ->orderBy('tanggal_kegiatan', 'asc');
+
+        if ($request->role) {
+            $query->where('role', $request->role);
+        }
+
+        $kegiatan = $query->paginate(9);
+        return view('kegiatan_akan_dtng', compact('kegiatan'));
+    }
+
+    public function kegiatanTerlaksana(Request $request)
+    {
+        $query = KegiatanModels::where('tanggal_kegiatan', '<', now()->toDateString())
+            ->orderBy('tanggal_kegiatan', 'desc');
+
+        if ($request->role) {
+            $query->where('role', $request->role);
+        }
+
+        $kegiatan = $query->paginate(9);
+
+        $totalRole = KegiatanModels::where('tanggal_kegiatan', '<', now()->toDateString())
+            ->distinct('role')->count('role');
+
+        $bulanIni = KegiatanModels::where('tanggal_kegiatan', '<', now()->toDateString())
+            ->whereYear('tanggal_kegiatan', now()->year)
+            ->whereMonth('tanggal_kegiatan', now()->month)
+            ->count();
+
+        return view('kegiatan_terlaksana', compact('kegiatan', 'totalRole', 'bulanIni'));
     }
 }

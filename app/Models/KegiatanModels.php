@@ -19,5 +19,6 @@ class KegiatanModels extends Model
         'tempat',
         'uraian',
         'tanda_tangan',
+        'dokumentasi_ids',
     ];
 }

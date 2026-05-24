@@ -78,6 +78,14 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
             ],
+            [
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin_123'),
+            'role' => 'Admin',
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
         ]);
     }
 }

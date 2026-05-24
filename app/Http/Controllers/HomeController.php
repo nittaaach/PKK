@@ -9,51 +9,56 @@ class HomeController extends Controller
 {
     public function HomeLanding()
     {
-        return view('landing');
+        $galeriLanding = \App\Models\KegiatanModels::whereNotNull('dokumentasi_ids')
+            ->where('dokumentasi_ids', '!=', '[]')
+            ->where('tanggal_kegiatan', '<', now()->toDateString())
+            ->where('tanggal_kegiatan', '>=', now()->subMonth()->toDateString())
+            ->orderBy('tanggal_kegiatan', 'desc')
+            ->take(8)
+            ->get();
+
+        foreach ($galeriLanding as $k) {
+            $dok_ids = json_decode($k->dokumentasi_ids, true) ?? [];
+            $k->dokumentasi_list = \App\Models\Dokumentasi::whereIn('id', $dok_ids)->get();
+        }
+
+        // Ambil gambar untuk hero carousel (kegiatan seminggu terakhir / 7 hari terakhir)
+        $kegiatanSeminggu = \App\Models\KegiatanModels::whereNotNull('dokumentasi_ids')
+            ->where('dokumentasi_ids', '!=', '[]')
+            ->where('tanggal_kegiatan', '>=', now()->subDays(7)->toDateString())
+            ->orderBy('tanggal_kegiatan', 'desc')
+            ->get();
+
+        $carouselIds = [];
+        foreach ($kegiatanSeminggu as $k) {
+            $ids = json_decode($k->dokumentasi_ids, true);
+            if (is_array($ids)) {
+                $carouselIds = array_merge($carouselIds, $ids);
+            }
+        }
+        $carouselIds = array_unique($carouselIds);
+
+        $carouselImages = collect();
+        if (!empty($carouselIds)) {
+            $carouselImages = \App\Models\Dokumentasi::whereIn('id', $carouselIds)
+                ->take(3)
+                ->get();
+        }
+
+        return view('landing', compact('galeriLanding', 'carouselImages'));
     }
 
     public function profil()
     {
-        $guards = ['ketua', 'wakil', 'bendahara', 'sekretaris', 'pokja_1', 'pokja_2', 'pokja_3', 'pokja_4'];
-        $user = null;
-        foreach ($guards as $guard) {
-            if (\Illuminate\Support\Facades\Auth::guard($guard)->check()) {
-                $user = \Illuminate\Support\Facades\Auth::guard($guard)->user();
-                break;
-            }
-        }
-
-        if (!$user) {
-            return redirect()->route('profil');
-        }
-
-        $anggota = DaftarAnggotaModels::where('id_users', $user->id)->first();
-
-        $layout = 'admin-temp.layout_sekretaris';
-        if ($user->role == 'Pokja_1') {
-            $layout = 'admin-temp.layout_pokja_1';
-        } elseif ($user->role == 'Pokja_2') {
-            $layout = 'admin-temp.layout_pokja_2';
-        } elseif ($user->role == 'Pokja_3') {
-            $layout = 'admin-temp.layout_pokja_3';
-        } elseif ($user->role == 'Pokja_4') {
-            $layout = 'admin-temp.layout_pokja_4';
-        } elseif ($user->role == 'Ketua') {
-            $layout = 'admin-temp.layout_ketua';
-        } elseif ($user->role == 'Wakil') {
-            $layout = 'admin-temp.layout_wakil';
-        } elseif ($user->role == 'Bendahara') {
-            $layout = 'admin-temp.layout_bendahara';
-        }
-
-        return view('profil', compact('user', 'anggota', 'layout'));
+        return view('/profil');
     }
+
     public function struktural()
     {
-        $ketua = DaftarAnggotaModels::where('role_pkk', 'Ketua')->first();
-        $wakil = DaftarAnggotaModels::where('role_pkk', 'Wakil')->first();
-        $bendahara = DaftarAnggotaModels::where('role_pkk', 'Bendahara')->first();
-        $sekretaris = DaftarAnggotaModels::where('role_pkk', 'Sekretaris')->first();
+        $ketua = DaftarAnggotaModels::where('role_pkk', 'Ketua')->get();
+        $wakil = DaftarAnggotaModels::where('role_pkk', 'Wakil')->get();
+        $bendahara = DaftarAnggotaModels::where('role_pkk', 'Bendahara')->get();
+        $sekretaris = DaftarAnggotaModels::where('role_pkk', 'Sekretaris')->get();
         $pokja1 = DaftarAnggotaModels::where('role_pkk', 'Pokja 1')->get();
         $pokja2 = DaftarAnggotaModels::where('role_pkk', 'Pokja 2')->get();
         $pokja3 = DaftarAnggotaModels::where('role_pkk', 'Pokja 3')->get();

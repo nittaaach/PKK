@@ -76,6 +76,7 @@
                                     <option value="Pokja_2">Pokja 2</option>
                                     <option value="Pokja_3">Pokja 3</option>
                                     <option value="Pokja_4">Pokja 4</option>
+                                    <option value="Admin">Admin</option>
                                 </select>
                                 @error('role')
                                     <span class="text-danger">{{ $message }}</span>

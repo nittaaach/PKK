@@ -86,6 +86,15 @@ class DaftarAnggotaSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'id_users' => 9,
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'alamat' => 'Cipinang Melayu',
+                'role_pkk' => 'Admin',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
