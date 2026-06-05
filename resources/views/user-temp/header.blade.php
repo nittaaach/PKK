@@ -22,7 +22,7 @@
                             <a href="/struktural"><span>Struktural</span> <i
                                     class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
-                                <li><a href="/struktural#sekretaris">Sekretaris</a></li>
+                                <li><a href="/struktural#ketua">BPH</a></li>
                                 <li><a href="/struktural#pokja_1">Pokja 1</a></li>
                                 <li><a href="/struktural#pokja_2">Pokja 2</a></li>
                                 <li><a href="/struktural#pokja_3">Pokja 3</a></li>
