@@ -1,4 +1,4 @@
-﻿@extends('admin-temp.layout_pokja_4')
+@extends('admin-temp.layout_pokja_4')
 @section('content_admin')
     <!-- [ Main Content ] start -->
 
@@ -28,6 +28,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
 
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="ktp-rw12" role="tabpanel" aria-labelledby="ktp-rw12-tab">
@@ -35,9 +41,13 @@
                     <div class="card-body">
                         <div class="dt-responsive table-responsive">
                             <div class="py-3">
-                                <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
                                     data-bs-target="#AddAnggotaModal">
-                                    Tambah Anggota
+                                    <i class="ti ti-plus me-1"></i> Tambah Anggota
+                                </button>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#ImportModal">
+                                    <i class="ti ti-file-import me-1"></i> Import File
                                 </button>
                             </div>
                             <table id="basic-btn-da" class="table table-striped table-bordered" style="width: 100%;">
@@ -153,8 +163,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        <!-- Alternative Pagination table end -->
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'daftar_anggota.import_pokja4',
+        'title'       => 'Import Daftar Anggota Pokja 4',
+        'columns'     => 'no_registrasi, name, jenis_kelamin, status_perkawinan, role_pkk, keanggotaan_tp_pkk, kader_umum, kader_khusus, tempat_lahir, tanggal_lahir, umur, pendidikan, pekerjaan, alamat, keterangan',
+    ])
 
     <!-- Modal Tambah Anggota -->
     <div id="AddAnggotaModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="AddAnggotaModalTitle"

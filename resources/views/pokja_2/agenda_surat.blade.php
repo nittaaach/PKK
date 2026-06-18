@@ -30,6 +30,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
 
         <!-- Button Switcher Surat Masuk / Surat Keluar -->
         <ul class="nav nav-pills mb-3" id="agendaSuratTab" role="tablist">
@@ -59,9 +65,13 @@
                     <div class="card-body">
                         <div class="dt-responsive table-responsive">
                             <div class="py-3">
-                                <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
                                     data-bs-target="#AddSuratMasukModal">
                                     <i class="ti ti-plus me-1"></i> Tambah Surat Masuk
+                                </button>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#ImportMasukModal">
+                                    <i class="ti ti-file-import me-1"></i> Import File
                                 </button>
                             </div>
                             <table id="basic-btn-suratm" class="table table-striped table-bordered" style="width: 100%;">
@@ -137,9 +147,13 @@
                     <div class="card-body">
                         <div class="dt-responsive table-responsive">
                             <div class="py-3">
-                                <button type="button" class="btn btn-success me-3" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-success me-2" data-bs-toggle="modal"
                                     data-bs-target="#AddSuratKeluarModal">
                                     <i class="ti ti-plus me-1"></i> Tambah Surat Keluar
+                                </button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#ImportKeluarModal">
+                                    <i class="ti ti-file-import me-1"></i> Import File
                                 </button>
                             </div>
                             <table id="basic-btn-suratk" class="table table-striped table-bordered" style="width: 100%;">
@@ -203,6 +217,20 @@
     </div>
 
     <!-- ==================== MODALS SURAT MASUK ==================== -->
+
+    @include('admin-temp.partials.import_modal', [
+        'modalId'     => 'ImportMasukModal',
+        'importRoute' => 'agenda_surat.import_masuk_pokja2',
+        'title'       => 'Import Surat Masuk Pokja 2',
+        'columns'     => 'tanggal_terima, tanggal_surat, no_surat, asal_surat, perihal, lampiran, diteruskan_kepada',
+    ])
+
+    @include('admin-temp.partials.import_modal', [
+        'modalId'     => 'ImportKeluarModal',
+        'importRoute' => 'agenda_surat.import_keluar_pokja2',
+        'title'       => 'Import Surat Keluar Pokja 2',
+        'columns'     => 'nomor_kode_surat, tanggal_surat, kepada, perihal, lampiran, tembusan',
+    ])
 
     <!-- Modal Tambah Surat Masuk -->
     <div id="AddSuratMasukModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">

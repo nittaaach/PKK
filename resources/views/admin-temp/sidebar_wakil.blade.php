@@ -1,5 +1,5 @@
 <body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
-        @yield('sidebar_wakil')
+    @yield('sidebar_wakil')
     <!-- [ Pre-loader ] start -->
     <div class="loader-bg">
         <div class="loader-track">
@@ -46,37 +46,43 @@
                         <label>Data Sekretaris</label>
                         <i class="ti ti-file-text"></i>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_daftar_anggota') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_daftar_anggota') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'sekretaris_daftar_anggota') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-layout-grid-add"></i></span>
                             <span class="pc-mtext">Daftar Anggota</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_kegiatan') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_kegiatan') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'sekretaris_kegiatan') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-activity"></i></span>
                             <span class="pc-mtext">Kegiatan</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_agenda_surat') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_agenda_surat') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'sekretaris_agenda_surat') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
                             <span class="pc-mtext">Agenda Surat</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_papan_data') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_papan_data') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'sekretaris_papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Papan Data</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_data_umum') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_data_umum') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'sekretaris_data_umum') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-database"></i></span>
                             <span class="pc-mtext">Data Umum</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_data_potensi') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_data_potensi') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'sekretaris_data_potensi') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-location"></i></span>
                             <span class="pc-mtext">Data Potensi Wilayah</span>
@@ -88,7 +94,8 @@
                         <label>Data Pokja 1</label>
                         <i class="ti ti-users"></i>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja1_daftar_anggota') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja1_daftar_anggota') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja1_daftar_anggota') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-layout-grid-add"></i></span>
                             <span class="pc-mtext">Daftar Anggota</span>
@@ -100,13 +107,15 @@
                             <span class="pc-mtext">Kegiatan</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja1_agenda_surat') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja1_agenda_surat') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja1_agenda_surat') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
                             <span class="pc-mtext">Agenda Surat</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja1_papan_data') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja1_papan_data') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja1_papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Papan Data</span>
@@ -118,7 +127,8 @@
                         <label>Data Pokja 2</label>
                         <i class="ti ti-users"></i>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja2_daftar_anggota') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja2_daftar_anggota') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja2_daftar_anggota') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-layout-grid-add"></i></span>
                             <span class="pc-mtext">Daftar Anggota</span>
@@ -130,13 +140,15 @@
                             <span class="pc-mtext">Kegiatan</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja2_agenda_surat') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja2_agenda_surat') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja2_agenda_surat') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
                             <span class="pc-mtext">Agenda Surat</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja2_papan_data') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja2_papan_data') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja2_papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Papan Data</span>
@@ -148,7 +160,8 @@
                         <label>Data Pokja 3</label>
                         <i class="ti ti-users"></i>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_daftar_anggota') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_daftar_anggota') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja3_daftar_anggota') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-layout-grid-add"></i></span>
                             <span class="pc-mtext">Daftar Anggota</span>
@@ -160,13 +173,15 @@
                             <span class="pc-mtext">Kegiatan</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_agenda_surat') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_agenda_surat') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja3_agenda_surat') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
                             <span class="pc-mtext">Agenda Surat</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_papan_data') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_papan_data') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja3_papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Papan Data</span>
@@ -178,7 +193,8 @@
                         <label>Data Pokja 4</label>
                         <i class="ti ti-users"></i>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja4_daftar_anggota') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja4_daftar_anggota') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja4_daftar_anggota') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-layout-grid-add"></i></span>
                             <span class="pc-mtext">Daftar Anggota</span>
@@ -190,13 +206,15 @@
                             <span class="pc-mtext">Kegiatan</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja4_agenda_surat') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja4_agenda_surat') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja4_agenda_surat') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
                             <span class="pc-mtext">Agenda Surat</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'pokja4_papan_data') ? 'pc-active' : '' }}">
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja4_papan_data') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'pokja4_papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Papan Data</span>
@@ -251,10 +269,10 @@
                                 </div>
                             </div>
                             <hr class="dropdown-divider">
-                            <a href="{{ route('profil') }}" class="dropdown-item">
+                            {{-- <a href="{{ route('profil') }}" class="dropdown-item">
                                 <i class="ti ti-user"></i>
                                 <span>Detail Akun</span>
-                            </a>
+                            </a> --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item text-danger"

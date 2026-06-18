@@ -1023,6 +1023,34 @@ section,
   transform: scale(1);
 }
 
+.values .card .readmore {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  color: var(--accent-color);
+  text-align: center;
+  border-radius: 8px;
+  margin-top: auto; /* push to bottom if flex, otherwise just margin */
+  font-weight: 600;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.values .card .readmore:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.values .card .readmore i {
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.values .card:hover .readmore i {
+  transform: translateX(5px);
+}
+
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/

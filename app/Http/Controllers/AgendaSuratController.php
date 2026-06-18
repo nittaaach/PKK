@@ -6,9 +6,46 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SuratMasukModels;
 use App\Models\SuratKeluarModels;
+use App\Imports\SuratMasukImport;
+use App\Imports\SuratKeluarImport;
 
 class AgendaSuratController extends Controller
 {
+    // ==================== HELPER IMPORT ====================
+    private function doImportMasuk(Request $request, string $role): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate(['import_file' => 'required|file|mimes:xlsx,xls,csv,ods|max:5120']);
+        try {
+            $count = (new SuratMasukImport($role))->import($request->file('import_file'));
+            return back()->with('success', "Berhasil mengimpor {$count} data surat masuk dari file!");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor: ' . $e->getMessage());
+        }
+    }
+
+    private function doImportKeluar(Request $request, string $role): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate(['import_file' => 'required|file|mimes:xlsx,xls,csv,ods|max:5120']);
+        try {
+            $count = (new SuratKeluarImport($role))->import($request->file('import_file'));
+            return back()->with('success', "Berhasil mengimpor {$count} data surat keluar dari file!");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor: ' . $e->getMessage());
+        }
+    }
+
+    public function import_surat_masuk_sekretaris(Request $r)  { return $this->doImportMasuk($r, 'Sekretaris'); }
+    public function import_surat_masuk_pokja1(Request $r)      { return $this->doImportMasuk($r, 'Pokja_1'); }
+    public function import_surat_masuk_pokja2(Request $r)      { return $this->doImportMasuk($r, 'Pokja_2'); }
+    public function import_surat_masuk_pokja3(Request $r)      { return $this->doImportMasuk($r, 'Pokja_3'); }
+    public function import_surat_masuk_pokja4(Request $r)      { return $this->doImportMasuk($r, 'Pokja_4'); }
+
+    public function import_surat_keluar_sekretaris(Request $r) { return $this->doImportKeluar($r, 'Sekretaris'); }
+    public function import_surat_keluar_pokja1(Request $r)     { return $this->doImportKeluar($r, 'Pokja_1'); }
+    public function import_surat_keluar_pokja2(Request $r)     { return $this->doImportKeluar($r, 'Pokja_2'); }
+    public function import_surat_keluar_pokja3(Request $r)     { return $this->doImportKeluar($r, 'Pokja_3'); }
+    public function import_surat_keluar_pokja4(Request $r)     { return $this->doImportKeluar($r, 'Pokja_4'); }
+
     public function agenda_surat_sekretaris()
     {
         $surat_masuk = SuratMasukModels::where('role', 'Sekretaris')->get();

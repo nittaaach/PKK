@@ -26,13 +26,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             @endif
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="dt-responsive table-responsive">
                         <div class="py-3">
-                            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
                                 data-bs-target="#AddModal">
                                 <i class="ti ti-plus me-1"></i> Tambah Data Keuangan
+                            </button>
+                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal"
+                                data-bs-target="#ImportModal">
+                                <i class="ti ti-file-import me-1"></i> Import File
                             </button>
                             <button class="btn btn-secondary" onclick="window.print()">
                                 <i class="ti ti-printer me-1"></i> Print / Cetak
@@ -121,6 +131,49 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Import -->
+    <div id="ImportModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="ti ti-file-import me-2"></i>Import Data Keuangan</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="{{ route('buku_keuangan.import_sekretaris') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="alert alert-info">
+                            <strong><i class="ti ti-info-circle me-1"></i>Format file yang diterima:</strong>
+                            <ul class="mb-1 mt-1">
+                                <li><strong>.xlsx / .xls</strong> &mdash; Microsoft Excel</li>
+                                <li><strong>.csv</strong> &mdash; Comma Separated Values</li>
+                                <li><strong>.ods</strong> &mdash; LibreOffice / Google Spreadsheet</li>
+                            </ul>
+                        </div>
+                        <div class="alert alert-warning small">
+                            <i class="ti ti-table me-1"></i>
+                            Pastikan header kolom file sesuai:<br>
+                            <code>tanggal_penerimaan, sumber_dana_penerimaan, uraian_penerimaan, bukti_kas_penerimaan, penerimaan, tanggal_pengeluaran, sumber_dana_pengeluaran, uraian_pengeluaran, bukti_kas_pengeluaran, pengeluaran</code>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Pilih File <span class="text-danger">*</span></label>
+                            <input type="file" class="form-control" name="import_file" id="import_file"
+                                accept=".xlsx,.xls,.csv,.ods" required>
+                            <div class="form-text">Ukuran maksimal: 5 MB</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-success">
+                            <i class="ti ti-upload me-1"></i> Import
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

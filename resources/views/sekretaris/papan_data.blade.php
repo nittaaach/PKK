@@ -1,4 +1,4 @@
-﻿@extends('admin-temp.layout_sekretaris')
+@extends('admin-temp.layout_sekretaris')
 @section('content_admin')
     <div class="page-header">
         <div class="page-block">
@@ -25,16 +25,26 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
                     <div class="py-3">
-                        <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
                             data-bs-target="#AddPapanDataModal">
                             <i class="ti ti-plus me-1"></i> Tambah Data
                         </button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#ImportModal">
+                            <i class="ti ti-file-import me-1"></i> Import File
+                        </button>
                     </div>
-                    <table id="#basic-btn-papan" class="table table-striped table-bordered" style="width: 100%;">
+                    <table id="basic-btn-papan" class="table table-striped table-bordered" style="width: 100%;">
                         <thead>
                             <!-- Baris 1 -->
                             <tr>
@@ -144,6 +154,12 @@
             </div>
         </div>
     </div>
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'papan_data.import_sekretaris',
+        'title'       => 'Import Papan Data Kegiatan',
+        'columns'     => 'nomor_rw, jumlah_rt, jumlah_dasa_wisma, jumlah_krt, jumlah_kk, total_l, total_p, balita_l, balita_p, pus, wus, ibu_hamil, ibu_menyusui, lansia, tiga_buta, berkebutuhan_khusus, rumah_sehat, rumah_tidak_sehat, pembuangan_sampah, spal, jamban, stiker_p4k, pdam, sumur, air_dll, beras, non_beras, up2k, pemanfaatan_pekarangan, industri_rumah_tangga, kesehatan_lingkungan, keterangan',
+    ])
 
     <!-- Modal Tambah -->
     <div id="AddPapanDataModal" class="modal fade" tabindex="-1" aria-hidden="true">

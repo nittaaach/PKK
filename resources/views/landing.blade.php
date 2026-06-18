@@ -18,31 +18,40 @@
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                    @if(isset($carouselImages) && $carouselImages->count() > 0)
+                    @if (isset($carouselImages) && $carouselImages->count() > 0)
                         <!-- Dynamic Premium Hero Carousel -->
-                        <div id="heroCarousel" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel" data-bs-interval="5000" style="border-radius: 20px; overflow: hidden;">
-                            @if($carouselImages->count() > 1)
+                        <div id="heroCarousel" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel"
+                            data-bs-interval="5000" style="border-radius: 20px; overflow: hidden;">
+                            @if ($carouselImages->count() > 1)
                                 <div class="carousel-indicators">
-                                    @foreach($carouselImages as $index => $img)
-                                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}" aria-current="{{ $index === 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                                    @foreach ($carouselImages as $index => $img)
+                                        <button type="button" data-bs-target="#heroCarousel"
+                                            data-bs-slide-to="{{ $index }}"
+                                            class="{{ $index === 0 ? 'active' : '' }}"
+                                            aria-current="{{ $index === 0 ? 'true' : 'false' }}"
+                                            aria-label="Slide {{ $index + 1 }}"></button>
                                     @endforeach
                                 </div>
                             @endif
 
                             <div class="carousel-inner">
-                                @foreach($carouselImages as $index => $img)
+                                @foreach ($carouselImages as $index => $img)
                                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                        <img src="{{ asset('storage/' . $img->foto) }}" class="d-block w-100" style="object-fit: cover; aspect-ratio: 4/3; width: 100%; border-radius: 20px;" alt="Dokumentasi Kegiatan">
+                                        <img src="{{ asset('storage/' . $img->foto) }}" class="d-block w-100"
+                                            style="object-fit: cover; aspect-ratio: 4/3; width: 100%; border-radius: 20px;"
+                                            alt="Dokumentasi Kegiatan">
                                     </div>
                                 @endforeach
                             </div>
 
-                            @if($carouselImages->count() > 1)
-                                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                            @if ($carouselImages->count() > 1)
+                                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel"
+                                    data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel"
+                                    data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
@@ -50,7 +59,10 @@
                         </div>
                     @else
                         <!-- Fallback static hero image -->
-                        <img src="{{ asset('assets-user/img/rw12_1.jpg') }}" class="img-fluid animated" onerror="this.onerror=null; this.src='{{ asset('assets-user/img/hero-img.png') }}';" alt="Hero PKK Cipinang Melayu" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="{{ asset('assets-user/img/rw12_1.jpg') }}" class="img-fluid animated"
+                            onerror="this.onerror=null; this.src='{{ asset('assets-user/img/hero-img.png') }}';"
+                            alt="Hero PKK Cipinang Melayu"
+                            style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     @endif
                 </div>
             </div>
@@ -64,10 +76,10 @@
         <div class="container" data-aos="fade-up">
             <div class="row gx-0">
 
-                <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="content">
-                        <h3>TENTANG KAMI</h3>
-                        <h2>RW Smart Hub adalah portal digital resmi RW 012 Jatiwaringin, Kota Bekasi.</h2>
+                <div class="col-lg-12 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="content text-center">
+                        <h2>TENTANG KAMI</h2>
+                        <h3>RW Smart Hub adalah portal digital resmi RW 012 Jatiwaringin, Kota Bekasi.</h3>
                         <p>
                             Website ini dikembangkan untuk meningkatkan partisipasi warga dalam berbagai kegiatan sosial,
                             ekonomi, dan administrasi RW secara lebih cepat, transparan, dan mudah diakses oleh semua
@@ -78,7 +90,7 @@
                             Kami percaya bahwa digitalisasi komunitas adalah langkah penting untuk membangun lingkungan yang
                             lebih aktif, inklusif, dan sejahtera.
                         </p>
-                        <div class="text-center text-lg-start">
+                        <div class="d-flex justify-content-center">
                             <a href="/profil-pkk"
                                 class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                                 <span>Lihat Selengkapnya</span>
@@ -86,10 +98,6 @@
                             </a>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="assets-user/img/katar12.jpg" class="img-fluid" alt="">
                 </div>
 
             </div>
@@ -101,9 +109,9 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <p>LAYANAN<br></p>
+            <p>INFORMASI<br></p>
             <h2>Yang Kami Sediakan</h2>
-            <a href="/layanan" class="readmore stretched-link"><span></span></a>
+            <a href="/informasi" class="readmore stretched-link"><span></span></a>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -112,9 +120,10 @@
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card">
                         <img src="assets-user/img/values-1.png" class="img-fluid" alt="">
-                        <h3>Administrasi Penduduk</h3>
-                        <p>Masyarakat bisa melihat berkas apa saja yang diperlukan untuk administrasi.</p>
-                        <a href="/layanan" class="readmore stretched-link">
+                        <h3>Katalog Product</h3>
+                        <p>Jelajahi daftar produk unggulan dan kreativitas lokal hasil karya komunitas/UMKM yang siap
+                            dipasarkan secara luas.</p>
+                        <a href="/katalog" class="readmore stretched-link">
                             <span>Lihat Selengkapnya</span><i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -123,10 +132,10 @@
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card">
                         <img src="assets-user/img/values-2.png" class="img-fluid" alt="">
-                        <h3>Bank Sampah</h3>
-                        <p>Tempat pengelolaan sampah berbasis komunitas yang menukar sampah menjadi nilai ekonomi sekaligus
-                            menjaga kebersihan lingkungan.</p>
-                        <a href="/layanan" class="readmore stretched-link">
+                        <h3>Kegiatan Akan Datang</h3>
+                        <p>Temukan berbagai agenda, program pemberdayaan, dan aktivitas sosial mendatang. Mari bergabung dan
+                            berpartisipasi!</p>
+                        <a href="{{ route('kegiatan.akan_datang') }}" class="readmore stretched-link">
                             <span>Lihat Selengkapnya</span><i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -135,10 +144,10 @@
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card">
                         <img src="assets-user/img/values-3.png" class="img-fluid" alt="">
-                        <h3>Kampung KB</h3>
-                        <p>Program pemberdayaan masyarakat yang berfokus pada peningkatan kualitas hidup keluarga melalui
-                            perencanaan, pendidikan, dan kesehatan.</p>
-                        <a href="/layanan" class="readmore stretched-link">
+                        <h3>Kegiatan Terlaksana</h3>
+                        <p>Lihat kembali dokumentasi dan kilas balik program kerja yang telah sukses diselenggarakan bersama
+                            masyarakat.</p>
+                        <a href="{{ route('kegiatan.terlaksana') }}" class="readmore stretched-link">
                             <span>Lihat Selengkapnya</span><i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -151,7 +160,7 @@
     <!-- /Values Section -->
 
     <!-- Stats Section -->
-    <section id="stats" class="stats section">
+    {{-- <section id="stats" class="stats section">
         <div class="container section-title" data-aos="fade-up">
             <p>INFORMASI<br></p>
             <h2>Yang Kami Sediakan</h2>
@@ -194,7 +203,7 @@
                 </div><!-- End Stats Item -->
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Recent Posts Section -->
     <section id="news" class="recent-posts section">
@@ -214,24 +223,28 @@
                             $cover = $item->dokumentasi_list->first();
                         @endphp
                         <div class="col-xl-3 col-md-6">
-                            <div class="post-item position-relative h-100 border-0 shadow-sm rounded-4 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                            <div class="post-item position-relative h-100 border-0 shadow-sm rounded-4 overflow-hidden"
+                                data-aos="fade-up" data-aos-delay="100">
 
                                 <div class="post-img position-relative overflow-hidden" style="height: 200px;">
-                                    @if($cover)
-                                        <img src="{{ asset('storage/' . $cover->foto) }}"
-                                            style="object-fit: cover;" class="img-fluid w-100 h-100" alt="{{ $item->uraian }}">
+                                    @if ($cover)
+                                        <img src="{{ asset('storage/' . $cover->foto) }}" style="object-fit: cover;"
+                                            class="img-fluid w-100 h-100" alt="{{ $item->uraian }}">
                                     @else
-                                        <div class="d-flex align-items-center justify-content-center h-100 w-100" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                                        <div class="d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
                                             <i class="bi bi-image text-white" style="font-size: 2rem;"></i>
                                         </div>
                                     @endif
-                                    <span class="post-date" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px;">
+                                    <span class="post-date"
+                                        style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px;">
                                         {{ $tanggal->format('d M Y') }}
                                     </span>
                                 </div>
 
                                 <div class="post-content d-flex flex-column p-3">
-                                    <h3 class="post-title fs-5 mb-2 text-truncate" title="{{ $item->uraian }}">{{ $item->uraian }}</h3>
+                                    <h3 class="post-title fs-5 mb-2 text-truncate" title="{{ $item->uraian }}">
+                                        {{ $item->uraian }}</h3>
 
                                     <div class="meta d-flex align-items-center mb-3" style="font-size: 13px;">
                                         <div class="d-flex align-items-center">
@@ -240,7 +253,8 @@
                                         </div>
                                     </div>
 
-                                    <a href="{{ route('galeri.detail', $item->id) }}" class="readmore mt-auto stretched-link" style="font-size: 14px;">
+                                    <a href="{{ route('galeri.detail', $item->id) }}"
+                                        class="readmore mt-auto stretched-link" style="font-size: 14px;">
                                         <span>Lihat Detail</span><i class="bi bi-arrow-right"></i>
                                     </a>
 
@@ -313,20 +327,16 @@
                             alt=""></div>
                     <div class="swiper-slide"><img src="assets-user/img/clients/dikti.png" class="img-fluid"
                             alt=""></div>
-                    <div class="swiper-slide"><img src="assets-user/img/clients/berdampak.png" class="img-fluid"
-                            alt=""></div>
-                    <div class="swiper-slide"><img src="assets-user/img/clients/bem.png" class="img-fluid"
-                            alt=""></div>
+                    <div class="swiper-slide"><img src="assets-user/img/logo_pkk.png" class="img-fluid" alt="">
+                    </div>
                     <div class="swiper-slide"><img src="assets-user/img/clients/UNM.png" class="img-fluid"
                             alt=""></div>
                     <div class="swiper-slide"><img src="assets-user/img/clients/kemdi.png" class="img-fluid"
                             alt=""></div>
                     <div class="swiper-slide"><img src="assets-user/img/clients/dikti.png" class="img-fluid"
                             alt=""></div>
-                    <div class="swiper-slide"><img src="assets-user/img/clients/berdampak.png" class="img-fluid"
-                            alt=""></div>
-                    <div class="swiper-slide"><img src="assets-user/img/clients/bem.png" class="img-fluid"
-                            alt=""></div>
+                    <div class="swiper-slide"><img src="assets-user/img/logo_pkk.png" class="img-fluid" alt="">
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -422,7 +432,7 @@
                         <div class="col-md-6">
                             <div class="info-item" data-aos="fade" data-aos-delay="500">
                                 <i class="bi bi-cart"></i>
-                                <a href="https://sawataa.com">
+                                <a href="/katalog">
                                     <h3>Marketplace</h3>
                                 </a>
                             </div>

@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-sm my-1">
                 <p class="m-0">PKK | Cipinang Melayu &#9829; crafted by Team <a
-                        href="https://themeforest.net/user/codedthemes" target="_blank">PM - BEM</a>
-                    Distributed by <a href="https://www.nusamandiri.ac.id/nuri/index.js">Universitas Nusa
+                        href="https://themeforest.net/user/codedthemes" target="_blank"></a>
+                    <a href="https://www.nusamandiri.ac.id/nuri/index.js">Universitas Nusa
                         Mandiri</a>.</p>
             </div>
             <div class="col-auto my-1">
@@ -67,6 +67,10 @@
 </script>
 <script>
     $('#basic-btn-rw').DataTable({
+        dom: 'Bfrtip',
+        buttons: ['copy', 'csv', 'excel', 'print']
+    });
+    $('#basic-btn').DataTable({
         dom: 'Bfrtip',
         buttons: ['copy', 'csv', 'excel', 'print']
     });

@@ -7,9 +7,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Imports\DaftarAnggotaImport;
 
 class DaftarAnggotaController extends Controller
 {
+    // ==================== HELPER IMPORT ====================
+    private function doImport(Request $request, string $rolePkk): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate(['import_file' => 'required|file|mimes:xlsx,xls,csv,ods|max:5120']);
+        try {
+            $count = (new DaftarAnggotaImport($rolePkk))->import($request->file('import_file'));
+            return back()->with('success', "Berhasil mengimpor {$count} data anggota dari file! (Kolom foto perlu diisi manual)");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor: ' . $e->getMessage());
+        }
+    }
+
+    public function import_anggota_sekretaris(Request $r) { return $this->doImport($r, 'Sekretaris'); }
+    public function import_anggota_pokja1(Request $r)     { return $this->doImport($r, 'Pokja 1'); }
+    public function import_anggota_pokja2(Request $r)     { return $this->doImport($r, 'Pokja 2'); }
+    public function import_anggota_pokja3(Request $r)     { return $this->doImport($r, 'Pokja 3'); }
+    public function import_anggota_pokja4(Request $r)     { return $this->doImport($r, 'Pokja 4'); }
+
     // ==================== HELPER: Validasi Anggota ====================
     private function validateAnggota(Request $request, $isUpdate = false)
     {

@@ -1,4 +1,4 @@
-﻿@extends('admin-temp.layout_sekretaris')
+@extends('admin-temp.layout_sekretaris')
 @section('content_admin')
     <div class="page-header">
         <div class="page-block">
@@ -24,11 +24,21 @@
             <div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button
                     type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
-                    <div class="py-3"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#AddDataUmumModal"><i class="ti ti-plus me-1"></i> Tambah Data</button></div>
+                    <div class="py-3">
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                            data-bs-target="#AddDataUmumModal"><i class="ti ti-plus me-1"></i> Tambah Data</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#ImportModal"><i class="ti ti-file-import me-1"></i> Import File</button>
+                    </div>
                     <table id="basic-btn-umum" class="table table-striped table-bordered" style="width: 100%;">
                         <thead>
                             <tr>
@@ -110,6 +120,12 @@
             </div>
         </div>
     </div>
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'data_umum.import_sekretaris',
+        'title'       => 'Import Data Umum PKK',
+        'columns'     => 'nama_wilayah, pkk_rw, pkk_rt, dasa_wisma, krt, kk, jiwa_l, jiwa_p, kader_tp_pkk_l, kader_tp_pkk_p, kader_umum_l, kader_umum_p, kader_khusus_l, kader_khusus_p, honorer_l, honorer_p, bantuan_l, bantuan_p, keterangan',
+    ])
 
     <div id="AddDataUmumModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

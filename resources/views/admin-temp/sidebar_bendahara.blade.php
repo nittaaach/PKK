@@ -70,9 +70,8 @@
             <div class="ms-auto">
                 <ul class="list-unstyled">
                     <li class="dropdown pc-h-item header-user-profile">
-                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside"
-                            aria-expanded="false">
+                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
                             <img src="{{ asset('assets_admin/images/user/avatar-2.jpg') }}" alt="user-image"
                                 class="user-avtar">
                             <span>{{ Auth::guard('bendahara')->user()->name ?? 'Guest' }}</span>
@@ -87,10 +86,10 @@
                                 </div>
                             </div>
                             <hr class="dropdown-divider">
-                            <a href="{{ route('profil') }}" class="dropdown-item">
+                            {{-- <a href="{{ route('profil') }}" class="dropdown-item">
                                 <i class="ti ti-user"></i>
                                 <span>Detail Akun</span>
-                            </a>
+                            </a> --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item text-danger"

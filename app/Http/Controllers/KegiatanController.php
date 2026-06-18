@@ -6,9 +6,35 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\KegiatanModels;
 use App\Models\Dokumentasi;
+use App\Imports\KegiatanImport;
 
 class KegiatanController extends Controller
 {
+    // ==================== HELPER IMPORT ====================
+    private function doImport(Request $request, string $role): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv,ods|max:5120',
+        ], [
+            'import_file.required' => 'File import wajib dipilih.',
+            'import_file.mimes'    => 'Format file harus Excel (.xlsx/.xls), CSV, atau ODS.',
+            'import_file.max'      => 'Ukuran file maksimal 5 MB.',
+        ]);
+
+        try {
+            $count = (new KegiatanImport($role))->import($request->file('import_file'));
+            return back()->with('success', "Berhasil mengimpor {$count} data kegiatan dari file!");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor file. ' . $e->getMessage());
+        }
+    }
+
+    public function import_kegiatan_sekretaris(Request $request) { return $this->doImport($request, 'Sekretaris'); }
+    public function import_kegiatan_pokja1(Request $request)    { return $this->doImport($request, 'Pokja_1'); }
+    public function import_kegiatan_pokja2(Request $request)    { return $this->doImport($request, 'Pokja_2'); }
+    public function import_kegiatan_pokja3(Request $request)    { return $this->doImport($request, 'Pokja_3'); }
+    public function import_kegiatan_pokja4(Request $request)    { return $this->doImport($request, 'Pokja_4'); }
+
     public function kegiatan_sekretaris()
     {
         return view('sekretaris.kegiatan', [

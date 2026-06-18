@@ -23,11 +23,21 @@
             <div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button
                     type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
-                    <div class="py-3"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#AddPotensiModal"><i class="ti ti-plus me-1"></i> Tambah Data</button></div>
+                    <div class="py-3">
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                            data-bs-target="#AddPotensiModal"><i class="ti ti-plus me-1"></i> Tambah Data</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#ImportModal"><i class="ti ti-file-import me-1"></i> Import File</button>
+                    </div>
                     <table id="basic-btn-potensi" class="table table-striped table-bordered" style="width: 100%;">
                         <thead>
                             <tr>
@@ -114,6 +124,12 @@
             </div>
         </div>
     </div>
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'data_potensi.import_sekretaris',
+        'title'       => 'Import Data Potensi Wilayah',
+        'columns'     => 'wilayah, pkk_rw, pkk_rt, dasa_wisma, krt, kk, pik_aktif, pik_tidak_aktif, majelis_taklim, paar, pola_asuh, bkb, paud, kf, koperasi, taman_bacaan, up2k_unggulan, hatinya_pkk, kader_pangan, bank_sampah, komposting, posyandu_balita, posyandu_lansia, posbindu, kader_jumantik, rw_percontohan, keterangan',
+    ])
 
     <div id="AddPotensiModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

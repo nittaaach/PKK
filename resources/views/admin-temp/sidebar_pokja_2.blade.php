@@ -61,67 +61,53 @@
                             <span class="pc-mtext">Papan Data</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'papan_data') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'papan_data') }}" class="pc-link"> --}}
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
-                            <span class="pc-mtext">Evaluasi</span>
-                        </a>
-                    </li>
-
-                    <li class="pc-item pc-caption">
-                        <label>Pages</label>
-                        <i class="ti ti-news"></i>
-                    </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
-                                        <li class="pc-item {{ request()->routeIs($routePrefix . 'dokumentasi') ? 'pc-active' : '' }}">
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'dokumentasi') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'dokumentasi') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-camera"></i></span>
                             <span class="pc-mtext">Dokumentasi</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
+                    {{-- <li class="pc-item">
+                        <a href="#" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
+                            <span class="pc-mtext">Evaluasi</span>
+                        </a>
+                    </li> --}}
+
+                    {{-- <li class="pc-item pc-caption">
+                        <label>Pages</label>
+                        <i class="ti ti-news"></i>
+                    </li>
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
                             <span class="pc-mtext">Database BKB Paud</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-users"></i></span>
                             <span class="pc-mtext">Pojok Baca</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mail"></i></span>
                             <span class="pc-mtext">Kumpulan SK</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-receipt"></i></span>
                             <span class="pc-mtext">Kalender Kegiatan Tahunan</span>
                         </a>
-                    </li>
+                    </li> --}}
 
 
-                    <li class="pc-item pc-caption">
+                    {{-- <li class="pc-item pc-caption">
                         <label>Other</label>
                         <i class="ti ti-brand-chrome"></i>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'bagan') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'bagan') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-building-community"></i></span>
@@ -163,7 +149,7 @@
                             <span class="pc-micon"><i class="ti ti-building-community"></i></span>
                             <span class="pc-mtext">Matrik</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -186,8 +172,8 @@
                         </a>
                     </li>
                     <li class="dropdown pc-h-item d-inline-flex d-md-none">
-                        <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="ti ti-search"></i>
                         </a>
                         <div class="dropdown-menu pc-h-dropdown drp-search">
@@ -296,9 +282,8 @@
                         </a>
                     </li> --}}
                     <li class="dropdown pc-h-item header-user-profile">
-                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside"
-                            aria-expanded="false">
+                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
                             <img src="{{ asset('assets_admin/images/user/avatar-2.jpg') }}" alt="user-image"
                                 class="user-avtar">
                             <span>{{ Auth::guard('pokja_2')->user()->name ?? 'Guest' }}</span>
@@ -313,10 +298,10 @@
                                 </div>
                             </div>
                             <hr class="dropdown-divider">
-                            <a href="{{ route('profil') }}" class="dropdown-item">
+                            {{-- <a href="{{ route('profil') }}" class="dropdown-item">
                                 <i class="ti ti-user"></i>
                                 <span>Detail Akun</span>
-                            </a>
+                            </a> --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item text-danger"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BukuKeuangan;
+use App\Imports\BukuKeuanganImport;
 
 class BukuKeuanganController extends Controller
 {
@@ -32,6 +33,25 @@ class BukuKeuanganController extends Controller
         
         BukuKeuangan::create($validated);
         return back()->with('success', 'Data buku keuangan berhasil ditambahkan!');
+    }
+
+    public function import_bendahara(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv,ods|max:5120',
+        ], [
+            'import_file.required' => 'File import wajib dipilih.',
+            'import_file.mimes'    => 'Format file harus Excel (.xlsx/.xls), CSV, atau ODS (Spreadsheet).',
+            'import_file.max'      => 'Ukuran file maksimal 5 MB.',
+        ]);
+
+        try {
+            $importer = new BukuKeuanganImport('Bendahara');
+            $count    = $importer->import($request->file('import_file'));
+            return back()->with('success', "Berhasil mengimpor {$count} baris data dari file!");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor file. ' . $e->getMessage());
+        }
     }
 
     public function update_bendahara(Request $request, $id)
@@ -84,6 +104,25 @@ class BukuKeuanganController extends Controller
         
         BukuKeuangan::create($validated);
         return back()->with('success', 'Data buku keuangan berhasil ditambahkan!');
+    }
+
+    public function import_sekretaris(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required|file|mimes:xlsx,xls,csv,ods|max:5120',
+        ], [
+            'import_file.required' => 'File import wajib dipilih.',
+            'import_file.mimes'    => 'Format file harus Excel (.xlsx/.xls), CSV, atau ODS (Spreadsheet).',
+            'import_file.max'      => 'Ukuran file maksimal 5 MB.',
+        ]);
+
+        try {
+            $importer = new BukuKeuanganImport('Sekretaris');
+            $count    = $importer->import($request->file('import_file'));
+            return back()->with('success', "Berhasil mengimpor {$count} baris data dari file!");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor file. ' . $e->getMessage());
+        }
     }
 
     public function update_sekretaris(Request $request, $id)

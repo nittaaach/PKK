@@ -52,6 +52,7 @@ class HomeController extends Controller
     {
         return view('/profil');
     }
+    
 
     public function struktural()
     {

@@ -23,12 +23,20 @@
             <div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button
                     type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
                     <div class="py-3">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
                             data-bs-target="#AddPapanDataModal"><i class="ti ti-plus me-1"></i> Tambah Data</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#ImportModal"><i class="ti ti-file-import me-1"></i> Import File</button>
                     </div>
                     <table id="basic-btn-papan" class="table table-striped table-bordered" style="width: 100%;">
                         <thead>
@@ -106,6 +114,12 @@
             </div>
         </div>
     </div>
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'papan_data.import_pokja1',
+        'title'       => 'Import Papan Data Pokja 1',
+        'columns'     => 'nama_wilayah, kader_pkbn, kader_pkdrt, kader_pola_asuh, pkbn_jml_klp, pkbn_jml_anggota, pkdrt_jml_klp, pkdrt_jml_anggota, pola_asuh_jml_klp, pola_asuh_jml_anggota, lansia_jml_klp, lansia_jml_anggota, kerja_bakti, rukun_kematian, keagamaan, jimpitan, arisan, keterangan',
+    ])
 
     <!-- Modal Tambah -->
     <div id="AddPapanDataModal" class="modal fade" tabindex="-1" aria-hidden="true">

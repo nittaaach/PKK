@@ -23,11 +23,21 @@
             <div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button
                     type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
-                    <div class="py-3"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#AddPapanDataModal"><i class="ti ti-plus me-1"></i> Tambah Data</button></div>
+                    <div class="py-3">
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                            data-bs-target="#AddPapanDataModal"><i class="ti ti-plus me-1"></i> Tambah Data</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#ImportModal"><i class="ti ti-file-import me-1"></i> Import File</button>
+                    </div>
                     <table id="basic-btn-papan" class="table table-striped table-bordered" style="width: 100%;">
                         <thead>
                             <tr>
@@ -113,6 +123,12 @@
             </div>
         </div>
     </div>
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'papan_data.import_pokja4',
+        'title'       => 'Import Papan Data Pokja 4',
+        'columns'     => 'nama_wilayah, kader_posyandu, kader_gizi, kader_kesling, kader_narkoba, kader_phbs, kader_kb, jml_posyandu, terintegrasi, lansia_jml_klp, lansia_anggota, berobat_gratis, jamban, spal, sampah, pdam, sumur, air_lain, jml_pus, jml_wus, akseptor_kb_l, akseptor_kb_p, keterangan',
+    ])
 
     <div id="AddPapanDataModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

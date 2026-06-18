@@ -99,6 +99,7 @@ Route::middleware(['auth:bendahara', 'role:Bendahara'])->group(function () {
     Route::post('/bendahara/buku_keuangan', [BukuKeuanganController::class, 'store_bendahara'])->name('buku_keuangan.store_bendahara');
     Route::put('/bendahara/buku_keuangan/{id}', [BukuKeuanganController::class, 'update_bendahara'])->name('buku_keuangan.update_bendahara');
     Route::delete('/bendahara/buku_keuangan/{id}', [BukuKeuanganController::class, 'destroy_bendahara'])->name('buku_keuangan.destroy_bendahara');
+    Route::post('/bendahara/buku_keuangan/import', [BukuKeuanganController::class, 'import_bendahara'])->name('buku_keuangan.import_bendahara');
 });
 
 //================ Auth Group: Sekretaris ================
@@ -118,34 +119,42 @@ Route::middleware(['auth:sekretaris', 'role:Sekretaris'])->group(function () {
     Route::post('/sekretaris/buku_keuangan', [BukuKeuanganController::class, 'store_sekretaris'])->name('buku_keuangan.store_sekretaris');
     Route::put('/sekretaris/buku_keuangan/{id}', [BukuKeuanganController::class, 'update_sekretaris'])->name('buku_keuangan.update_sekretaris');
     Route::delete('/sekretaris/buku_keuangan/{id}', [BukuKeuanganController::class, 'destroy_sekretaris'])->name('buku_keuangan.destroy_sekretaris');
+    Route::post('/sekretaris/buku_keuangan/import', [BukuKeuanganController::class, 'import_sekretaris'])->name('buku_keuangan.import_sekretaris');
 
     Route::post('/sekretaris/daftar_anggota/', [DaftarAnggotaController::class, 'store_anggota_sekretaris'])->name('daftar_anggota.store_anggota_sekretaris');
     Route::put('/sekretaris/daftar_anggota/{id}', [DaftarAnggotaController::class, 'update_anggota_sekretaris'])->name('daftar_anggota.update_anggota_sekretaris');
     Route::delete('/sekretaris/daftar_anggota/{id}', [DaftarAnggotaController::class, 'destroy_anggota_sekretaris'])->name('daftar_anggota.destroy_anggota_sekretaris');
+    Route::post('/sekretaris/daftar_anggota/import', [DaftarAnggotaController::class, 'import_anggota_sekretaris'])->name('daftar_anggota.import_sekretaris');
 
     Route::post('/sekretaris/kegiatan', [KegiatanController::class, 'store_kegiatan'])->name('kegiatan.store_sekretaris');
     Route::put('/sekretaris/kegiatan/{id}', [KegiatanController::class, 'update_kegiatan'])->name('kegiatan.update_sekretaris');
     Route::delete('/sekretaris/kegiatan/{id}', [KegiatanController::class, 'destroy_kegiatan'])->name('kegiatan.destroy_sekretaris');
+    Route::post('/sekretaris/kegiatan/import', [KegiatanController::class, 'import_kegiatan_sekretaris'])->name('kegiatan.import_sekretaris');
 
     Route::post('/sekretaris/surat_masuk', [AgendaSuratController::class, 'store_surat_masuk'])->name('agenda_surat.store_masuk_sekretaris');
     Route::put('/sekretaris/surat_masuk/{id}', [AgendaSuratController::class, 'update_surat_masuk'])->name('agenda_surat.update_masuk_sekretaris');
     Route::delete('/sekretaris/surat_masuk/{id}', [AgendaSuratController::class, 'destroy_surat_masuk'])->name('agenda_surat.destroy_masuk_sekretaris');
+    Route::post('/sekretaris/surat_masuk/import', [AgendaSuratController::class, 'import_surat_masuk_sekretaris'])->name('agenda_surat.import_masuk_sekretaris');
 
     Route::post('/sekretaris/surat_keluar', [AgendaSuratController::class, 'store_surat_keluar'])->name('agenda_surat.store_keluar_sekretaris');
     Route::put('/sekretaris/surat_keluar/{id}', [AgendaSuratController::class, 'update_surat_keluar'])->name('agenda_surat.update_keluar_sekretaris');
     Route::delete('/sekretaris/surat_keluar/{id}', [AgendaSuratController::class, 'destroy_surat_keluar'])->name('agenda_surat.destroy_keluar_sekretaris');
+    Route::post('/sekretaris/surat_keluar/import', [AgendaSuratController::class, 'import_surat_keluar_sekretaris'])->name('agenda_surat.import_keluar_sekretaris');
 
     Route::post('/sekretaris/papan_data', [PapanDataController::class, 'store_papan_data'])->name('papan_data.store_sekretaris');
     Route::put('/sekretaris/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_sekretaris');
     Route::delete('/sekretaris/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_sekretaris');
+    Route::post('/sekretaris/papan_data/import', [PapanDataController::class, 'import_papan_data_sekretaris'])->name('papan_data.import_sekretaris');
 
     Route::post('/sekretaris/data_umum', [DataUmumController::class, 'store_data_umum'])->name('data_umum.store_sekretaris');
     Route::put('/sekretaris/data_umum/{id}', [DataUmumController::class, 'update_data_umum'])->name('data_umum.update_sekretaris');
     Route::delete('/sekretaris/data_umum/{id}', [DataUmumController::class, 'destroy_data_umum'])->name('data_umum.destroy_sekretaris');
+    Route::post('/sekretaris/data_umum/import', [DataUmumController::class, 'import_data_umum'])->name('data_umum.import_sekretaris');
 
     Route::post('/sekretaris/data_potensi', [DataUmumController::class, 'store_data_potensi'])->name('data_potensi.store_sekretaris');
     Route::put('/sekretaris/data_potensi/{id}', [DataUmumController::class, 'update_data_potensi'])->name('data_potensi.update_sekretaris');
     Route::delete('/sekretaris/data_potensi/{id}', [DataUmumController::class, 'destroy_data_potensi'])->name('data_potensi.destroy_sekretaris');
+    Route::post('/sekretaris/data_potensi/import', [DataUmumController::class, 'import_data_potensi'])->name('data_potensi.import_sekretaris');
 });
 
 //================ Auth Group: Admin ================
@@ -173,24 +182,29 @@ Route::middleware(['auth:pokja_1', 'role:Pokja_1'])->group(function () {
     Route::post('/pokja_1/daftar_anggota/', [DaftarAnggotaController::class, 'store_anggota_pokja1'])->name('daftar_anggota.store_anggota_pokja1');
     Route::put('/pokja_1/daftar_anggota/{id}', [DaftarAnggotaController::class, 'update_anggota_pokja1'])->name('daftar_anggota.update_anggota_pokja1');
     Route::delete('/pokja_1/daftar_anggota/{id}', [DaftarAnggotaController::class, 'destroy_anggota_pokja1'])->name('daftar_anggota.destroy_anggota_pokja1');
+    Route::post('/pokja_1/daftar_anggota/import', [DaftarAnggotaController::class, 'import_anggota_pokja1'])->name('daftar_anggota.import_pokja1');
 
     // Kegiatan (pokja1) crud
     Route::post('/pokja_1/kegiatan', [KegiatanController::class, 'store_kegiatan'])->name('kegiatan.store_pokja1');
     Route::put('/pokja_1/kegiatan/{id}', [KegiatanController::class, 'update_kegiatan'])->name('kegiatan.update_pokja1');
     Route::delete('/pokja_1/kegiatan/{id}', [KegiatanController::class, 'destroy_kegiatan'])->name('kegiatan.destroy_pokja1');
+    Route::post('/pokja_1/kegiatan/import', [KegiatanController::class, 'import_kegiatan_pokja1'])->name('kegiatan.import_pokja1');
 
     // Agenda Surat (pokja1) crud
     Route::post('/pokja_1/surat_masuk', [AgendaSuratController::class, 'store_surat_masuk'])->name('agenda_surat.store_masuk_pokja1');
     Route::put('/pokja_1/surat_masuk/{id}', [AgendaSuratController::class, 'update_surat_masuk'])->name('agenda_surat.update_masuk_pokja1');
     Route::delete('/pokja_1/surat_masuk/{id}', [AgendaSuratController::class, 'destroy_surat_masuk'])->name('agenda_surat.destroy_masuk_pokja1');
+    Route::post('/pokja_1/surat_masuk/import', [AgendaSuratController::class, 'import_surat_masuk_pokja1'])->name('agenda_surat.import_masuk_pokja1');
     Route::post('/pokja_1/surat_keluar', [AgendaSuratController::class, 'store_surat_keluar'])->name('agenda_surat.store_keluar_pokja1');
     Route::put('/pokja_1/surat_keluar/{id}', [AgendaSuratController::class, 'update_surat_keluar'])->name('agenda_surat.update_keluar_pokja1');
     Route::delete('/pokja_1/surat_keluar/{id}', [AgendaSuratController::class, 'destroy_surat_keluar'])->name('agenda_surat.destroy_keluar_pokja1');
+    Route::post('/pokja_1/surat_keluar/import', [AgendaSuratController::class, 'import_surat_keluar_pokja1'])->name('agenda_surat.import_keluar_pokja1');
 
     // Papan Data (pokja1) crud
     Route::post('/pokja_1/papan_data', [PapanDataController::class, 'store_papan_data'])->name('papan_data.store_pokja1');
     Route::put('/pokja_1/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja1');
     Route::delete('/pokja_1/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja1');
+    Route::post('/pokja_1/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja1'])->name('papan_data.import_pokja1');
 });
 
 //================ Auth Group: Pokja 2 ================
@@ -208,21 +222,26 @@ Route::middleware(['auth:pokja_2', 'role:Pokja_2'])->group(function () {
     Route::post('/pokja_2/daftar_anggota/', [DaftarAnggotaController::class, 'store_anggota_pokja2'])->name('daftar_anggota.store_anggota_pokja2');
     Route::put('/pokja_2/daftar_anggota/{id}', [DaftarAnggotaController::class, 'update_anggota_pokja2'])->name('daftar_anggota.update_anggota_pokja2');
     Route::delete('/pokja_2/daftar_anggota/{id}', [DaftarAnggotaController::class, 'destroy_anggota_pokja2'])->name('daftar_anggota.destroy_anggota_pokja2');
+    Route::post('/pokja_2/daftar_anggota/import', [DaftarAnggotaController::class, 'import_anggota_pokja2'])->name('daftar_anggota.import_pokja2');
 
     Route::post('/pokja_2/kegiatan', [KegiatanController::class, 'store_kegiatan'])->name('kegiatan.store_pokja2');
     Route::put('/pokja_2/kegiatan/{id}', [KegiatanController::class, 'update_kegiatan'])->name('kegiatan.update_pokja2');
     Route::delete('/pokja_2/kegiatan/{id}', [KegiatanController::class, 'destroy_kegiatan'])->name('kegiatan.destroy_pokja2');
+    Route::post('/pokja_2/kegiatan/import', [KegiatanController::class, 'import_kegiatan_pokja2'])->name('kegiatan.import_pokja2');
 
     Route::post('/pokja_2/surat_masuk', [AgendaSuratController::class, 'store_surat_masuk'])->name('agenda_surat.store_masuk_pokja2');
     Route::put('/pokja_2/surat_masuk/{id}', [AgendaSuratController::class, 'update_surat_masuk'])->name('agenda_surat.update_masuk_pokja2');
     Route::delete('/pokja_2/surat_masuk/{id}', [AgendaSuratController::class, 'destroy_surat_masuk'])->name('agenda_surat.destroy_masuk_pokja2');
+    Route::post('/pokja_2/surat_masuk/import', [AgendaSuratController::class, 'import_surat_masuk_pokja2'])->name('agenda_surat.import_masuk_pokja2');
     Route::post('/pokja_2/surat_keluar', [AgendaSuratController::class, 'store_surat_keluar'])->name('agenda_surat.store_keluar_pokja2');
     Route::put('/pokja_2/surat_keluar/{id}', [AgendaSuratController::class, 'update_surat_keluar'])->name('agenda_surat.update_keluar_pokja2');
     Route::delete('/pokja_2/surat_keluar/{id}', [AgendaSuratController::class, 'destroy_surat_keluar'])->name('agenda_surat.destroy_keluar_pokja2');
+    Route::post('/pokja_2/surat_keluar/import', [AgendaSuratController::class, 'import_surat_keluar_pokja2'])->name('agenda_surat.import_keluar_pokja2');
 
     Route::post('/pokja_2/papan_data', [PapanDataController::class, 'store_papan_data'])->name('papan_data.store_pokja2');
     Route::put('/pokja_2/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja2');
     Route::delete('/pokja_2/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja2');
+    Route::post('/pokja_2/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja2'])->name('papan_data.import_pokja2');
 });
 
 //================ Auth Group: Pokja 3 ================
@@ -240,21 +259,26 @@ Route::middleware(['auth:pokja_3', 'role:Pokja_3'])->group(function () {
     Route::post('/pokja_3/daftar_anggota/', [DaftarAnggotaController::class, 'store_anggota_pokja3'])->name('daftar_anggota.store_anggota_pokja3');
     Route::put('/pokja_3/daftar_anggota/{id}', [DaftarAnggotaController::class, 'update_anggota_pokja3'])->name('daftar_anggota.update_anggota_pokja3');
     Route::delete('/pokja_3/daftar_anggota/{id}', [DaftarAnggotaController::class, 'destroy_anggota_pokja3'])->name('daftar_anggota.destroy_anggota_pokja3');
+    Route::post('/pokja_3/daftar_anggota/import', [DaftarAnggotaController::class, 'import_anggota_pokja3'])->name('daftar_anggota.import_pokja3');
 
     Route::post('/pokja_3/kegiatan', [KegiatanController::class, 'store_kegiatan'])->name('kegiatan.store_pokja3');
     Route::put('/pokja_3/kegiatan/{id}', [KegiatanController::class, 'update_kegiatan'])->name('kegiatan.update_pokja3');
     Route::delete('/pokja_3/kegiatan/{id}', [KegiatanController::class, 'destroy_kegiatan'])->name('kegiatan.destroy_pokja3');
+    Route::post('/pokja_3/kegiatan/import', [KegiatanController::class, 'import_kegiatan_pokja3'])->name('kegiatan.import_pokja3');
 
     Route::post('/pokja_3/surat_masuk', [AgendaSuratController::class, 'store_surat_masuk'])->name('agenda_surat.store_masuk_pokja3');
     Route::put('/pokja_3/surat_masuk/{id}', [AgendaSuratController::class, 'update_surat_masuk'])->name('agenda_surat.update_masuk_pokja3');
     Route::delete('/pokja_3/surat_masuk/{id}', [AgendaSuratController::class, 'destroy_surat_masuk'])->name('agenda_surat.destroy_masuk_pokja3');
+    Route::post('/pokja_3/surat_masuk/import', [AgendaSuratController::class, 'import_surat_masuk_pokja3'])->name('agenda_surat.import_masuk_pokja3');
     Route::post('/pokja_3/surat_keluar', [AgendaSuratController::class, 'store_surat_keluar'])->name('agenda_surat.store_keluar_pokja3');
     Route::put('/pokja_3/surat_keluar/{id}', [AgendaSuratController::class, 'update_surat_keluar'])->name('agenda_surat.update_keluar_pokja3');
     Route::delete('/pokja_3/surat_keluar/{id}', [AgendaSuratController::class, 'destroy_surat_keluar'])->name('agenda_surat.destroy_keluar_pokja3');
+    Route::post('/pokja_3/surat_keluar/import', [AgendaSuratController::class, 'import_surat_keluar_pokja3'])->name('agenda_surat.import_keluar_pokja3');
 
     Route::post('/pokja_3/papan_data', [PapanDataController::class, 'store_papan_data'])->name('papan_data.store_pokja3');
     Route::put('/pokja_3/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja3');
     Route::delete('/pokja_3/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja3');
+    Route::post('/pokja_3/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja3'])->name('papan_data.import_pokja3');
 });
 
 //================ Auth Group: Pokja 4 ================
@@ -272,21 +296,26 @@ Route::middleware(['auth:pokja_4', 'role:Pokja_4'])->group(function () {
     Route::post('/pokja_4/daftar_anggota/', [DaftarAnggotaController::class, 'store_anggota_pokja4'])->name('daftar_anggota.store_anggota_pokja4');
     Route::put('/pokja_4/daftar_anggota/{id}', [DaftarAnggotaController::class, 'update_anggota_pokja4'])->name('daftar_anggota.update_anggota_pokja4');
     Route::delete('/pokja_4/daftar_anggota/{id}', [DaftarAnggotaController::class, 'destroy_anggota_pokja4'])->name('daftar_anggota.destroy_anggota_pokja4');
+    Route::post('/pokja_4/daftar_anggota/import', [DaftarAnggotaController::class, 'import_anggota_pokja4'])->name('daftar_anggota.import_pokja4');
 
     Route::post('/pokja_4/kegiatan', [KegiatanController::class, 'store_kegiatan'])->name('kegiatan.store_pokja4');
     Route::put('/pokja_4/kegiatan/{id}', [KegiatanController::class, 'update_kegiatan'])->name('kegiatan.update_pokja4');
     Route::delete('/pokja_4/kegiatan/{id}', [KegiatanController::class, 'destroy_kegiatan'])->name('kegiatan.destroy_pokja4');
+    Route::post('/pokja_4/kegiatan/import', [KegiatanController::class, 'import_kegiatan_pokja4'])->name('kegiatan.import_pokja4');
 
     Route::post('/pokja_4/surat_masuk', [AgendaSuratController::class, 'store_surat_masuk'])->name('agenda_surat.store_masuk_pokja4');
     Route::put('/pokja_4/surat_masuk/{id}', [AgendaSuratController::class, 'update_surat_masuk'])->name('agenda_surat.update_masuk_pokja4');
     Route::delete('/pokja_4/surat_masuk/{id}', [AgendaSuratController::class, 'destroy_surat_masuk'])->name('agenda_surat.destroy_masuk_pokja4');
+    Route::post('/pokja_4/surat_masuk/import', [AgendaSuratController::class, 'import_surat_masuk_pokja4'])->name('agenda_surat.import_masuk_pokja4');
     Route::post('/pokja_4/surat_keluar', [AgendaSuratController::class, 'store_surat_keluar'])->name('agenda_surat.store_keluar_pokja4');
     Route::put('/pokja_4/surat_keluar/{id}', [AgendaSuratController::class, 'update_surat_keluar'])->name('agenda_surat.update_keluar_pokja4');
     Route::delete('/pokja_4/surat_keluar/{id}', [AgendaSuratController::class, 'destroy_surat_keluar'])->name('agenda_surat.destroy_keluar_pokja4');
+    Route::post('/pokja_4/surat_keluar/import', [AgendaSuratController::class, 'import_surat_keluar_pokja4'])->name('agenda_surat.import_keluar_pokja4');
 
     Route::post('/pokja_4/papan_data', [PapanDataController::class, 'store_papan_data'])->name('papan_data.store_pokja4');
     Route::put('/pokja_4/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja4');
     Route::delete('/pokja_4/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja4');
+    Route::post('/pokja_4/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja4'])->name('papan_data.import_pokja4');
 });
 
 
@@ -294,6 +323,7 @@ Route::middleware(['auth:pokja_4', 'role:Pokja_4'])->group(function () {
 Route::get('/', [HomeController::class, 'HomeLanding'])->name('landing');
 Route::get('/landing', [HomeController::class, 'HomeLanding'])->name('landing');
 Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
+Route::get('/informasi', [HomeController::class, 'informasi'])->name('informasi');
 Route::get('/katalog', [KatalogController::class, 'katalog'])->name('katalog');
 Route::get('/detail_katalog/{id}', [KatalogController::class, 'detail_katalog'])->name('detail_katalog');
 Route::get('/struktural', [HomeController::class, 'struktural'])->name('struktural');

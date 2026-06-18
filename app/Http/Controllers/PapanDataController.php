@@ -9,9 +9,28 @@ use App\Models\PapanDataPokja1Models;
 use App\Models\PapanDataPokja2Models;
 use App\Models\PapanDataPokja3Models;
 use App\Models\PapanDataPokja4Models;
+use App\Imports\PapanDataImport;
 
 class PapanDataController extends Controller
 {
+    // ==================== HELPER IMPORT ====================
+    private function doImport(Request $request, string $modelClass): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate(['import_file' => 'required|file|mimes:xlsx,xls,csv,ods|max:5120']);
+        try {
+            $count = (new PapanDataImport($modelClass))->import($request->file('import_file'));
+            return back()->with('success', "Berhasil mengimpor {$count} baris data papan data dari file!");
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengimpor: ' . $e->getMessage());
+        }
+    }
+
+    public function import_papan_data_sekretaris(Request $r) { return $this->doImport($r, PapanDataSekretarisModels::class); }
+    public function import_papan_data_pokja1(Request $r)     { return $this->doImport($r, PapanDataPokja1Models::class); }
+    public function import_papan_data_pokja2(Request $r)     { return $this->doImport($r, PapanDataPokja2Models::class); }
+    public function import_papan_data_pokja3(Request $r)     { return $this->doImport($r, PapanDataPokja3Models::class); }
+    public function import_papan_data_pokja4(Request $r)     { return $this->doImport($r, PapanDataPokja4Models::class); }
+
     public function papan_data_sekretaris() { return view('sekretaris.papan_data', ['papan_data' => PapanDataSekretarisModels::get()]); }
     public function papan_data_pokja1() { return view('pokja_1.papan_data', ['papan_data' => PapanDataPokja1Models::get()]); }
     public function papan_data_pokja2() { return view('pokja_2.papan_data', ['papan_data' => PapanDataPokja2Models::get()]); }

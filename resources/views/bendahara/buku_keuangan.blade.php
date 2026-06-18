@@ -26,19 +26,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             @endif
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="dt-responsive table-responsive">
                         <div class="py-3">
-                            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#AddModal">
+                            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#AddModal">
                                 <i class="ti ti-plus me-1"></i> Tambah Data Keuangan
                             </button>
-                            <button class="btn btn-secondary" onclick="window.print()">
+                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#ImportModal">
+                                <i class="ti ti-file-import me-1"></i> Import File
+                            </button>
+                            <button class="btn btn-info" onclick="window.print()">
                                 <i class="ti ti-printer me-1"></i> Print / Cetak
                             </button>
                         </div>
                         <div class="print-area">
-                            <div class="text-center mb-4"><h4>BUKU KEUANGAN</h4></div>
                             <table id="basic-btn-keuangan" class="table table-striped table-bordered" style="width:100%;">
                                 <thead class="table-light text-center">
                                     <tr>
@@ -92,6 +100,12 @@
             </div>
         </div>
     </div>
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'buku_keuangan.import_bendahara',
+        'title'       => 'Import Buku Keuangan Bendahara',
+        'columns'     => 'tanggal_penerimaan, sumber_dana_penerimaan, uraian_penerimaan, bukti_kas_penerimaan, penerimaan, tanggal_pengeluaran, sumber_dana_pengeluaran, uraian_pengeluaran, bukti_kas_pengeluaran, pengeluaran',
+    ])
 
     <!-- Modal Tambah -->
     <div id="AddModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">

@@ -22,25 +22,21 @@
                 <h4>Menu</h4>
                 <ul>
                     <li><i class="bi bi-chevron-right"></i> <a href="{{ route('landing') }}">Beranda</a></li>
-                    {{-- <li><i class="bi bi-chevron-right"></i> <a href="{{ route('profil') }}">Profil RW</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('fasilitas') }}">Fasilitas</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('layanan') }}">Layanan</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('katalog') }}">Katalog</a></li> --}}
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('profil') }}">Profil PKK</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('informasi') }}">Informasi</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('galeri') }}">Galeri</a></li>
                 </ul>
             </div>
 
             <!-- Informasi -->
-            {{-- <div class="col-lg-2 col-md-3 footer-links">
+            <div class="col-lg-2 col-md-3 footer-links">
                 <h4>Informasi</h4>
                 <ul>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('news') }}">Berita</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('pengumuman') }}">Pengumuman</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('aktivitas') }}">Aktivitas</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('galeri') }}">Galeri</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('struktural') }}">Struktur
-                            Organisasi</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('kegiatan.akan_datang') }}">Kegiatan Akan Datang</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('kegiatan.terlaksana') }}">Kegiatan Terlaksana</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('katalog') }}">Katalog</a></li>
                 </ul>
-            </div> --}}
+            </div>
 
             <!-- Media Sosial -->
             <div class="col-lg-4 col-md-12">

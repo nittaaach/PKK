@@ -23,17 +23,27 @@
             <div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}<button
                     type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="ti ti-alert-circle me-1"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
-                    <div class="py-3"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#AddPapanDataModal"><i class="ti ti-plus me-1"></i> Tambah Data</button></div>
+                    <div class="py-3">
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                            data-bs-target="#AddPapanDataModal"><i class="ti ti-plus me-1"></i> Tambah Data</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#ImportModal"><i class="ti ti-file-import me-1"></i> Import File</button>
+                    </div>
                     <table id="basic-btn-papan" class="table table-striped table-bordered" style="width: 100%;">
                         <thead>
                             <tr>
                                 <th rowspan="3" class="align-middle text-center">NO</th>
                                 <th rowspan="3" class="align-middle text-center">NAMA WILAYAH</th>
-                                <th colspan="15" class="text-center">PENDIDIKAN DAN KETERAMPILAN</th>
+                                <th colspan="14" class="text-center">PENDIDIKAN DAN KETERAMPILAN</th>
                                 <th colspan="6" class="text-center">PENGEMBANGAN KEHIDUPAN KOPERASI</th>
                                 <th rowspan="3" class="align-middle text-center">KET</th>
                                 <th rowspan="3" class="align-middle text-center">ACTION</th>
@@ -114,6 +124,12 @@
             </div>
         </div>
     </div>
+
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'papan_data.import_pokja2',
+        'title'       => 'Import Papan Data Pokja 2',
+        'columns'     => 'nama_wilayah, tiga_buta, paket_a_klp, paket_a_warga, paket_b_klp, paket_b_warga, paket_c_klp, paket_c_warga, paud, taman_bacaan, bkb_jml_klp, bkb_peserta, bkb_ape, tutor, kader_dilatih, up2k_jml_klp, up2k_peserta, koperasi_jml_klp, koperasi_anggota, mandiri_jml_klp, mandiri_peserta, keterangan',
+    ])
 
     <div id="AddPapanDataModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

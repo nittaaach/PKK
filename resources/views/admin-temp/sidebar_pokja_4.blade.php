@@ -43,14 +43,12 @@
                             <span class="pc-mtext">Daftar Anggota</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
-                    <li class="pc-item">
+                    {{-- <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-news"></i></span>
                             <span class="pc-mtext">Program Kerja & Evaluasi</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="pc-item {{ request()->routeIs($routePrefix . 'kegiatan') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'kegiatan') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-activity"></i></span>
@@ -68,99 +66,78 @@
                             <span class="pc-mtext">Data Kegiatan / Papan Data</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}} <li class="pc-item">
+                    {{-- <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-news"></i></span>
                             <span class="pc-mtext">Jumlah Pengunjung</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
                             <span class="pc-mtext">Kegiatan Posyandu</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
                             <span class="pc-mtext">Data Bumil & Menyusui</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
                             <span class="pc-mtext">Data Posyandu</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
                             <span class="pc-mtext">Arsip Laporan Gebyar Posyandu</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-users"></i></span>
                             <span class="pc-mtext">Kemitraan</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="pc-item {{ request()->routeIs($routePrefix . 'agenda_surat') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'agenda_surat') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
                             <span class="pc-mtext">Agenda Surat</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
-                            <span class="pc-mtext">Kliping</span>
-                        </a>
-                    </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
-                                        <li class="pc-item {{ request()->routeIs($routePrefix . 'dokumentasi') ? 'pc-active' : '' }}">
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'dokumentasi') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'dokumentasi') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-camera"></i></span>
                             <span class="pc-mtext">Dokumentasi</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'news') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'news') }}" class="pc-link"> --}}
+                    {{-- <li class="pc-item">
+                        <a href="#" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
+                            <span class="pc-mtext">Kliping</span>
+                        </a>
+                    </li>
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-mail"></i></span>
                             <span class="pc-mtext">Arsip Keputusan (SK)</span>
                         </a>
-                    </li>
+                    </li> --}}
 
 
-                    <li class="pc-item pc-caption">
+                    {{-- <li class="pc-item pc-caption">
                         <label>Pendukung</label>
                         <i class="ti ti-brand-chrome"></i>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'bagan') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'bagan') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-building-community"></i></span>
                             <span class="pc-mtext">Petugas Jumantik</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'bagan') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'bagan') }}" class="pc-link"> --}}
                     <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-building-community"></i></span>
@@ -174,56 +151,38 @@
                             <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                         </a>
                         <ul class="pc-submenu">
-                            {{-- <li
-                                class="pc-item {{ request()->routeIs($routePrefix . 'struktural') ? 'pc-active' : '' }}">
-                                <a class="pc-link" href="{{ route($routePrefix . 'struktural') }}">Struktur Rukun
-                                    Warga</a> --}}
                             <li class="pc-item">
                                 <a href="#" class="pc-link">
                                     <span class="pc-mtext">Peserta KB Aktif & Baru</span>
                                 </a>
                             </li>
-                            {{-- <li
-                                class="pc-item {{ request()->routeIs($routePrefix . 'struktural') ? 'pc-active' : '' }}">
-                                <a class="pc-link" href="{{ route($routePrefix . 'struktural') }}">Struktur Rukun
-                                    Warga</a> --}}
                             <li class="pc-item">
                                 <a href="#" class="pc-link">
                                     <span class="pc-mtext">Poslan</span>
                                 </a>
                             </li>
-                            <li {{-- class="pc-item {{ request()->routeIs($routePrefix . 'strukturalpkk') ? 'pc-active' : '' }}">
-                                <a class="pc-link" href="{{ route($routePrefix . 'strukturalpkk') }}">Struktur PKK
-                                    Anyelir</a> --}} class="pc-item">
+                            <li class="pc-item">
                                 <a href="#" class="pc-link">
                                     <span class="pc-mtext">Prestasi</span>
                                 </a>
                             </li>
-                            <li {{-- class="pc-item {{ request()->routeIs($routePrefix . 'strukturalpkk') ? 'pc-active' : '' }}">
-                                <a class="pc-link" href="{{ route($routePrefix . 'strukturalpkk') }}">Struktur PKK
-                                    Anyelir</a> --}} class="pc-item">
+                            <li class="pc-item">
                                 <a href="#" class="pc-link">
                                     <span class="pc-mtext">Potensi</span>
                                 </a>
                             </li>
-                            <li {{-- class="pc-item {{ request()->routeIs($routePrefix . 'strukturalkatar') ? 'pc-active' : '' }}">
-                                <a class="pc-link" href="{{ route($routePrefix . 'strukturalkatar') }}">Struktur
-                                    Karang
-                                    Taruna</a> --}} class="pc-item">
+                            <li class="pc-item">
                                 <a href="#" class="pc-link">
                                     <span class="pc-mtext">Bank Potensi</span>
                                 </a>
                             </li>
-                            <li {{-- class="pc-item {{ request()->routeIs($routePrefix . 'strukturalkatar') ? 'pc-active' : '' }}">
-                                <a class="pc-link" href="{{ route($routePrefix . 'strukturalkatar') }}">Struktur
-                                    Karang
-                                    Taruna</a> --}} class="pc-item">
+                            <li class="pc-item">
                                 <a href="#" class="pc-link">
                                     <span class="pc-mtext">Posbindu</span>
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -246,8 +205,8 @@
                         </a>
                     </li>
                     <li class="dropdown pc-h-item d-inline-flex d-md-none">
-                        <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="ti ti-search"></i>
                         </a>
                         <div class="dropdown-menu pc-h-dropdown drp-search">
@@ -356,9 +315,8 @@
                         </a>
                     </li> --}}
                     <li class="dropdown pc-h-item header-user-profile">
-                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" data-bs-auto-close="outside"
-                            aria-expanded="false">
+                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
                             <img src="{{ asset('assets_admin/images/user/avatar-2.jpg') }}" alt="user-image"
                                 class="user-avtar">
                             <span>{{ Auth::guard('pokja_4')->user()->name ?? 'Guest' }}</span>
@@ -373,10 +331,10 @@
                                 </div>
                             </div>
                             <hr class="dropdown-divider">
-                            <a href="{{ route('profil') }}" class="dropdown-item">
+                            {{-- <a href="{{ route('profil') }}" class="dropdown-item">
                                 <i class="ti ti-user"></i>
                                 <span>Detail Akun</span>
-                            </a>
+                            </a> --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item text-danger"

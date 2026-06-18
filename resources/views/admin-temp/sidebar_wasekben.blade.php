@@ -153,7 +153,8 @@
                                 class="pc-item {{ request()->routeIs($routePrefix . 'struktural') ? 'pc-active' : '' }}">
                                 <a class="pc-link" href="{{ route($routePrefix . 'struktural') }}">Struktur Rukun
                                     Warga</a> --}}
-                            <li class="pc-item {{ request()->routeIs($routePrefix . 'buku_keuangan') ? 'pc-active' : '' }}">
+                            <li
+                                class="pc-item {{ request()->routeIs($routePrefix . 'buku_keuangan') ? 'pc-active' : '' }}">
                                 <a href="{{ route($routePrefix . 'buku_keuangan') }}" class="pc-link">
                                     <span class="pc-mtext">Buku Keuangan</span>
                                 </a>
@@ -383,16 +384,17 @@
                             <div class="dropdown-header d-flex align-items-center justify-content-between">
                                 <div class="d-flex mb-1 align-items-center">
                                     <div class="grow ms-3">
-                                        <h6 class="mb-1">{{ Auth::guard('sekretaris')->user()->name ?? 'Guest' }}</h6>
+                                        <h6 class="mb-1">{{ Auth::guard('sekretaris')->user()->name ?? 'Guest' }}
+                                        </h6>
                                         <span>{{ Auth::guard('sekretaris')->user()->role ?? 'Tidak Ada Role' }}</span>
                                     </div>
                                 </div>
                             </div>
                             <hr class="dropdown-divider">
-                            <a href="{{ route('profil') }}" class="dropdown-item">
+                            {{-- <a href="{{ route('profil') }}" class="dropdown-item">
                                 <i class="ti ti-user"></i>
                                 <span>Detail Akun</span>
-                            </a>
+                            </a> --}}
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="dropdown-item text-danger"
