@@ -82,6 +82,9 @@
                             @foreach ($data_potensi ?? [] as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->wilayah ?? '-' }}</td>
+                                    <td>{{ $item->pkk_rw ?? '-' }}</td>
+                                    <td>{{ $item->pkk_rt ?? '-' }}</td>
                                     <td>{{ $item->dasa_wisma ?? '-' }}</td>
                                     <td>{{ $item->krt ?? '-' }}</td>
                                     <td>{{ $item->kk ?? '-' }}</td>
@@ -119,6 +122,38 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr class="fw-bold bg-light">
+                                <th colspan="2" class="text-center align-middle">JUMLAH</th>
+                                <th class="text-center">{{ $data_potensi->sum('pkk_rw') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('pkk_rt') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('dasa_wisma') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('krt') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('kk') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('pik_aktif') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('pik_tidak_aktif') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('majelis_taklim') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('paar') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('pola_asuh') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('bkb') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('paud') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('kf') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('koperasi') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('taman_bacaan') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('up2k_unggulan') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('hatinya_pkk') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('kader_pangan') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('bank_sampah') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('komposting') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('posyandu_balita') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('posyandu_lansia') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('posbindu') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('kader_jumantik') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_potensi->sum('rw_percontohan') ?: '-' }}</th>
+                                <th class="text-center"></th> <!-- Keterangan -->
+                                <th class="text-center"></th> <!-- Action -->
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

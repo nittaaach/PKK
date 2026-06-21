@@ -64,27 +64,129 @@ class DashboardController extends Controller
 
     private function dashboardSekretaris()
     {
-        return view('sekretaris/dashboard');
+        $countSuratMasuk = \App\Models\SuratMasukModels::where('role', 'Sekretaris')->count();
+        $countSuratKeluar = \App\Models\SuratKeluarModels::where('role', 'Sekretaris')->count();
+        $countKegiatan = \App\Models\KegiatanModels::where('role', 'Sekretaris')->count();
+
+        // 1. Data Papan Data Sekretaris
+        $papanData = \App\Models\PapanDataSekretarisModels::all();
+        $totalLaki = $papanData->sum('total_l');
+        $totalPerempuan = $papanData->sum('total_p');
+        $totalBalita = $papanData->sum('balita_l') + $papanData->sum('balita_p');
+        $totalLansia = $papanData->sum('lansia');
+        
+        $papanDataLabels = ['Laki-Laki', 'Perempuan', 'Balita', 'Lansia'];
+        $papanDataSeries = [$totalLaki, $totalPerempuan, $totalBalita, $totalLansia];
+
+        // 2. Data Umum
+        $dataUmum = \App\Models\DataUmumModels::all();
+        $totalKK = $dataUmum->sum('kk');
+        $totalKRT = $dataUmum->sum('krt');
+        $totalDasaWisma = $dataUmum->sum('dasa_wisma');
+        
+        $dataUmumLabels = ['Kepala Keluarga', 'KRT', 'Dasa Wisma'];
+        $dataUmumSeries = [$totalKK, $totalKRT, $totalDasaWisma];
+
+        // 3. Data Potensi Wilayah
+        $potensi = \App\Models\DataPotensiWilayahModels::all();
+        $paud = $potensi->sum('paud');
+        $koperasi = $potensi->sum('koperasi');
+        $posyandu = $potensi->sum('posyandu_balita') + $potensi->sum('posyandu_lansia');
+        $bankSampah = $potensi->sum('bank_sampah');
+
+        $potensiLabels = ['PAUD', 'Koperasi', 'Posyandu', 'Bank Sampah'];
+        $potensiSeries = [$paud, $koperasi, $posyandu, $bankSampah];
+
+        return view('sekretaris.dashboard', compact(
+            'countSuratMasuk', 'countSuratKeluar', 'countKegiatan',
+            'papanDataLabels', 'papanDataSeries',
+            'dataUmumLabels', 'dataUmumSeries',
+            'potensiLabels', 'potensiSeries'
+        ));
     }
 
     private function dashboardPokja_1(Request $request)
     {
-        return view('pokja_1.dashboard');
+        $countSuratMasuk = \App\Models\SuratMasukModels::where('role', 'Pokja 1')->count();
+        $countSuratKeluar = \App\Models\SuratKeluarModels::where('role', 'Pokja 1')->count();
+        $countKegiatan = \App\Models\KegiatanModels::where('role', 'Pokja 1')->count();
+
+        $papanData = \App\Models\PapanDataPokja1Models::all();
+        $pkbn = $papanData->sum('pkbn_jml_anggota');
+        $pkdrt = $papanData->sum('pkdrt_jml_anggota');
+        $polaAsuh = $papanData->sum('pola_asuh_jml_anggota');
+        $lansia = $papanData->sum('lansia_jml_anggota');
+
+        $papanDataLabels = ['PKBN', 'PKDRT', 'Pola Asuh', 'Lansia'];
+        $papanDataSeries = [$pkbn, $pkdrt, $polaAsuh, $lansia];
+
+        return view('pokja_1.dashboard', compact(
+            'countSuratMasuk', 'countSuratKeluar', 'countKegiatan',
+            'papanDataLabels', 'papanDataSeries'
+        ));
     }
 
     private function dashboardPokja_2(Request $request)
     {
-        return view('pokja_2.dashboard');
+        $countSuratMasuk = \App\Models\SuratMasukModels::where('role', 'Pokja 2')->count();
+        $countSuratKeluar = \App\Models\SuratKeluarModels::where('role', 'Pokja 2')->count();
+        $countKegiatan = \App\Models\KegiatanModels::where('role', 'Pokja 2')->count();
+
+        $papanData = \App\Models\PapanDataPokja2Models::all();
+        $paud = $papanData->sum('paud');
+        $bkb = $papanData->sum('bkb_peserta');
+        $koperasi = $papanData->sum('koperasi_anggota');
+        $tamanBacaan = $papanData->sum('taman_bacaan');
+
+        $papanDataLabels = ['PAUD', 'Peserta BKB', 'Anggota Koperasi', 'Taman Bacaan'];
+        $papanDataSeries = [$paud, $bkb, $koperasi, $tamanBacaan];
+
+        return view('pokja_2.dashboard', compact(
+            'countSuratMasuk', 'countSuratKeluar', 'countKegiatan',
+            'papanDataLabels', 'papanDataSeries'
+        ));
     }
 
     private function dashboardPokja_3(Request $request)
     {
-        return view('pokja_3.dashboard');
+        $countSuratMasuk = \App\Models\SuratMasukModels::where('role', 'Pokja 3')->count();
+        $countSuratKeluar = \App\Models\SuratKeluarModels::where('role', 'Pokja 3')->count();
+        $countKegiatan = \App\Models\KegiatanModels::where('role', 'Pokja 3')->count();
+
+        $papanData = \App\Models\PapanDataPokja3Models::all();
+        $beras = $papanData->sum('beras');
+        $nonBeras = $papanData->sum('non_beras');
+        $rumahSehat = $papanData->sum('rumah_sehat');
+        $rumahTidakSehat = $papanData->sum('rumah_tidak_sehat');
+
+        $papanDataLabels = ['Beras', 'Non Beras', 'Rumah Sehat', 'Rumah Tdk Sehat'];
+        $papanDataSeries = [$beras, $nonBeras, $rumahSehat, $rumahTidakSehat];
+
+        return view('pokja_3.dashboard', compact(
+            'countSuratMasuk', 'countSuratKeluar', 'countKegiatan',
+            'papanDataLabels', 'papanDataSeries'
+        ));
     }
 
     private function dashboardPokja_4(Request $request)
     {
-        return view('pokja_4.dashboard');
+        $countSuratMasuk = \App\Models\SuratMasukModels::where('role', 'Pokja 4')->count();
+        $countSuratKeluar = \App\Models\SuratKeluarModels::where('role', 'Pokja 4')->count();
+        $countKegiatan = \App\Models\KegiatanModels::where('role', 'Pokja 4')->count();
+
+        $papanData = \App\Models\PapanDataPokja4Models::all();
+        $posyandu = $papanData->sum('jml_posyandu');
+        $lansia = $papanData->sum('lansia_anggota');
+        $akseptorL = $papanData->sum('akseptor_kb_l');
+        $akseptorP = $papanData->sum('akseptor_kb_p');
+
+        $papanDataLabels = ['Posyandu', 'Anggota Lansia', 'Akseptor L', 'Akseptor P'];
+        $papanDataSeries = [$posyandu, $lansia, $akseptorL, $akseptorP];
+
+        return view('pokja_4.dashboard', compact(
+            'countSuratMasuk', 'countSuratKeluar', 'countKegiatan',
+            'papanDataLabels', 'papanDataSeries'
+        ));
     }
 
     private function dashboardAdmin(Request $request)

@@ -212,6 +212,12 @@
     @endforeach
 
     <style>
-        @media print { body * { visibility: hidden; } .print-area, .print-area * { visibility: visible; } .print-area { position: absolute; left: 0; top: 0; width: 100%; } .no-print { display: none !important; } @page { size: landscape; margin: 1cm; } }
+        @media print { 
+            body * { visibility: hidden; } 
+            .print-area, .print-area * { visibility: visible; } 
+            .print-area { position: absolute; left: 0; top: 0; width: 100%; } 
+            .no-print, .dt-buttons, .dataTables_filter, .dataTables_length, .dataTables_info, .dataTables_paginate { display: none !important; } 
+            @page { size: landscape; margin: 1cm; } 
+        }
     </style>
 @endsection

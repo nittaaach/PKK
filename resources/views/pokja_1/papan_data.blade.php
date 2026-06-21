@@ -50,28 +50,29 @@
                                 <th rowspan="3" class="align-middle text-center">ACTION</th>
                             </tr>
                             <tr>
-                                <th rowspan="2" class="text-center">PKBN</th>
-                                <th rowspan="2" class="text-center">PKDRT</th>
-                                <th rowspan="2" class="text-center">POLA ASUH</th>
+                                <th rowspan="2" class="align-middle text-center">PKBN</th>
+                                <th rowspan="2" class="align-middle text-center">PKDRT</th>
+                                <th rowspan="2" class="align-middle text-center">POLA ASUH</th>
                                 <th colspan="2" class="text-center">PKBN</th>
                                 <th colspan="2" class="text-center">PKDRT</th>
                                 <th colspan="2" class="text-center">POLA ASUH</th>
                                 <th colspan="2" class="text-center">LANSIA</th>
-                                <th rowspan="2" class="text-center">KERJA BAKTI</th>
-                                <th rowspan="2" class="text-center">RUKUN KEMATIAN</th>
-                                <th rowspan="2" class="text-center">KEAGAMAAN</th>
-                                <th rowspan="2" class="text-center">JIMPITAN</th>
-                                <th rowspan="2" class="text-center">ARISAN</th>
+                                <th colspan="5" class="text-center">JUMLAH KELOMPOK</th>
                             </tr>
                             <tr>
-                                <th class="text-center">JML KLP</th>
+                                <th class="text-center">JML KLP SIMULASI</th>
+                                <th class="text-center">JML ANGGOTA</th>
+                                <th class="text-center">JML KLP SIMULASI</th>
                                 <th class="text-center">JML ANGGOTA</th>
                                 <th class="text-center">JML KLP</th>
                                 <th class="text-center">JML ANGGOTA</th>
                                 <th class="text-center">JML KLP</th>
                                 <th class="text-center">JML ANGGOTA</th>
-                                <th class="text-center">JML KLP</th>
-                                <th class="text-center">JML ANGGOTA</th>
+                                <th class="text-center">KERJA BAKTI</th>
+                                <th class="text-center">RUKUN KEMATIAN</th>
+                                <th class="text-center">KEAGAMAAN</th>
+                                <th class="text-center">JIMPITAN</th>
+                                <th class="text-center">ARISAN</th>
                             </tr>
                         </thead>
                         <tbody>

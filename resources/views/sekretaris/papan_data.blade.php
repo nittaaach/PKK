@@ -45,7 +45,7 @@
                         </button>
                     </div>
                     <table id="basic-btn-papan" class="table table-striped table-bordered" style="width: 100%;">
-                        <thead>
+                                                <thead>
                             <!-- Baris 1 -->
                             <tr>
                                 <th rowspan="3" class="align-middle text-center">NO</th>
@@ -55,8 +55,12 @@
                                 <th rowspan="3" class="align-middle text-center">JUML.<br>KRT</th>
                                 <th rowspan="3" class="align-middle text-center">JUML.<br>KK</th>
                                 <th colspan="11" class="align-middle text-center">JUMLAH ANGGOTA KELUARGA</th>
-                                <th colspan="6" class="align-middle text-center">JUMLAH RUMAH</th>
-                                <th colspan="3" class="align-middle text-center">SUMBER AIR</th>
+                                <th colspan="2" class="align-middle text-center">JUMLAH RUMAH</th>
+                                <th rowspan="3" class="align-middle text-center">MEMILIKI TMP.<br>PEMB. SAMPAH</th>
+                                <th rowspan="3" class="align-middle text-center">MEMILIKI<br>SPAL</th>
+                                <th rowspan="3" class="align-middle text-center">MEMILIKI<br>JAMBAN<br>KELUARGA</th>
+                                <th rowspan="3" class="align-middle text-center">MENEMPEL<br>STIKER P4K</th>
+                                <th colspan="3" class="align-middle text-center">SUMBER AIR KELUARGA</th>
                                 <th colspan="2" class="align-middle text-center">MAKANAN POKOK</th>
                                 <th colspan="4" class="align-middle text-center">WARGA MENGIKUTI KEGIATAN</th>
                                 <th rowspan="3" class="align-middle text-center">KET</th>
@@ -66,33 +70,27 @@
                             <tr>
                                 <th colspan="2" class="text-center align-middle">TOTAL</th>
                                 <th colspan="2" class="text-center align-middle">BALITA</th>
-                                <!-- Tambahkan rowspan="2" di sini agar menembus baris 3 -->
                                 <th rowspan="2" class="text-center align-middle">PUS</th>
                                 <th rowspan="2" class="text-center align-middle">WUS</th>
                                 <th rowspan="2" class="text-center align-middle">IBU HAMIL</th>
                                 <th rowspan="2" class="text-center align-middle">IBU MENYUSUI</th>
                                 <th rowspan="2" class="text-center align-middle">LANSIA</th>
                                 <th rowspan="2" class="text-center align-middle">3 BUTA</th>
-                                <th rowspan="2" class="text-center align-middle">BERKEBUTUHAN KHUSUS</th>
+                                <th rowspan="2" class="text-center align-middle">BERKEBUTUHAN<br>KHUSUS</th>
                                 <th rowspan="2" class="text-center align-middle">SEHAT</th>
                                 <th rowspan="2" class="text-center align-middle">TDK SEHAT</th>
-                                <th rowspan="2" class="text-center align-middle">PEMB. SAMPAH</th>
-                                <th rowspan="2" class="text-center align-middle">SPAL</th>
-                                <th rowspan="2" class="text-center align-middle">JAMBAN</th>
-                                <th rowspan="2" class="text-center align-middle">STIKER P4K</th>
                                 <th rowspan="2" class="text-center align-middle">PDAM</th>
                                 <th rowspan="2" class="text-center align-middle">SUMUR</th>
                                 <th rowspan="2" class="text-center align-middle">DLL</th>
                                 <th rowspan="2" class="text-center align-middle">BERAS</th>
                                 <th rowspan="2" class="text-center align-middle">NON BERAS</th>
                                 <th rowspan="2" class="text-center align-middle">UP2K</th>
-                                <th rowspan="2" class="text-center align-middle">PEKARANGAN</th>
-                                <th rowspan="2" class="text-center align-middle">IND. IRT</th>
-                                <th rowspan="2" class="text-center align-middle">KES. LINGK.</th>
+                                <th rowspan="2" class="text-center align-middle">PEMANFAATAN<br>TANAH<br>PEKARANGAN</th>
+                                <th rowspan="2" class="text-center align-middle">INDUSTRI<br>RUMAH<br>TANGGA</th>
+                                <th rowspan="2" class="text-center align-middle">KESEHATAN<br>LINGKUNGAN</th>
                             </tr>
                             <!-- Baris 3 -->
                             <tr>
-                                <!-- Hanya tersisa L & P karena kolom lainnya sudah di-cover oleh rowspan="2" di atas -->
                                 <th class="text-center">L</th>
                                 <th class="text-center">P</th>
                                 <th class="text-center">L</th>

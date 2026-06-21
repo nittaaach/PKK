@@ -44,6 +44,20 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        <tr class="fw-bold bg-light">
+                            <th colspan="2" class="text-center align-middle">JUMLAH</th>
+                            @foreach (array_keys($papan_data->first() ? $papan_data->first()->getAttributes() : []) as $col)
+                                @if (!in_array($col, ['id','created_at','updated_at', 'nama_wilayah', 'wilayah', 'nomor_rw', 'nama_anggota', 'jabatan']))
+                                    @if (in_array($col, ['keterangan', 'sasaran', 'kriteria_rumah', 'sebab_meninggal', 'jenis_kegiatan']))
+                                        <th class="text-center"></th>
+                                    @else
+                                        <th class="text-center">{{ is_numeric($papan_data->sum($col)) ? ($papan_data->sum($col) ?: '-') : '' }}</th>
+                                    @endif
+                                @endif
+                            @endforeach
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div></div>

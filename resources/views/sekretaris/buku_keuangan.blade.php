@@ -100,11 +100,11 @@
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <button type="button" class="btn btn-sm btn-primary ti ti-edit"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#UpdateAnggotaModal-{{ $item->id }}">
+                                                        data-bs-target="#UpdateModal-{{ $item->id }}">
                                                     </button>
                                                     <button type="button" class="btn btn-sm btn-danger ti ti-trash"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#DeleteAnggotaModal-{{ $item->id }}">
+                                                        data-bs-target="#DeleteModal-{{ $item->id }}">
                                                     </button>
                                                 </div>
                                                 {{-- <div class="dropdown">
@@ -335,6 +335,14 @@
             }
 
             .no-print {
+                display: none !important;
+            }
+
+            .dt-buttons,
+            .dataTables_filter,
+            .dataTables_length,
+            .dataTables_info,
+            .dataTables_paginate {
                 display: none !important;
             }
 

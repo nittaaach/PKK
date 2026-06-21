@@ -55,18 +55,30 @@
                             <span class="pc-mtext">Kegiatan</span>
                         </a>
                     </li>
-
-                    <li class="pc-item pc-caption">
-                        <label>Bantu</label>
-                        <i class="ti ti-news"></i>
-                    </li>
                     <li class="pc-item {{ request()->routeIs($routePrefix . 'papan_data') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
-                            <span class="pc-mtext">Data Kegiatan / Papan Data</span>
+                            <span class="pc-mtext">Papan Data</span>
                         </a>
                     </li>
-                    {{-- <li class="pc-item">
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'agenda_surat') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'agenda_surat') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
+                            <span class="pc-mtext">Agenda Surat</span>
+                        </a>
+                    </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'dokumentasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'dokumentasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
+                            <span class="pc-mtext">Dokumentasi</span>
+                        </a>
+                    </li>
+
+                    {{-- <li class="pc-item pc-caption">
+                        <label>Bantu</label>
+                        <i class="ti ti-news"></i>
+                    </li>
+                    <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-news"></i></span>
                             <span class="pc-mtext">Jumlah Pengunjung</span>
@@ -101,20 +113,8 @@
                             <span class="pc-micon"><i class="ti ti-users"></i></span>
                             <span class="pc-mtext">Kemitraan</span>
                         </a>
-                    </li> --}}
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'agenda_surat') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'agenda_surat') }}" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-mailbox"></i></span>
-                            <span class="pc-mtext">Agenda Surat</span>
-                        </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'dokumentasi') ? 'pc-active' : '' }}">
-                        <a href="{{ route($routePrefix . 'dokumentasi') }}" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
-                            <span class="pc-mtext">Dokumentasi</span>
-                        </a>
-                    </li>
-                    {{-- <li class="pc-item">
+                    <li class="pc-item">
                         <a href="#" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
                             <span class="pc-mtext">Kliping</span>

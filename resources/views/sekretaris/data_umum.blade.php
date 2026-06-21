@@ -115,6 +115,30 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr class="fw-bold bg-light">
+                                <th colspan="2" class="text-center align-middle">JUMLAH</th>
+                                <th class="text-center">{{ $data_umum->sum('pkk_rw') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('pkk_rt') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('dasa_wisma') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('krt') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('kk') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('jiwa_l') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('jiwa_p') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('kader_tp_pkk_l') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('kader_tp_pkk_p') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('kader_umum_l') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('kader_umum_p') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('kader_khusus_l') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('kader_khusus_p') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('honorer_l') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('honorer_p') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('bantuan_l') ?: '-' }}</th>
+                                <th class="text-center">{{ $data_umum->sum('bantuan_p') ?: '-' }}</th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

@@ -108,6 +108,29 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr class="fw-bold bg-light">
+                                <th colspan="2" class="text-center align-middle">JUMLAH</th>
+                                <th class="text-center">{{ $papan_data->sum('kader_pangan') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('kader_sandang') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('kader_tata_laksana') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('beras') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('non_beras') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('peternakan') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('perikanan') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('warung_hidup') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('lumbung_hidup') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('toga') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('tanaman_keras') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('industri_pangan') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('industri_sandang') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('industri_jasa') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('rumah_sehat') ?: '-' }}</th>
+                                <th class="text-center">{{ $papan_data->sum('rumah_tidak_sehat') ?: '-' }}</th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

@@ -14,7 +14,7 @@ class PapanDataPokja4Models extends Model
         'nama_wilayah', 'kader_posyandu', 'kader_gizi', 'kader_kesling',
         'kader_narkoba', 'kader_phbs', 'kader_kb', 'jml_posyandu', 'terintegrasi',
         'lansia_jml_klp', 'lansia_anggota', 'berobat_gratis', 'jamban', 'spal',
-        'sampah', 'pdam', 'sumur', 'air_lain', 'jml_pus', 'jml_wus',
-        'akseptor_kb_l', 'akseptor_kb_p', 'keterangan'
+        'sampah', 'jml_mck', 'pdam', 'sumur', 'air_lain', 'jml_pus', 'jml_wus',
+        'akseptor_kb_l', 'akseptor_kb_p', 'tabungan_keluarga', 'keterangan'
     ];
 }

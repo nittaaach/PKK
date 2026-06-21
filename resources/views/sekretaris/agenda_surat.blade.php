@@ -131,6 +131,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                        
                             </table>
                         </div>
                     </div>
@@ -264,7 +265,39 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="form-label">Perihal <span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="perihal" rows="10" placeholder="Isi Perihal Surat" required></textarea>
+                                <input type="hidden" name="perihal" class="real-perihal-add">
+                                <div class="row">
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Undangan</span>
+                                            <input type="text" class="form-control p-undangan" placeholder="Contoh: Rapat Rutin" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Hari / Tanggal</span>
+                                            <input type="text" class="form-control p-hari" placeholder="Contoh: Senin, 10 Juni 2026">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Waktu</span>
+                                            <input type="text" class="form-control p-waktu" placeholder="Contoh: 08:00 - Selesai">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Tempat</span>
+                                            <input type="text" class="form-control p-tempat" placeholder="Contoh: Balai Desa">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Acara</span>
+                                            <input type="text" class="form-control p-acara" placeholder="Contoh: Pembahasan Anggaran">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Lampiran</label>
@@ -324,7 +357,52 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Perihal</label>
-                                    <textarea class="form-control" name="perihal" rows="10">{{ $item->perihal }}</textarea>
+                                    <input type="hidden" name="perihal" class="real-perihal-edit">
+                                    @php
+                                        $pt = $item->perihal ?? '';
+                                        $p_und = ''; $p_har = ''; $p_wak = ''; $p_tem = ''; $p_aca = '';
+                                        if (preg_match('/Undangan:\s*(.*)/i', $pt, $m)) $p_und = trim($m[1]);
+                                        if (preg_match('/Hari \/ Tanggal:\s*(.*)/i', $pt, $m)) $p_har = trim($m[1]);
+                                        if (preg_match('/Waktu:\s*(.*)/i', $pt, $m)) $p_wak = trim($m[1]);
+                                        if (preg_match('/Tempat:\s*(.*)/i', $pt, $m)) $p_tem = trim($m[1]);
+                                        if (preg_match('/Acara:\s*(.*)/i', $pt, $m)) $p_aca = trim($m[1]);
+                                        
+                                        if ($p_und == '' && $p_har == '' && $p_wak == '' && $p_tem == '' && $p_aca == '') {
+                                            $p_und = $pt;
+                                        }
+                                    @endphp
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Undangan</span>
+                                                <input type="text" class="form-control p-undangan" value="{{ $p_und }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Hari / Tanggal</span>
+                                                <input type="text" class="form-control p-hari" value="{{ $p_har }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Waktu</span>
+                                                <input type="text" class="form-control p-waktu" value="{{ $p_wak }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Tempat</span>
+                                                <input type="text" class="form-control p-tempat" value="{{ $p_tem }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Acara</span>
+                                                <input type="text" class="form-control p-acara" value="{{ $p_aca }}">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Lampiran</label>
@@ -415,7 +493,39 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="form-label">Perihal <span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="perihal" rows="10" placeholder="Isi Perihal Surat" required></textarea>
+                                <input type="hidden" name="perihal" class="real-perihal-add">
+                                <div class="row">
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Undangan</span>
+                                            <input type="text" class="form-control p-undangan" placeholder="Contoh: Rapat Rutin" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Hari / Tanggal</span>
+                                            <input type="text" class="form-control p-hari" placeholder="Contoh: Senin, 10 Juni 2026">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Waktu</span>
+                                            <input type="text" class="form-control p-waktu" placeholder="Contoh: 08:00 - Selesai">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Tempat</span>
+                                            <input type="text" class="form-control p-tempat" placeholder="Contoh: Balai Desa">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <div class="input-group">
+                                            <span class="input-group-text" style="width: 130px;">Acara</span>
+                                            <input type="text" class="form-control p-acara" placeholder="Contoh: Pembahasan Anggaran">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="form-label">Tembusan</label>
@@ -469,7 +579,52 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Perihal</label>
-                                    <textarea class="form-control" name="perihal" rows="10">{{ $item->perihal }}</textarea>
+                                    <input type="hidden" name="perihal" class="real-perihal-edit">
+                                    @php
+                                        $pt = $item->perihal ?? '';
+                                        $p_und = ''; $p_har = ''; $p_wak = ''; $p_tem = ''; $p_aca = '';
+                                        if (preg_match('/Undangan:\s*(.*)/i', $pt, $m)) $p_und = trim($m[1]);
+                                        if (preg_match('/Hari \/ Tanggal:\s*(.*)/i', $pt, $m)) $p_har = trim($m[1]);
+                                        if (preg_match('/Waktu:\s*(.*)/i', $pt, $m)) $p_wak = trim($m[1]);
+                                        if (preg_match('/Tempat:\s*(.*)/i', $pt, $m)) $p_tem = trim($m[1]);
+                                        if (preg_match('/Acara:\s*(.*)/i', $pt, $m)) $p_aca = trim($m[1]);
+                                        
+                                        if ($p_und == '' && $p_har == '' && $p_wak == '' && $p_tem == '' && $p_aca == '') {
+                                            $p_und = $pt;
+                                        }
+                                    @endphp
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Undangan</span>
+                                                <input type="text" class="form-control p-undangan" value="{{ $p_und }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Hari / Tanggal</span>
+                                                <input type="text" class="form-control p-hari" value="{{ $p_har }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Waktu</span>
+                                                <input type="text" class="form-control p-waktu" value="{{ $p_wak }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Tempat</span>
+                                                <input type="text" class="form-control p-tempat" value="{{ $p_tem }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <span class="input-group-text" style="width: 130px;">Acara</span>
+                                                <input type="text" class="form-control p-acara" value="{{ $p_aca }}">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Tembusan</label>
@@ -518,4 +673,41 @@
             </div>
         </div>
     @endforeach
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to format perihal
+            function combinePerihal(container, hiddenInputClass) {
+                let undangan = container.querySelector('.p-undangan').value;
+                let hari = container.querySelector('.p-hari').value;
+                let waktu = container.querySelector('.p-waktu').value;
+                let tempat = container.querySelector('.p-tempat').value;
+                let acara = container.querySelector('.p-acara').value;
+
+                let lines = [];
+                if(undangan) lines.push("Undangan: " + undangan);
+                if(hari) lines.push("Hari / Tanggal: " + hari);
+                if(waktu) lines.push("Waktu: " + waktu);
+                if(tempat) lines.push("Tempat: " + tempat);
+                if(acara) lines.push("Acara: " + acara);
+
+                container.querySelector('.' + hiddenInputClass).value = lines.join('\n');
+            }
+
+            // Bind submit for Add Modal
+            let addForm = document.querySelector('#AddSuratMasukModal form');
+            if(addForm) {
+                addForm.addEventListener('submit', function() {
+                    combinePerihal(addForm, 'real-perihal-add');
+                });
+            }
+
+            // Bind submit for Edit Modals
+            let editForms = document.querySelectorAll('[id^=UpdateSuratMasukModal] form');
+            editForms.forEach(form => {
+                form.addEventListener('submit', function() {
+                    combinePerihal(form, 'real-perihal-edit');
+                });
+            });
+        });
+    </script>
 @endsection

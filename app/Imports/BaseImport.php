@@ -14,6 +14,9 @@ abstract class BaseImport
     // Kolom alias → nama field model (lowercase, trim sudah ditangani)
     protected array $headerAliases = [];
 
+    // Jika ingin mencari nama sheet spesifik
+    protected string $expectedSheetName = '';
+
     /**
      * Proses satu baris data yang sudah di-map ke nama field.
      */
@@ -98,7 +101,50 @@ abstract class BaseImport
             }
         }
 
-        $sheetXml = $zip->getFromName('xl/worksheets/sheet1.xml');
+        $workbookXml = $zip->getFromName('xl/workbook.xml');
+        $relsXml = $zip->getFromName('xl/_rels/workbook.xml.rels');
+        $sheetPath = 'xl/worksheets/sheet1.xml'; // default
+
+        if ($workbookXml && $relsXml) {
+            $wb = simplexml_load_string($workbookXml);
+            $rels = simplexml_load_string($relsXml);
+            
+            $activeTab = (int)($wb->bookViews->workbookView['activeTab'] ?? 0);
+            
+            $sheets = [];
+            $sheetNames = [];
+            if ($wb && isset($wb->sheets->sheet)) {
+                foreach ($wb->sheets->sheet as $s) {
+                    $sheets[] = (string)$s->attributes('r', true)->id;
+                    $sheetNames[] = (string)$s['name'];
+                }
+            }
+            
+            $targetSheetIndex = $activeTab;
+            
+            if ($this->expectedSheetName !== '') {
+                foreach ($sheetNames as $i => $name) {
+                    if (stripos($name, $this->expectedSheetName) !== false) {
+                        $targetSheetIndex = $i;
+                        break;
+                    }
+                }
+            }
+            
+            if (isset($sheets[$targetSheetIndex])) {
+                $rId = $sheets[$targetSheetIndex];
+                if ($rels && isset($rels->Relationship)) {
+                    foreach ($rels->Relationship as $rel) {
+                        if ((string)$rel['Id'] === $rId) {
+                            $sheetPath = 'xl/' . (string)$rel['Target'];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        $sheetXml = $zip->getFromName($sheetPath);
         $zip->close();
 
         if ($sheetXml === false) {

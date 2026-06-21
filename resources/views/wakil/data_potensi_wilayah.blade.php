@@ -43,6 +43,20 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        <tr class="fw-bold bg-light">
+                            <th colspan="2" class="text-center align-middle">JUMLAH</th>
+                            @foreach (array_keys($data_potensi->first() ? $data_potensi->first()->getAttributes() : []) as $col)
+                                @if (!in_array($col, ['id','created_at','updated_at', 'wilayah']))
+                                    @if ($col === 'keterangan')
+                                        <th class="text-center"></th>
+                                    @else
+                                        <th class="text-center">{{ $data_potensi->sum($col) ?: '-' }}</th>
+                                    @endif
+                                @endif
+                            @endforeach
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div></div>

@@ -54,6 +54,22 @@
                             </tr>
                         @endforeach
                     </tbody>
+                        <tfoot>
+                            <tr class="fw-bold bg-light">
+                                <th colspan="2" class="text-center align-middle">JUMLAH</th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center">{{ $anggota->sum('umur') ?: '-' }}</th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </tfoot>
                 </table>
             </div>
         </div></div>

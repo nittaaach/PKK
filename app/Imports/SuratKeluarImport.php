@@ -26,18 +26,61 @@ class SuratKeluarImport extends BaseImport
         $this->role = $role;
     }
 
+    public function import($file): int
+    {
+        $ext = strtolower($file->getClientOriginalExtension());
+        $path = $file->getRealPath();
+
+        $dataRows = match ($ext) {
+            'csv' => $this->readCsv($path),
+            'ods' => $this->readOds($path),
+            default => $this->readXlsx($path),
+        };
+
+        // Cari baris data pertama (mengabaikan judul tabel dan baris penomoran)
+        $startDataIndex = 0;
+        foreach ($dataRows as $i => $row) {
+            $no = isset($row[0]) ? trim((string)$row[0]) : '';
+            if ($no !== '' && is_numeric($no)) {
+                $col2 = isset($row[1]) ? trim((string)$row[1]) : '';
+                if ($col2 === '2') {
+                    // Ini adalah baris penomoran (1, 2, 3...)
+                    $startDataIndex = $i + 1;
+                } else {
+                    // Ini adalah data asli (NO = 1, tapi Kolom 2 bukan '2')
+                    $startDataIndex = $i;
+                }
+                break;
+            }
+        }
+
+        if ($startDataIndex > 0) {
+            $dataRows = array_slice($dataRows, $startDataIndex);
+        }
+
+        $count = 0;
+        foreach ($dataRows as $row) {
+            $no = isset($row[0]) ? trim((string)$row[0]) : '';
+            if ($no === '') continue; // Abaikan baris kosong
+
+            SuratKeluarModels::create([
+                'role'             => $this->role,
+                'nomor_kode_surat' => isset($row[1]) ? trim((string)$row[1]) : null,
+                'tanggal_surat'    => isset($row[2]) ? $this->parseDate($row[2]) : null,
+                'kepada'           => isset($row[3]) ? trim((string)$row[3]) : null,
+                'perihal'          => isset($row[4]) ? trim((string)$row[4]) : null,
+                'lampiran'         => isset($row[5]) ? trim((string)$row[5]) : null,
+                'tembusan'         => isset($row[6]) ? trim((string)$row[6]) : null,
+            ]);
+            
+            $count++;
+        }
+
+        return $count;
+    }
+
     protected function processRow(array $row): void
     {
-        if (empty($row['perihal']) && empty($row['kepada'])) return;
-
-        SuratKeluarModels::create([
-            'role'             => $this->role,
-            'nomor_kode_surat' => $row['nomor_kode_surat'] ?? null,
-            'tanggal_surat'    => $this->parseDate($row['tanggal_surat'] ?? null),
-            'kepada'           => $row['kepada'] ?? null,
-            'perihal'          => $row['perihal'] ?? null,
-            'lampiran'         => $row['lampiran'] ?? null,
-            'tembusan'         => $row['tembusan'] ?? null,
-        ]);
+        // Tidak digunakan lagi karena kita sudah meng-override import()
     }
 }

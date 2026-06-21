@@ -11,7 +11,7 @@ class BukuKeuanganController extends Controller
     // ==================== BENDAHARA (Full CRUD) ====================
     public function index_bendahara()
     {
-        $buku_keuangan = BukuKeuangan::all();
+        $buku_keuangan = BukuKeuangan::where('role', 'Bendahara')->get();
         return view('bendahara.buku_keuangan', compact('buku_keuangan'));
     }
 
@@ -82,7 +82,7 @@ class BukuKeuanganController extends Controller
     // ==================== SEKRETARIS (Full CRUD) ====================
     public function index_sekretaris()
     {
-        $buku_keuangan = BukuKeuangan::all();
+        $buku_keuangan = BukuKeuangan::where('role', 'Sekretaris')->get();
         return view('sekretaris.buku_keuangan', compact('buku_keuangan'));
     }
 
