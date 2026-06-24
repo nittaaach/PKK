@@ -43,10 +43,9 @@
                 <h4>Ikuti Kami</h4>
                 <p>Terhubung dengan kami untuk informasi dan kegiatan terbaru di lingkungan RW 12.</p>
                 <div class="social-links d-flex">
-                    <a href="#"><i class="bi bi-twitter-x"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.instagram.com/pkk_kel_cipinang_melayu/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://maps.app.goo.gl/QBQwKET339r3LTuL8"><i class="bi bi-pin-map"></i></a>
                 </div>
             </div>
 

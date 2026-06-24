@@ -79,16 +79,20 @@
                 <div class="col-lg-12 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="content text-center">
                         <h2>TENTANG KAMI</h2>
-                        <h3>RW Smart Hub adalah portal digital resmi RW 012 Jatiwaringin, Kota Bekasi.</h3>
+                        <h3>PKK Kelurahan Cipinang Melayu</h3>
                         <p>
-                            Website ini dikembangkan untuk meningkatkan partisipasi warga dalam berbagai kegiatan sosial,
-                            ekonomi, dan administrasi RW secara lebih cepat, transparan, dan mudah diakses oleh semua
+                            Website ini dikembangkan sebagai wujud nyata digitalisasi komunitas untuk mendukung gerakan
+                            pemberdayaan keluarga yang bertaqwa, berakhlak mulia, sehat, dan sejahtera lahir batin di
+                            wilayah Kelurahan Cipinang Melayu. Melalui platform ini, kami berkomitmen untuk meningkatkan
+                            efisiensi dan transparansi program kerja PKK agar dapat diakses dengan mudah oleh seluruh
                             lapisan masyarakat.
-                            Melalui platform ini, warga dapat memperoleh informasi kegiatan Karang Taruna, promosi produk
-                            UMKM binaan PKK, hingga menyampaikan aspirasi secara langsung kepada pengurus RW.
 
-                            Kami percaya bahwa digitalisasi komunitas adalah langkah penting untuk membangun lingkungan yang
-                            lebih aktif, inklusif, dan sejahtera.
+                            Melalui platform ini, warga dapat memperoleh informasi mengenai program pola asuh anak berbasis
+                            nilai Pancasila, pemantauan kesehatan keluarga, pelatihan keterampilan, hingga promosi produk
+                            UMKM binaan PKK demi meningkatkan kemandirian ekonomi warga Cipinang Melayu.
+
+                            Kami percaya bahwa kemudahan akses informasi dan pemanfaatan teknologi adalah langkah penting
+                            untuk membangun ketahanan keluarga yang lebih harmonis, berkecukupan, aktif, dan sejahtera.
                         </p>
                         <div class="d-flex justify-content-center">
                             <a href="/profil-pkk"
@@ -407,8 +411,7 @@
                             <div class="info-item" data-aos="fade" data-aos-delay="400">
                                 <i class="bi bi-envelope"></i>
                                 <h3>Email Us</h3>
-                                <p>info@example.com</p>
-                                <p>contact@example.com</p>
+                                <p>pkk.cimeljt@gmail.com</p>
                             </div>
                         </div><!-- End Info Item -->
 
@@ -423,7 +426,7 @@
                         <div class="col-md-6">
                             <div class="info-item" data-aos="fade" data-aos-delay="400">
                                 <i class="bi bi-instagram"></i>
-                                <a href="https://www.instagram.com/pokjadasawata/">
+                                <a href="https://www.instagram.com/pkk_kel_cipinang_melayu/">
                                     <h3>Instagram</h3>
                                 </a>
                             </div>
@@ -454,7 +457,6 @@
                 <h2>PKK Cipinang Melayu</h2>
             </div>
             <div class="mb-4" data-aos="fade-up" data-aos-delay="50">
-
                 <iframe style="border:0; width: 100%; height: 400px;"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.144427794066!2d106.8960106739902!3d-6.2446899937436475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f37d3a86183b%3A0x18ce438310cb437d!2sKantor%20Kelurahan%20Cipinang%20Melayu!5e0!3m2!1sid!2sid!4v1779433448132!5m2!1sid!2sid"
                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
