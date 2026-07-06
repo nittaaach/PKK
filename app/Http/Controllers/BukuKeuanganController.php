@@ -82,7 +82,8 @@ class BukuKeuanganController extends Controller
     // ==================== SEKRETARIS (Full CRUD) ====================
     public function index_sekretaris()
     {
-        $buku_keuangan = BukuKeuangan::where('role', 'Sekretaris')->get();
+        // Data disinkronkan dengan Bendahara: tampilkan data role='Bendahara'
+        $buku_keuangan = BukuKeuangan::orderBy('id', 'asc')->get();
         return view('sekretaris.buku_keuangan', compact('buku_keuangan'));
     }
 

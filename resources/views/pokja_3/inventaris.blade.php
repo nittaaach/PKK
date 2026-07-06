@@ -6,12 +6,12 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('Pokja_3.dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Gertam</li>
+                        <li class="breadcrumb-item" aria-current="page">Buku Inventaris</li>
                     </ul>
                 </div>
                 <div class="col-md-12">
                     <div class="page-header-title">
-                        <h2 class="mb-0">Data Gerakan Tanam (GERTAM)</h2>
+                        <h2 class="mb-0">Buku Inventaris</h2>
                         <p class="text-muted mt-1">TP PKK Kelurahan Cipinang Melayu - Pokja III</p>
                     </div>
                 </div>
@@ -26,7 +26,6 @@
         @if (session('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert"><i class="ti ti-alert-circle me-1"></i> {{ session('error') }}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
         @endif
-
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
@@ -38,10 +37,12 @@
                         <thead>
                             <tr>
                                 <th class="text-center">NO</th>
-                                <th class="text-center">DITERIMA DARI</th>
-                                <th class="text-center">JENIS TANAMAN</th>
+                                <th class="text-center">NAMA BARANG</th>
+                                <th class="text-center">ASAL BARANG</th>
+                                <th class="text-center">TANGGAL PENERIMAAN / PEMBELIAN</th>
                                 <th class="text-center">JUMLAH</th>
-                                <th class="text-center">WAKTU PENERIMAAN</th>
+                                <th class="text-center">TEMPAT PENYIMPANAN</th>
+                                <th class="text-center">KONDISI BARANG</th>
                                 <th class="text-center">KETERANGAN</th>
                                 <th class="text-center">ACTION</th>
                             </tr>
@@ -50,10 +51,12 @@
                             @foreach ($data ?? [] as $item)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $item->diterima_dari ?? '-' }}</td>
-                                    <td>{{ $item->jenis_tanaman ?? '-' }}</td>
+                                    <td>{{ $item->nama_barang ?? '-' }}</td>
+                                    <td>{{ $item->asal_barang ?? '-' }}</td>
+                                    <td>{{ $item->tanggal_penerimaan ?? '-' }}</td>
                                     <td>{{ $item->jumlah ?? '-' }}</td>
-                                    <td>{{ $item->waktu_penerimaan ?? '-' }}</td>
+                                    <td>{{ $item->tempat_penyimpanan ?? '-' }}</td>
+                                    <td>{{ $item->kondisi_barang ?? '-' }}</td>
                                     <td>{{ $item->keterangan ?? '-' }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
@@ -70,21 +73,29 @@
         </div>
     </div>
 
-    {{-- Modal Tambah --}}
     <div id="AddModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">Tambah Data Gertam</h5>
+                    <h5 class="modal-title">Tambah Data Inventaris</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="{{ route('gertam.store_pokja3') }}" method="POST">@csrf
+                <form action="{{ route('inventaris.store_pokja3') }}" method="POST">@csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6 mb-3"><label class="form-label">Diterima Dari</label><input type="text" class="form-control" name="diterima_dari"></div>
-                            <div class="col-md-6 mb-3"><label class="form-label">Jenis Tanaman</label><input type="text" class="form-control" name="jenis_tanaman"></div>
-                            <div class="col-md-6 mb-3"><label class="form-label">Jumlah</label><input type="text" class="form-control" name="jumlah" placeholder="cth: 2 Kg / 3 bungkus"></div>
-                            <div class="col-md-6 mb-3"><label class="form-label">Waktu Penerimaan</label><input type="text" class="form-control" name="waktu_penerimaan" placeholder="cth: 2 Jan 2025"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Nama Barang *</label><input type="text" class="form-control" name="nama_barang" required></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Asal Barang</label><input type="text" class="form-control" name="asal_barang" placeholder="cth: Pembelian / Hibah / Sumbangan"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Tanggal Penerimaan / Pembelian</label><input type="text" class="form-control" name="tanggal_penerimaan" placeholder="cth: 10 Januari 2025"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Jumlah</label><input type="text" class="form-control" name="jumlah" placeholder="cth: 2 unit"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Tempat Penyimpanan</label><input type="text" class="form-control" name="tempat_penyimpanan"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Kondisi Barang</label>
+                                <select class="form-control" name="kondisi_barang">
+                                    <option value="">-- Pilih Kondisi --</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Rusak Ringan">Rusak Ringan</option>
+                                    <option value="Rusak Berat">Rusak Berat</option>
+                                </select>
+                            </div>
                             <div class="col-md-12 mb-3"><label class="form-label">Keterangan</label><textarea class="form-control" name="keterangan" rows="3"></textarea></div>
                         </div>
                     </div>
@@ -99,16 +110,25 @@
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header bg-warning text-dark">
-                        <h5 class="modal-title">Edit Data Gertam</h5>
+                        <h5 class="modal-title">Edit Data Inventaris</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <form action="{{ route('gertam.update_pokja3', $item->id) }}" method="POST">@csrf @method('PUT')
+                    <form action="{{ route('inventaris.update_pokja3', $item->id) }}" method="POST">@csrf @method('PUT')
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-6 mb-3"><label class="form-label">Diterima Dari</label><input type="text" class="form-control" name="diterima_dari" value="{{ $item->diterima_dari }}"></div>
-                                <div class="col-md-6 mb-3"><label class="form-label">Jenis Tanaman</label><input type="text" class="form-control" name="jenis_tanaman" value="{{ $item->jenis_tanaman }}"></div>
+                                <div class="col-md-6 mb-3"><label class="form-label">Nama Barang *</label><input type="text" class="form-control" name="nama_barang" value="{{ $item->nama_barang }}" required></div>
+                                <div class="col-md-6 mb-3"><label class="form-label">Asal Barang</label><input type="text" class="form-control" name="asal_barang" value="{{ $item->asal_barang }}"></div>
+                                <div class="col-md-6 mb-3"><label class="form-label">Tanggal Penerimaan / Pembelian</label><input type="text" class="form-control" name="tanggal_penerimaan" value="{{ $item->tanggal_penerimaan }}"></div>
                                 <div class="col-md-6 mb-3"><label class="form-label">Jumlah</label><input type="text" class="form-control" name="jumlah" value="{{ $item->jumlah }}"></div>
-                                <div class="col-md-6 mb-3"><label class="form-label">Waktu Penerimaan</label><input type="text" class="form-control" name="waktu_penerimaan" value="{{ $item->waktu_penerimaan }}"></div>
+                                <div class="col-md-6 mb-3"><label class="form-label">Tempat Penyimpanan</label><input type="text" class="form-control" name="tempat_penyimpanan" value="{{ $item->tempat_penyimpanan }}"></div>
+                                <div class="col-md-6 mb-3"><label class="form-label">Kondisi Barang</label>
+                                    <select class="form-control" name="kondisi_barang">
+                                        <option value="">-- Pilih Kondisi --</option>
+                                        <option value="Baik" {{ $item->kondisi_barang == 'Baik' ? 'selected' : '' }}>Baik</option>
+                                        <option value="Rusak Ringan" {{ $item->kondisi_barang == 'Rusak Ringan' ? 'selected' : '' }}>Rusak Ringan</option>
+                                        <option value="Rusak Berat" {{ $item->kondisi_barang == 'Rusak Berat' ? 'selected' : '' }}>Rusak Berat</option>
+                                    </select>
+                                </div>
                                 <div class="col-md-12 mb-3"><label class="form-label">Keterangan</label><textarea class="form-control" name="keterangan" rows="3">{{ $item->keterangan }}</textarea></div>
                             </div>
                         </div>
@@ -125,8 +145,8 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('gertam.destroy_pokja3', $item->id) }}" method="POST">@csrf @method('DELETE')
-                            <div class="text-center p-3"><h5>Hapus data <strong class="text-danger">{{ $item->jenis_tanaman }}</strong>?</h5></div>
+                        <form action="{{ route('inventaris.destroy_pokja3', $item->id) }}" method="POST">@csrf @method('DELETE')
+                            <div class="text-center p-3"><h5>Hapus data <strong class="text-danger">{{ $item->nama_barang }}</strong>?</h5></div>
                             <div class="modal-footer justify-content-center"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button><button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i> Hapus</button></div>
                         </form>
                     </div>
@@ -143,7 +163,7 @@
                     <h5 class="modal-title">Import File Excel</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('Pokja_3.import_gertam') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('Pokja_3.import_inventaris') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="alert alert-info">

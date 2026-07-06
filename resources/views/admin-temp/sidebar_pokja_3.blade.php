@@ -74,98 +74,66 @@
                         </a>
                     </li>
 
-                    {{-- <li class="pc-item pc-caption">
-                        <label>Pages</label>
-                        <i class="ti ti-news"></i>
-                    </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-news"></i></span>
-                            <span class="pc-mtext">Buku Tamu</span>
-                        </a>
-                    </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'program_kerja') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'program_kerja') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
                             <span class="pc-mtext">Program Kerja</span>
                         </a>
                     </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-users"></i></span>
-                            <span class="pc-mtext">Kliping</span>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'eval_program') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'eval_program') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-clipboard-check"></i></span>
+                            <span class="pc-mtext">Evaluasi Program</span>
                         </a>
                     </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-mail"></i></span>
-                            <span class="pc-mtext">Toga & Pemanfaatannya</span>
-                        </a>
-                    </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-receipt"></i></span>
-                            <span class="pc-mtext">GPTP</span>
-                        </a>
-                    </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-receipt"></i></span>
-                            <span class="pc-mtext">RPTRA</span>
-                        </a>
-                    </li> --}}
-
-                    {{-- <li class="pc-item pc-caption">
-                        <label>Other</label>
-                        <i class="ti ti-brand-chrome"></i>
-                    </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-building-community"></i></span>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'gertam') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'gertam') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
                             <span class="pc-mtext">Gertam</span>
                         </a>
                     </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-building-community"></i></span>
-                            <span class="pc-mtext">Hasil SME</span>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'gptp') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'gptp') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-trees"></i></span>
+                            <span class="pc-mtext">GPTP</span>
                         </a>
                     </li>
-                    <li class="pc-item">
-                        <a href="#" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-building-community"></i></span>
-                            <span class="pc-mtext">Peta Tanaman</span>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'data_prestasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'data_prestasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-award"></i></span>
+                            <span class="pc-mtext">Data Prestasi</span>
                         </a>
                     </li>
-                    <li class="pc-item pc-hasmenu">
-                        <a href="#!" class="pc-link">
-                            <span class="pc-micon"><i class="ti ti-book"></i></span>
-                            <span class="pc-mtext">Buku Data</span>
-                            <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'data_ptp') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'data_ptp') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-building-community"></i></span>
+                            <span class="pc-mtext">Data PTP / Hatinya PKK</span>
                         </a>
-                        <ul class="pc-submenu">
-                            <li class="pc-item">
-                                <a href="#" class="pc-link">
-                                    <span class="pc-mtext">Data Primer Hatinya PKK</span>
-                                </a>
-                            </li>
-                            <li class="pc-item">
-                                <a href="#" class="pc-link">
-                                    <span class="pc-mtext">Data Prestasi</span>
-                                </a>
-                            </li>
-                            <li class="pc-item">
-                                <a href="#" class="pc-link">
-                                    <span class="pc-mtext">Data Potensi</span>
-                                </a>
-                            </li>
-                            <li class="pc-item">
-                                <a href="#" class="pc-link">
-                                    <span class="pc-mtext">Data Poktan</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> --}}
+                    </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'data_potensi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'data_potensi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-chart-bar"></i></span>
+                            <span class="pc-mtext">Data Potensi</span>
+                        </a>
+                    </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'inventaris') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'inventaris') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-package"></i></span>
+                            <span class="pc-mtext">Buku Inventaris</span>
+                        </a>
+                    </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'notulen') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'notulen') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-notes"></i></span>
+                            <span class="pc-mtext">Notulen</span>
+                        </a>
+                    </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'lap_kegiatan') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'lap_kegiatan') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-report"></i></span>
+                            <span class="pc-mtext">Laporan Kegiatan</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

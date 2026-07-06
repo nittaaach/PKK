@@ -59,6 +59,11 @@ class DaftarAnggotaController extends Controller
         if ($request->hasFile('foto')) {
             $validated['foto'] = $request->file('foto')->store('foto_anggota', 'public');
         }
+        
+        if ($request->status_perkawinan === 'Lainnya' && $request->filled('status_perkawinan_lainnya')) {
+            $validated['status_perkawinan'] = $request->status_perkawinan_lainnya;
+        }
+
         return $validated;
     }
 

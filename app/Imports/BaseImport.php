@@ -152,16 +152,25 @@ abstract class BaseImport
         }
 
         $sheet = simplexml_load_string($sheetXml);
-        $rows  = [];
+        $rowsIndexed = [];
+        $maxColIndex = 0;
 
         foreach ($sheet->sheetData->row as $row) {
+            $rIndex = (int) $row['r'] - 1; // 0-based absolute row index
+            if ($rIndex < 0) {
+                $rIndex = empty($rowsIndexed) ? 0 : max(array_keys($rowsIndexed)) + 1;
+            }
+
             $rowData      = [];
             $prevColIndex = -1;
 
             foreach ($row->c as $cell) {
                 $ref = (string) $cell['r'];
-                preg_match('/^([A-Z]+)(\d+)$/', $ref, $m);
-                $colIndex = $this->colLetterToIndex($m[1] ?? 'A');
+                if (preg_match('/^([A-Z]+)(\d+)$/', $ref, $m)) {
+                    $colIndex = $this->colLetterToIndex($m[1]);
+                } else {
+                    $colIndex = $prevColIndex + 1;
+                }
 
                 while ($prevColIndex < $colIndex - 1) {
                     $rowData[]    = null;
@@ -171,19 +180,73 @@ abstract class BaseImport
                 $type  = (string) ($cell['t'] ?? '');
                 $value = (string) ($cell->v ?? '');
 
-                $rowData[] = match ($type) {
+                $cellValue = match ($type) {
                     's'        => $sharedStrings[(int) $value] ?? '',
                     'str', 'inlineStr' => (string) ($cell->is->t ?? $cell->v ?? ''),
                     default    => $value,
                 };
 
+                $rowData[] = $cellValue;
                 $prevColIndex = $colIndex;
+                $maxColIndex = max($maxColIndex, $colIndex);
             }
 
-            $rows[] = $rowData;
+            $rowsIndexed[$rIndex] = $rowData;
         }
 
-        return $rows;
+        // Proses mergeCells untuk menduplikasi nilai ke semua sel yang tergabung
+        if (isset($sheet->mergeCells->mergeCell)) {
+            foreach ($sheet->mergeCells->mergeCell as $mergeCell) {
+                $ref = (string) $mergeCell['ref'];
+                if (strpos($ref, ':') !== false) {
+                    list($start, $end) = explode(':', $ref);
+                    
+                    preg_match('/^([A-Z]+)(\d+)$/', $start, $mStart);
+                    preg_match('/^([A-Z]+)(\d+)$/', $end, $mEnd);
+                    
+                    if ($mStart && $mEnd) {
+                        $startCol = $this->colLetterToIndex($mStart[1]);
+                        $startRow = (int) $mStart[2] - 1;
+                        $endCol = $this->colLetterToIndex($mEnd[1]);
+                        $endRow = (int) $mEnd[2] - 1;
+                        
+                        $val = $rowsIndexed[$startRow][$startCol] ?? null;
+                        $maxColIndex = max($maxColIndex, $endCol);
+                        
+                        for ($r = $startRow; $r <= $endRow; $r++) {
+                            for ($c = $startCol; $c <= $endCol; $c++) {
+                                if (!isset($rowsIndexed[$r])) {
+                                    $rowsIndexed[$r] = [];
+                                }
+                                while (count($rowsIndexed[$r]) <= $c) {
+                                    $rowsIndexed[$r][] = null;
+                                }
+                                $rowsIndexed[$r][$c] = $val;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Susun ulang menjadi array berurutan (0..max) dan pastikan panjang seragam
+        ksort($rowsIndexed);
+        $finalRows = [];
+        $maxRowIndex = empty($rowsIndexed) ? -1 : max(array_keys($rowsIndexed));
+
+        for ($i = 0; $i <= $maxRowIndex; $i++) {
+            if (!isset($rowsIndexed[$i])) {
+                $finalRows[] = array_fill(0, $maxColIndex + 1, null);
+            } else {
+                $row = $rowsIndexed[$i];
+                while (count($row) <= $maxColIndex) {
+                    $row[] = null;
+                }
+                $finalRows[] = $row;
+            }
+        }
+
+        return $finalRows;
     }
 
     protected function readCsv(string $path): array

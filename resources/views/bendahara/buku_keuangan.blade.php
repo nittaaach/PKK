@@ -52,6 +52,7 @@
                                     <tr>
                                         <th>NO</th><th>Tanggal, Bulan, Tahun</th><th>Sumber Dana</th><th>Uraian</th><th>Bukti kas</th><th>Penerimaan (Rp)</th>
                                         <th>NO</th><th>Tanggal, Bulan, Tahun</th><th>Sumber Dana</th><th>Uraian</th><th>Bukti kas</th><th>Pengeluaran (Rp)</th>
+                                        <th>Diinput Oleh</th>
                                         <th class="no-print">Aksi</th>
                                     </tr>
                                 </thead>
@@ -72,6 +73,15 @@
                                             <td>{{ $item->uraian_pengeluaran }}</td>
                                             <td>{{ $item->bukti_kas_pengeluaran }}</td>
                                             <td class="text-end">{{ $item->pengeluaran ? number_format($item->pengeluaran, 0, ',', '.') : '' }}</td>
+                                            <td class="text-center">
+                                                @if($item->role === 'Bendahara')
+                                                    <span class="badge bg-primary">Bendahara</span>
+                                                @elseif($item->role === 'Sekretaris')
+                                                    <span class="badge bg-success">Sekretaris</span>
+                                                @else
+                                                    <span class="badge bg-secondary">{{ $item->role }}</span>
+                                                @endif
+                                            </td>
                                             <td class="no-print text-center">
                                                 <div class="dropdown">
                                                     <button class="btn btn-sm btn-light py-0 px-1" type="button" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
@@ -90,6 +100,7 @@
                                         <td class="text-end">Rp {{ number_format($total_penerimaan, 0, ',', '.') }}</td>
                                         <td colspan="5" class="text-end pe-3">JUMLAH</td>
                                         <td class="text-end">Rp {{ number_format($total_pengeluaran, 0, ',', '.') }}</td>
+                                        <td></td>
                                         <td class="no-print"></td>
                                     </tr>
                                 </tfoot>

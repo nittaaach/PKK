@@ -64,6 +64,7 @@
                                         <th>URAIAN</th>
                                         <th>BUKTI KAS</th>
                                         <th>PENGELUARAN (Rp)</th>
+                                        <th>DIINPUT OLEH</th>
                                         <th class="no-print">ACTION</th>
                                     </tr>
                                 </thead>
@@ -96,6 +97,15 @@
                                             <td class="text-end">
                                                 {{ $item->pengeluaran ? number_format($item->pengeluaran, 0, ',', '.') : '' }}
                                             </td>
+                                            <td class="text-center">
+                                                @if($item->role === 'Bendahara')
+                                                    <span class="badge bg-primary">Bendahara</span>
+                                                @elseif($item->role === 'Sekretaris')
+                                                    <span class="badge bg-success">Sekretaris</span>
+                                                @else
+                                                    <span class="badge bg-secondary">{{ $item->role }}</span>
+                                                @endif
+                                            </td>
                                             <td class="no-print text-center">
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <button type="button" class="btn btn-sm btn-primary ti ti-edit"
@@ -107,13 +117,6 @@
                                                         data-bs-target="#DeleteModal-{{ $item->id }}">
                                                     </button>
                                                 </div>
-                                                {{-- <div class="dropdown">
-                                                    <button class="btn btn-sm btn-light py-0 px-1" type="button" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#UpdateModal-{{ $item->id }}">Edit</a></li>
-                                                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#DeleteModal-{{ $item->id }}">Hapus</a></li>
-                                                    </ul>
-                                                </div> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -124,6 +127,7 @@
                                         <td class="text-end">Rp {{ number_format($total_penerimaan, 0, ',', '.') }}</td>
                                         <td colspan="5" class="text-end pe-3">JUMLAH</td>
                                         <td class="text-end">Rp {{ number_format($total_pengeluaran, 0, ',', '.') }}</td>
+                                        <td></td>
                                         <td class="no-print"></td>
                                     </tr>
                                 </tfoot>

@@ -13,6 +13,7 @@ use App\Http\Controllers\DataUmumController;
 use App\Http\Controllers\BukuKeuanganController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\Pokja3DataController;
 // use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //route for auth
@@ -279,6 +280,76 @@ Route::middleware(['auth:pokja_3', 'role:Pokja_3'])->group(function () {
     Route::put('/pokja_3/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja3');
     Route::delete('/pokja_3/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja3');
     Route::post('/pokja_3/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja3'])->name('papan_data.import_pokja3');
+
+    // ---- Data Prestasi Pokja 3 ----
+    Route::get('/pokja_3/data_prestasi', [Pokja3DataController::class, 'data_prestasi'])->name('Pokja_3.data_prestasi');
+    Route::post('/pokja_3/data_prestasi', [Pokja3DataController::class, 'store_data_prestasi'])->name('data_prestasi.store_pokja3');
+    Route::post('/pokja_3/data_prestasi/import', [Pokja3DataController::class, 'import_data_prestasi'])->name('Pokja_3.import_data_prestasi');
+    Route::put('/pokja_3/data_prestasi/{id}', [Pokja3DataController::class, 'update_data_prestasi'])->name('data_prestasi.update_pokja3');
+    Route::delete('/pokja_3/data_prestasi/{id}', [Pokja3DataController::class, 'destroy_data_prestasi'])->name('data_prestasi.destroy_pokja3');
+
+    // ---- Gertam Pokja 3 ----
+    Route::get('/pokja_3/gertam', [Pokja3DataController::class, 'gertam'])->name('Pokja_3.gertam');
+    Route::post('/pokja_3/gertam', [Pokja3DataController::class, 'store_gertam'])->name('gertam.store_pokja3');
+    Route::post('/pokja_3/gertam/import', [Pokja3DataController::class, 'import_gertam'])->name('Pokja_3.import_gertam');
+    Route::put('/pokja_3/gertam/{id}', [Pokja3DataController::class, 'update_gertam'])->name('gertam.update_pokja3');
+    Route::delete('/pokja_3/gertam/{id}', [Pokja3DataController::class, 'destroy_gertam'])->name('gertam.destroy_pokja3');
+
+    // ---- GPTP Pokja 3 ----
+    Route::get('/pokja_3/gptp', [Pokja3DataController::class, 'gptp'])->name('Pokja_3.gptp');
+    Route::post('/pokja_3/gptp', [Pokja3DataController::class, 'store_gptp'])->name('gptp.store_pokja3');
+    Route::post('/pokja_3/gptp/import', [Pokja3DataController::class, 'import_gptp'])->name('Pokja_3.import_gptp');
+    Route::put('/pokja_3/gptp/{id}', [Pokja3DataController::class, 'update_gptp'])->name('gptp.update_pokja3');
+    Route::delete('/pokja_3/gptp/{id}', [Pokja3DataController::class, 'destroy_gptp'])->name('gptp.destroy_pokja3');
+
+    // ---- Inventaris Pokja 3 ----
+    Route::get('/pokja_3/inventaris', [Pokja3DataController::class, 'inventaris'])->name('Pokja_3.inventaris');
+    Route::post('/pokja_3/inventaris', [Pokja3DataController::class, 'store_inventaris'])->name('inventaris.store_pokja3');
+    Route::post('/pokja_3/inventaris/import', [Pokja3DataController::class, 'import_inventaris'])->name('Pokja_3.import_inventaris');
+    Route::put('/pokja_3/inventaris/{id}', [Pokja3DataController::class, 'update_inventaris'])->name('inventaris.update_pokja3');
+    Route::delete('/pokja_3/inventaris/{id}', [Pokja3DataController::class, 'destroy_inventaris'])->name('inventaris.destroy_pokja3');
+
+    // ---- Notulen Pokja 3 ----
+    Route::get('/pokja_3/notulen', [Pokja3DataController::class, 'notulen'])->name('Pokja_3.notulen');
+    Route::post('/pokja_3/notulen', [Pokja3DataController::class, 'store_notulen'])->name('notulen.store_pokja3');
+    Route::post('/pokja_3/notulen/import', [Pokja3DataController::class, 'import_notulen'])->name('Pokja_3.import_notulen');
+    Route::put('/pokja_3/notulen/{id}', [Pokja3DataController::class, 'update_notulen'])->name('notulen.update_pokja3');
+    Route::delete('/pokja_3/notulen/{id}', [Pokja3DataController::class, 'destroy_notulen'])->name('notulen.destroy_pokja3');
+
+    // ---- Laporan Kegiatan Pokja 3 ----
+    Route::get('/pokja_3/lap_kegiatan', [Pokja3DataController::class, 'lap_kegiatan'])->name('Pokja_3.lap_kegiatan');
+    Route::post('/pokja_3/lap_kegiatan', [Pokja3DataController::class, 'store_lap_kegiatan'])->name('lap_kegiatan.store_pokja3');
+    Route::post('/pokja_3/lap_kegiatan/import', [Pokja3DataController::class, 'import_lap_kegiatan'])->name('Pokja_3.import_lap_kegiatan');
+    Route::put('/pokja_3/lap_kegiatan/{id}', [Pokja3DataController::class, 'update_lap_kegiatan'])->name('lap_kegiatan.update_pokja3');
+    Route::delete('/pokja_3/lap_kegiatan/{id}', [Pokja3DataController::class, 'destroy_lap_kegiatan'])->name('lap_kegiatan.destroy_pokja3');
+
+    // ---- Program Kerja Pokja 3 ----
+    Route::get('/pokja_3/program_kerja', [Pokja3DataController::class, 'program_kerja'])->name('Pokja_3.program_kerja');
+    Route::post('/pokja_3/program_kerja', [Pokja3DataController::class, 'store_program_kerja'])->name('program_kerja.store_pokja3');
+    Route::post('/pokja_3/program_kerja/import', [Pokja3DataController::class, 'import_program_kerja'])->name('Pokja_3.import_program_kerja');
+    Route::put('/pokja_3/program_kerja/{id}', [Pokja3DataController::class, 'update_program_kerja'])->name('program_kerja.update_pokja3');
+    Route::delete('/pokja_3/program_kerja/{id}', [Pokja3DataController::class, 'destroy_program_kerja'])->name('program_kerja.destroy_pokja3');
+
+    // ---- Evaluasi Program Pokja 3 ----
+    Route::get('/pokja_3/eval_program', [Pokja3DataController::class, 'eval_program'])->name('Pokja_3.eval_program');
+    Route::post('/pokja_3/eval_program', [Pokja3DataController::class, 'store_eval_program'])->name('eval_program.store_pokja3');
+    Route::post('/pokja_3/eval_program/import', [Pokja3DataController::class, 'import_eval_program'])->name('Pokja_3.import_eval_program');
+    Route::put('/pokja_3/eval_program/{id}', [Pokja3DataController::class, 'update_eval_program'])->name('eval_program.update_pokja3');
+    Route::delete('/pokja_3/eval_program/{id}', [Pokja3DataController::class, 'destroy_eval_program'])->name('eval_program.destroy_pokja3');
+
+    // ---- Data PTP / Hatinya PKK Pokja 3 ----
+    Route::get('/pokja_3/data_ptp', [Pokja3DataController::class, 'data_ptp'])->name('Pokja_3.data_ptp');
+    Route::post('/pokja_3/data_ptp', [Pokja3DataController::class, 'store_data_ptp'])->name('data_ptp.store_pokja3');
+    Route::post('/pokja_3/data_ptp/import', [Pokja3DataController::class, 'import_data_ptp'])->name('Pokja_3.import_data_ptp');
+    Route::put('/pokja_3/data_ptp/{id}', [Pokja3DataController::class, 'update_data_ptp'])->name('data_ptp.update_pokja3');
+    Route::delete('/pokja_3/data_ptp/{id}', [Pokja3DataController::class, 'destroy_data_ptp'])->name('data_ptp.destroy_pokja3');
+
+    // ---- Data Potensi Pokja 3 ----
+    Route::get('/pokja_3/data_potensi', [Pokja3DataController::class, 'data_potensi'])->name('Pokja_3.data_potensi');
+    Route::post('/pokja_3/data_potensi', [Pokja3DataController::class, 'store_data_potensi'])->name('data_potensi.store_pokja3');
+    Route::post('/pokja_3/data_potensi/import', [Pokja3DataController::class, 'import_data_potensi'])->name('Pokja_3.import_data_potensi');
+    Route::put('/pokja_3/data_potensi/{id}', [Pokja3DataController::class, 'update_data_potensi'])->name('data_potensi.update_pokja3');
+    Route::delete('/pokja_3/data_potensi/{id}', [Pokja3DataController::class, 'destroy_data_potensi'])->name('data_potensi.destroy_pokja3');
 });
 
 //================ Auth Group: Pokja 4 ================

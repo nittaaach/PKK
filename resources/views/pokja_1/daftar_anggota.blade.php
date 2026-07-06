@@ -250,11 +250,15 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Status Perkawinan</label>
-                                <select class="form-select" name="status_perkawinan">
+                                <select class="form-select" name="status_perkawinan" onchange="toggleLainnya(this)">
                                     <option value="">-- Pilih --</option>
                                     <option value="Kawin">Kawin</option>
                                     <option value="Belum Kawin">Belum Kawin</option>
+                                    <option value="Cerai Mati">Cerai Mati</option>
+                                    <option value="Cerai Hidup">Cerai Hidup</option>
+                                    <option value="Lainnya">Lainnya</option>
                                 </select>
+                                <input type="text" class="form-control mt-2 status-perkawinan-lainnya" name="status_perkawinan_lainnya" placeholder="Sebutkan..." style="display: none;">
                             </div>
 
                             <!-- Kedudukan / Jabatan -->
@@ -393,9 +397,19 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
+                                    @php
+                                        $isLainnya = !in_array($item->status_perkawinan, ['', 'Kawin', 'Belum Kawin', 'Cerai Mati', 'Cerai Hidup']) && !empty($item->status_perkawinan);
+                                    @endphp
                                     <label class="form-label">Status Perkawinan</label>
-                                    <input type="text" class="form-control" name="status_perkawinan"
-                                        value="{{ $item->status_perkawinan }}">
+                                    <select class="form-select" name="status_perkawinan" onchange="toggleLainnya(this)">
+                                        <option value="">-- Pilih --</option>
+                                        <option value="Kawin" {{ $item->status_perkawinan == 'Kawin' ? 'selected' : '' }}>Kawin</option>
+                                        <option value="Belum Kawin" {{ $item->status_perkawinan == 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
+                                        <option value="Cerai Mati" {{ $item->status_perkawinan == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
+                                        <option value="Cerai Hidup" {{ $item->status_perkawinan == 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
+                                        <option value="Lainnya" {{ $isLainnya ? 'selected' : '' }}>Lainnya</option>
+                                    </select>
+                                    <input type="text" class="form-control mt-2 status-perkawinan-lainnya" name="status_perkawinan_lainnya" placeholder="Sebutkan..." value="{{ $isLainnya ? $item->status_perkawinan : '' }}" style="{{ $isLainnya ? '' : 'display: none;' }}">
                                 </div>
 
                                 <!-- Kedudukan / Jabatan -->
@@ -565,25 +579,19 @@
             </div>
         @endif
     @endforeach
+<script>
+    function toggleLainnya(selectElement) {
+        var inputElement = selectElement.nextElementSibling;
+        if (inputElement && inputElement.classList.contains('status-perkawinan-lainnya')) {
+            if (selectElement.value === 'Lainnya') {
+                inputElement.style.display = 'block';
+                inputElement.required = true;
+            } else {
+                inputElement.style.display = 'none';
+                inputElement.required = false;
+                inputElement.value = '';
+            }
+        }
+    }
+</script>
 @endsection
-
-{{-- ... (di luar 
-    <!-- Modal Review Foto -->
-    @foreach ($anggota_pokja1 ?? [] as $item)
-        @if ($item->foto)
-        <div id="FotoModal-{{ $item->id }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Review Foto: {{ $item->name }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <img src="{{ asset('storage/' . $item->foto) }}" alt="{{ $item->name }}" class="img-fluid rounded">
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
-    @endforeach
-@endsection) ... --}}
