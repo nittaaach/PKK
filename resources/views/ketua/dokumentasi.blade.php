@@ -1,4 +1,4 @@
-@extends('admin-temp.layout_ketua')
+@extends($layout ?? 'admin-temp.layout_ketua')
 @section('content_admin')
     <!-- [ breadcrumb ] start -->
     <div class="page-header">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="page-header-title">
-                        <h2 class="mb-0">Dokumentasi</h2>
+                        <h2 class="mb-0">Dokumentasi {{ isset($source_label) ? '- ' . $source_label : '' }} @if($is_read_only ?? false) <span class="badge bg-info">Lihat Saja</span> @endif</h2>
                     </div>
                 </div>
             </div>
@@ -34,19 +34,23 @@
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
                                 {{-- <h5 class="mb-3">KTP </h5> --}}
+                                @if(!($is_read_only ?? false))
                                 <div class="py-3">
                                     <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
                                         data-bs-target="#AdddokumModal">
                                         Tambah Dokumentasi
                                     </button>
                                 </div>
+                                @endif
                                 <table id="basic-btn-rw" class="table table-striped table-bordered nowrap">
                                     <thead>
                                         <tr>
                                             <th>No</th>
                                             <th>Foto</th>
                                             <th>Caption</th>
+                                            @if(!($is_read_only ?? false))
                                             <th>Action</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,6 +69,7 @@
                                                     style="max-width: 200px; white-space: normal; overflow-wrap: break-word;">
                                                     {{ $item->caption }}
                                                 </td>
+                                                @if(!($is_read_only ?? false))
                                                 <td>
                                                     <button type="button" class="btn btn-primary me-3"
                                                         data-bs-toggle="modal"
@@ -77,6 +82,7 @@
                                                         Delete
                                                     </button>
                                                 </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -85,7 +91,9 @@
                                             <th>No</th>
                                             <th>Foto</th>
                                             <th>Caption</th>
+                                            @if(!($is_read_only ?? false))
                                             <th>Action</th>
+                                            @endif
                                         </tr>
                                     </tfoot>
                                 </table>

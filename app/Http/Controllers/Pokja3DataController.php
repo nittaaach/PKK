@@ -258,4 +258,36 @@ class Pokja3DataController extends Controller
         DataPotensiPokja3::findOrFail($id)->delete();
         return $this->crudResponse('dihapus');
     }
+
+    private function viewReadOnly(string $viewName, $query, string $guard)
+    {
+        $layout = $guard === 'ketua' ? 'admin-temp.layout_ketua' : 'admin-temp.layout_wakil';
+        return view($viewName, [
+            'data' => $query,
+            'layout' => $layout,
+            'is_read_only' => true
+        ]);
+    }
+
+    public function data_prestasi_ketua() { return $this->viewReadOnly('pokja_3.data_prestasi', DataPrestasiPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function gertam_ketua() { return $this->viewReadOnly('pokja_3.gertam', GertamPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function gptp_ketua() { return $this->viewReadOnly('pokja_3.gptp', GptpPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function inventaris_ketua() { return $this->viewReadOnly('pokja_3.inventaris', InventarisPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function notulen_ketua() { return $this->viewReadOnly('pokja_3.notulen', NotulenPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function lap_kegiatan_ketua() { return $this->viewReadOnly('pokja_3.lap_kegiatan', LapKegiatanPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function program_kerja_ketua() { return $this->viewReadOnly('pokja_3.program_kerja', ProgramKerjaPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function eval_program_ketua() { return $this->viewReadOnly('pokja_3.eval_program', EvalProgramPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function data_ptp_ketua() { return $this->viewReadOnly('pokja_3.data_ptp', DataPtpPokja3::get(), 'ketua'); }
+    public function data_potensi_ketua() { return $this->viewReadOnly('pokja_3.data_potensi', DataPotensiPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+
+    public function data_prestasi_wakil() { return $this->viewReadOnly('pokja_3.data_prestasi', DataPrestasiPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function gertam_wakil() { return $this->viewReadOnly('pokja_3.gertam', GertamPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function gptp_wakil() { return $this->viewReadOnly('pokja_3.gptp', GptpPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function inventaris_wakil() { return $this->viewReadOnly('pokja_3.inventaris', InventarisPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function notulen_wakil() { return $this->viewReadOnly('pokja_3.notulen', NotulenPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function lap_kegiatan_wakil() { return $this->viewReadOnly('pokja_3.lap_kegiatan', LapKegiatanPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function program_kerja_wakil() { return $this->viewReadOnly('pokja_3.program_kerja', ProgramKerjaPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function eval_program_wakil() { return $this->viewReadOnly('pokja_3.eval_program', EvalProgramPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function data_ptp_wakil() { return $this->viewReadOnly('pokja_3.data_ptp', DataPtpPokja3::get(), 'wakil'); }
+    public function data_potensi_wakil() { return $this->viewReadOnly('pokja_3.data_potensi', DataPotensiPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
 }

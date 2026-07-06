@@ -1,17 +1,17 @@
-@extends('admin-temp.layout_pokja_3')
+@extends($layout ?? 'admin-temp.layout_pokja_3')
 @section('content_admin')
     <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('Pokja_3.dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ auth()->guard('ketua')->check() ? route('Ketua.dashboard') : (auth()->guard('wakil')->check() ? route('Wakil.dashboard') : route('Pokja_3.dashboard')) }}">Home</a></li>
                         <li class="breadcrumb-item" aria-current="page">Gertam</li>
                     </ul>
                 </div>
                 <div class="col-md-12">
                     <div class="page-header-title">
-                        <h2 class="mb-0">Data Gerakan Tanam (GERTAM)</h2>
+                        <h2 class="mb-0">Data Gerakan Tanam (GERTAM) @if($is_read_only ?? false) <span class="badge bg-info">Lihat Saja</span> @endif</h2>
                         <p class="text-muted mt-1">TP PKK Kelurahan Cipinang Melayu - Pokja III</p>
                     </div>
                 </div>
@@ -30,10 +30,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
+                    @if(!($is_read_only ?? false))
                     <div class="py-3">
                         <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#AddModal"><i class="ti ti-plus me-1"></i> Tambah Data</button>
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ImportModal"><i class="ti ti-file-import me-1"></i> Import File</button>
                     </div>
+                    @endif
                     <table id="basic-btn" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                             <tr>
@@ -43,7 +45,9 @@
                                 <th class="text-center">JUMLAH</th>
                                 <th class="text-center">WAKTU PENERIMAAN</th>
                                 <th class="text-center">KETERANGAN</th>
+                                @if(!($is_read_only ?? false))
                                 <th class="text-center">ACTION</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -55,12 +59,14 @@
                                     <td>{{ $item->jumlah ?? '-' }}</td>
                                     <td>{{ $item->waktu_penerimaan ?? '-' }}</td>
                                     <td>{{ $item->keterangan ?? '-' }}</td>
+                                    @if(!($is_read_only ?? false))
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
                                             <button type="button" class="btn btn-sm btn-primary ti ti-edit" data-bs-toggle="modal" data-bs-target="#UpdateModal-{{ $item->id }}"></button>
                                             <button type="button" class="btn btn-sm btn-danger ti ti-trash" data-bs-toggle="modal" data-bs-target="#DeleteModal-{{ $item->id }}"></button>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

@@ -55,6 +55,26 @@ Route::middleware(['auth:ketua', 'role:Ketua'])->group(function () {
     Route::get('/ketua/pokja4/kegiatan', [KegiatanController::class, 'kegiatan_ketua_pokja4'])->name('Ketua.pokja4_kegiatan');
     Route::get('/ketua/pokja4/agenda_surat', [AgendaSuratController::class, 'agenda_surat_ketua_pokja4'])->name('Ketua.pokja4_agenda_surat');
     Route::get('/ketua/pokja4/papan_data', [PapanDataController::class, 'papan_data_ketua_pokja4'])->name('Ketua.pokja4_papan_data');
+
+    // Read-only dokumentasi for Ketua
+    Route::get('/ketua/sekretaris/dokumentasi', [DokumentasiController::class, 'view_sekretaris_ketua'])->name('Ketua.sekretaris_dokumentasi');
+    Route::get('/ketua/bendahara/dokumentasi', [DokumentasiController::class, 'view_bendahara_ketua'])->name('Ketua.bendahara_dokumentasi');
+    Route::get('/ketua/pokja1/dokumentasi', [DokumentasiController::class, 'view_pokja1_ketua'])->name('Ketua.pokja1_dokumentasi');
+    Route::get('/ketua/pokja2/dokumentasi', [DokumentasiController::class, 'view_pokja2_ketua'])->name('Ketua.pokja2_dokumentasi');
+    Route::get('/ketua/pokja3/dokumentasi', [DokumentasiController::class, 'view_pokja3_ketua'])->name('Ketua.pokja3_dokumentasi');
+    Route::get('/ketua/pokja4/dokumentasi', [DokumentasiController::class, 'view_pokja4_ketua'])->name('Ketua.pokja4_dokumentasi');
+
+    // Read-only Pokja 3 custom pages for Ketua
+    Route::get('/ketua/pokja3/data_prestasi', [Pokja3DataController::class, 'data_prestasi_ketua'])->name('Ketua.pokja3_data_prestasi');
+    Route::get('/ketua/pokja3/gertam', [Pokja3DataController::class, 'gertam_ketua'])->name('Ketua.pokja3_gertam');
+    Route::get('/ketua/pokja3/gptp', [Pokja3DataController::class, 'gptp_ketua'])->name('Ketua.pokja3_gptp');
+    Route::get('/ketua/pokja3/inventaris', [Pokja3DataController::class, 'inventaris_ketua'])->name('Ketua.pokja3_inventaris');
+    Route::get('/ketua/pokja3/notulen', [Pokja3DataController::class, 'notulen_ketua'])->name('Ketua.pokja3_notulen');
+    Route::get('/ketua/pokja3/lap_kegiatan', [Pokja3DataController::class, 'lap_kegiatan_ketua'])->name('Ketua.pokja3_lap_kegiatan');
+    Route::get('/ketua/pokja3/program_kerja', [Pokja3DataController::class, 'program_kerja_ketua'])->name('Ketua.pokja3_program_kerja');
+    Route::get('/ketua/pokja3/eval_program', [Pokja3DataController::class, 'eval_program_ketua'])->name('Ketua.pokja3_eval_program');
+    Route::get('/ketua/pokja3/data_ptp', [Pokja3DataController::class, 'data_ptp_ketua'])->name('Ketua.pokja3_data_ptp');
+    Route::get('/ketua/pokja3/data_potensi', [Pokja3DataController::class, 'data_potensi_ketua'])->name('Ketua.pokja3_data_potensi');
 });
 
 //================ Auth Group: Wakil ================
@@ -87,6 +107,26 @@ Route::middleware(['auth:wakil', 'role:Wakil'])->group(function () {
     Route::get('/wakil/pokja4/kegiatan', [KegiatanController::class, 'kegiatan_wakil_pokja4'])->name('Wakil.pokja4_kegiatan');
     Route::get('/wakil/pokja4/agenda_surat', [AgendaSuratController::class, 'agenda_surat_wakil_pokja4'])->name('Wakil.pokja4_agenda_surat');
     Route::get('/wakil/pokja4/papan_data', [PapanDataController::class, 'papan_data_wakil_pokja4'])->name('Wakil.pokja4_papan_data');
+
+    // Read-only dokumentasi for Wakil
+    Route::get('/wakil/sekretaris/dokumentasi', [DokumentasiController::class, 'view_sekretaris_wakil'])->name('Wakil.sekretaris_dokumentasi');
+    Route::get('/wakil/bendahara/dokumentasi', [DokumentasiController::class, 'view_bendahara_wakil'])->name('Wakil.bendahara_dokumentasi');
+    Route::get('/wakil/pokja1/dokumentasi', [DokumentasiController::class, 'view_pokja1_wakil'])->name('Wakil.pokja1_dokumentasi');
+    Route::get('/wakil/pokja2/dokumentasi', [DokumentasiController::class, 'view_pokja2_wakil'])->name('Wakil.pokja2_dokumentasi');
+    Route::get('/wakil/pokja3/dokumentasi', [DokumentasiController::class, 'view_pokja3_wakil'])->name('Wakil.pokja3_dokumentasi');
+    Route::get('/wakil/pokja4/dokumentasi', [DokumentasiController::class, 'view_pokja4_wakil'])->name('Wakil.pokja4_dokumentasi');
+
+    // Read-only Pokja 3 custom pages for Wakil
+    Route::get('/wakil/pokja3/data_prestasi', [Pokja3DataController::class, 'data_prestasi_wakil'])->name('Wakil.pokja3_data_prestasi');
+    Route::get('/wakil/pokja3/gertam', [Pokja3DataController::class, 'gertam_wakil'])->name('Wakil.pokja3_gertam');
+    Route::get('/wakil/pokja3/gptp', [Pokja3DataController::class, 'gptp_wakil'])->name('Wakil.pokja3_gptp');
+    Route::get('/wakil/pokja3/inventaris', [Pokja3DataController::class, 'inventaris_wakil'])->name('Wakil.pokja3_inventaris');
+    Route::get('/wakil/pokja3/notulen', [Pokja3DataController::class, 'notulen_wakil'])->name('Wakil.pokja3_notulen');
+    Route::get('/wakil/pokja3/lap_kegiatan', [Pokja3DataController::class, 'lap_kegiatan_wakil'])->name('Wakil.pokja3_lap_kegiatan');
+    Route::get('/wakil/pokja3/program_kerja', [Pokja3DataController::class, 'program_kerja_wakil'])->name('Wakil.pokja3_program_kerja');
+    Route::get('/wakil/pokja3/eval_program', [Pokja3DataController::class, 'eval_program_wakil'])->name('Wakil.pokja3_eval_program');
+    Route::get('/wakil/pokja3/data_ptp', [Pokja3DataController::class, 'data_ptp_wakil'])->name('Wakil.pokja3_data_ptp');
+    Route::get('/wakil/pokja3/data_potensi', [Pokja3DataController::class, 'data_potensi_wakil'])->name('Wakil.pokja3_data_potensi');
 });
 
 //================ Auth Group: Bendahara ================

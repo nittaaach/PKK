@@ -101,4 +101,30 @@ class DokumentasiController extends Controller
     public function store_pokja4(Request $request) { return $this->_store($request, 'Pokja 4'); }
     public function update_pokja4(Request $request, $id) { return $this->_update($request, $id, 'Pokja 4'); }
     public function destroy_pokja4($id) { return $this->_destroy($id, 'Pokja 4'); }
+
+    private function index_read_only_role($target_role, $label, $guard)
+    {
+        $view = $guard === 'ketua' ? 'ketua.dokumentasi' : 'wakil.dokumentasi';
+        $layout = $guard === 'ketua' ? 'admin-temp.layout_ketua' : 'admin-temp.layout_wakil';
+        return view($view, [
+            'dokumentasi' => Dokumentasi::where('role', $target_role)->latest()->get(),
+            'source_label' => $label,
+            'is_read_only' => true,
+            'layout' => $layout
+        ]);
+    }
+
+    public function view_sekretaris_ketua() { return $this->index_read_only_role('Sekretaris', 'Sekretaris', 'ketua'); }
+    public function view_bendahara_ketua() { return $this->index_read_only_role('Bendahara', 'Bendahara', 'ketua'); }
+    public function view_pokja1_ketua() { return $this->index_read_only_role('Pokja 1', 'Pokja 1', 'ketua'); }
+    public function view_pokja2_ketua() { return $this->index_read_only_role('Pokja 2', 'Pokja 2', 'ketua'); }
+    public function view_pokja3_ketua() { return $this->index_read_only_role('Pokja 3', 'Pokja 3', 'ketua'); }
+    public function view_pokja4_ketua() { return $this->index_read_only_role('Pokja 4', 'Pokja 4', 'ketua'); }
+
+    public function view_sekretaris_wakil() { return $this->index_read_only_role('Sekretaris', 'Sekretaris', 'wakil'); }
+    public function view_bendahara_wakil() { return $this->index_read_only_role('Bendahara', 'Bendahara', 'wakil'); }
+    public function view_pokja1_wakil() { return $this->index_read_only_role('Pokja 1', 'Pokja 1', 'wakil'); }
+    public function view_pokja2_wakil() { return $this->index_read_only_role('Pokja 2', 'Pokja 2', 'wakil'); }
+    public function view_pokja3_wakil() { return $this->index_read_only_role('Pokja 3', 'Pokja 3', 'wakil'); }
+    public function view_pokja4_wakil() { return $this->index_read_only_role('Pokja 4', 'Pokja 4', 'wakil'); }
 }

@@ -28,6 +28,12 @@
                             <span class="pc-mtext">Dashboard</span>
                         </a>
                     </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'dokumentasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'dokumentasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
+                            <span class="pc-mtext">Dokumentasi</span>
+                        </a>
+                    </li>
 
                     {{-- =============== KEUANGAN (Bendahara) =============== --}}
                     <li class="pc-item pc-caption">
@@ -88,6 +94,13 @@
                             <span class="pc-mtext">Data Potensi Wilayah</span>
                         </a>
                     </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'sekretaris_dokumentasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'sekretaris_dokumentasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
+                            <span class="pc-mtext">Dokumentasi</span>
+                        </a>
+                    </li>
 
                     {{-- =============== DATA POKJA 1 =============== --}}
                     <li class="pc-item pc-caption">
@@ -119,6 +132,13 @@
                         <a href="{{ route($routePrefix . 'pokja1_papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Papan Data</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja1_dokumentasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja1_dokumentasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
+                            <span class="pc-mtext">Dokumentasi</span>
                         </a>
                     </li>
 
@@ -154,6 +174,13 @@
                             <span class="pc-mtext">Papan Data</span>
                         </a>
                     </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja2_dokumentasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja2_dokumentasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
+                            <span class="pc-mtext">Dokumentasi</span>
+                        </a>
+                    </li>
 
                     {{-- =============== DATA POKJA 3 =============== --}}
                     <li class="pc-item pc-caption">
@@ -187,6 +214,83 @@
                             <span class="pc-mtext">Papan Data</span>
                         </a>
                     </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_dokumentasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_dokumentasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
+                            <span class="pc-mtext">Dokumentasi</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_program_kerja') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_program_kerja') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-file-certificate"></i></span>
+                            <span class="pc-mtext">Program Kerja</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_eval_program') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_eval_program') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-clipboard-check"></i></span>
+                            <span class="pc-mtext">Evaluasi Program</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_gertam') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_gertam') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
+                            <span class="pc-mtext">Gertam</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_gptp') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_gptp') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-trees"></i></span>
+                            <span class="pc-mtext">GPTP</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_data_prestasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_data_prestasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-award"></i></span>
+                            <span class="pc-mtext">Data Prestasi</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_data_ptp') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_data_ptp') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-building-community"></i></span>
+                            <span class="pc-mtext">Data PTP / Hatinya PKK</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_data_potensi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_data_potensi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-chart-bar"></i></span>
+                            <span class="pc-mtext">Data Potensi</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_inventaris') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_inventaris') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-package"></i></span>
+                            <span class="pc-mtext">Buku Inventaris</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_notulen') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_notulen') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-notes"></i></span>
+                            <span class="pc-mtext">Notulen</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja3_lap_kegiatan') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja3_lap_kegiatan') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-report"></i></span>
+                            <span class="pc-mtext">Laporan Kegiatan</span>
+                        </a>
+                    </li>
 
                     {{-- =============== DATA POKJA 4 =============== --}}
                     <li class="pc-item pc-caption">
@@ -218,6 +322,13 @@
                         <a href="{{ route($routePrefix . 'pokja4_papan_data') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                             <span class="pc-mtext">Papan Data</span>
+                        </a>
+                    </li>
+                    <li
+                        class="pc-item {{ request()->routeIs($routePrefix . 'pokja4_dokumentasi') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'pokja4_dokumentasi') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-camera"></i></span>
+                            <span class="pc-mtext">Dokumentasi</span>
                         </a>
                     </li>
                 </ul>
