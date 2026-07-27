@@ -73,6 +73,12 @@
                             <span class="pc-mtext">Dokumentasi</span>
                         </a>
                     </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'notulen') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'notulen') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-notes"></i></span>
+                            <span class="pc-mtext">Notulen</span>
+                        </a>
+                    </li>
 
                     {{-- <li class="pc-item pc-caption">
                         <label>Pages</label>

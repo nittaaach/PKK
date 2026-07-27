@@ -1,18 +1,18 @@
-@extends($layout ?? 'admin-temp.layout_pokja_3')
+@extends('admin-temp.layout_pokja_4')
 @section('content_admin')
     <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ auth()->guard('ketua')->check() ? route('Ketua.dashboard') : (auth()->guard('wakil')->check() ? route('Wakil.dashboard') : route('Pokja_3.dashboard')) }}">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page">Notulen</li>
+                        <li class="breadcrumb-item"><a href="{{ route('Pokja_4.dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Notulen Rapat</li>
                     </ul>
                 </div>
                 <div class="col-md-12">
                     <div class="page-header-title">
-                        <h2 class="mb-0">Notulen Rapat @if($is_read_only ?? false) <span class="badge bg-info">Lihat Saja</span> @endif</h2>
-                        <p class="text-muted mt-1">TP PKK Kelurahan Cipinang Melayu - Pokja III</p>
+                        <h2 class="mb-0">Notulen Rapat</h2>
+                        <p class="text-muted mt-1">TP PKK Kelurahan Cipinang Melayu - Pokja IV</p>
                     </div>
                 </div>
             </div>
@@ -30,10 +30,12 @@
             <div class="card-body">
                 <div class="dt-responsive table-responsive">
                     <div class="py-3">
-                        @if(!($is_read_only ?? false))
-                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#AddModal"><i class="ti ti-plus me-1"></i> Tambah Notulen</button>
-                        <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#ImportModal"><i class="ti ti-file-import me-1"></i> Import File</button>
-                        @endif
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#AddModal">
+                            <i class="ti ti-plus me-1"></i> Tambah Notulen
+                        </button>
+                        <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#ImportModal">
+                            <i class="ti ti-file-import me-1"></i> Import File
+                        </button>
                         <button type="button" class="btn btn-info" onclick="printSelected()">
                             <i class="ti ti-printer me-1"></i> Print Laporan
                         </button>
@@ -77,10 +79,8 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center gap-1">
-                                            @if(!($is_read_only ?? false))
                                             <button type="button" class="btn btn-sm btn-primary ti ti-edit" data-bs-toggle="modal" data-bs-target="#UpdateModal-{{ $item->id }}"></button>
                                             <button type="button" class="btn btn-sm btn-danger ti ti-trash" data-bs-toggle="modal" data-bs-target="#DeleteModal-{{ $item->id }}"></button>
-                                            @endif
                                         </div>
                                     </td>
                                 </tr>
@@ -92,6 +92,12 @@
         </div>
     </div>
 
+    @include('admin-temp.partials.import_modal', [
+        'importRoute' => 'notulen.import_pokja4',
+        'title'       => 'Import Data Notulen Pokja IV',
+        'columns'     => 'no, dasar, tanggal, waktu, tempat, acara, pimpinan_rapat, peserta, isi_notulen, kesimpulan, mengetahui_jabatan, mengetahui_nama, pencatat_nama',
+    ])
+
     <div id="AddModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
@@ -99,10 +105,10 @@
                     <h5 class="modal-title">Tambah Notulen Rapat</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="{{ route('notulen.store_pokja3') }}" method="POST">@csrf
+                <form action="{{ route('notulen.store_pokja4') }}" method="POST">@csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6 mb-3"><label class="form-label">Dasar (No. Surat)</label><input type="text" class="form-control" name="dasar" placeholder="cth: 001/Pokja III/PKK.Kec/I/2025"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Dasar (No. Surat)</label><input type="text" class="form-control" name="dasar" placeholder="cth: 001/Pokja IV/PKK.Kel/I/2025"></div>
                             <div class="col-md-6 mb-3"><label class="form-label">Tanggal</label><input type="date" class="form-control" name="tanggal"></div>
                             <div class="col-md-6 mb-3"><label class="form-label">Waktu</label><input type="text" class="form-control" name="waktu" placeholder="cth: 09.00 s.d Selesai"></div>
                             <div class="col-md-6 mb-3"><label class="form-label">Tempat</label><input type="text" class="form-control" name="tempat"></div>
@@ -133,7 +139,7 @@
                         <h5 class="modal-title">Edit Notulen</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <form action="{{ route('notulen.update_pokja3', $item->id) }}" method="POST">@csrf @method('PUT')
+                    <form action="{{ route('notulen.update_pokja4', $item->id) }}" method="POST">@csrf @method('PUT')
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3"><label class="form-label">Dasar (No. Surat)</label><input type="text" class="form-control" name="dasar" value="{{ $item->dasar }}"></div>
@@ -166,7 +172,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('notulen.destroy_pokja3', $item->id) }}" method="POST">@csrf @method('DELETE')
+                        <form action="{{ route('notulen.destroy_pokja4', $item->id) }}" method="POST">@csrf @method('DELETE')
                             <div class="text-center p-3"><h5>Hapus notulen <strong class="text-danger">{{ $item->acara }}</strong>?</h5></div>
                             <div class="modal-footer justify-content-center"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button><button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i> Hapus</button></div>
                         </form>
@@ -176,13 +182,6 @@
         </div>
     @endforeach
 
-    {{-- Import Modal --}}
-    @include('admin-temp.partials.import_modal', [
-        'importRoute' => 'notulen.import_pokja3',
-        'title'       => 'Import Data Notulen Pokja III',
-        'columns'     => 'no, dasar, tanggal, waktu, tempat, acara, pimpinan_rapat, peserta, isi_notulen, kesimpulan, mengetahui_jabatan, mengetahui_nama, pencatat_nama',
-    ])
-
     <script>
         document.getElementById('selectAll').addEventListener('change', function () {
             document.querySelectorAll('.select-item').forEach(cb => cb.checked = this.checked);
@@ -191,7 +190,7 @@
             let selected = [];
             document.querySelectorAll('.select-item:checked').forEach(cb => selected.push(cb.value));
             if (selected.length === 0) { alert('Pilih minimal satu data notulen yang ingin diprint!'); return; }
-            window.open("{{ route('notulen.print_report') }}?ids=" + selected.join(',') + "&role=pokja3", '_blank');
+            window.open("{{ route('notulen.print_report') }}?ids=" + selected.join(',') + "&role=pokja4", '_blank');
         }
     </script>
 @endsection

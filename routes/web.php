@@ -14,6 +14,10 @@ use App\Http\Controllers\BukuKeuanganController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\Pokja3DataController;
+use App\Http\Controllers\NotulenController;
+
+// Shared notulen print report (accessible by any authenticated user)
+Route::get('/notulen/print-report', [NotulenController::class, 'print_report'])->name('notulen.print_report');
 // use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //route for auth
@@ -196,6 +200,13 @@ Route::middleware(['auth:sekretaris', 'role:Sekretaris'])->group(function () {
     Route::put('/sekretaris/data_potensi/{id}', [DataUmumController::class, 'update_data_potensi'])->name('data_potensi.update_sekretaris');
     Route::delete('/sekretaris/data_potensi/{id}', [DataUmumController::class, 'destroy_data_potensi'])->name('data_potensi.destroy_sekretaris');
     Route::post('/sekretaris/data_potensi/import', [DataUmumController::class, 'import_data_potensi'])->name('data_potensi.import_sekretaris');
+
+    // ---- Notulen Sekretaris ----
+    Route::get('/sekretaris/buku_notulen_rapat', [NotulenController::class, 'index_sekretaris'])->name('Sekretaris.buku_notulen_rapat');
+    Route::post('/sekretaris/notulen', [NotulenController::class, 'store_sekretaris'])->name('notulen.store_sekretaris');
+    Route::put('/sekretaris/notulen/{id}', [NotulenController::class, 'update_sekretaris'])->name('notulen.update_sekretaris');
+    Route::delete('/sekretaris/notulen/{id}', [NotulenController::class, 'destroy_sekretaris'])->name('notulen.destroy_sekretaris');
+    Route::post('/sekretaris/notulen/import', [NotulenController::class, 'import_sekretaris'])->name('notulen.import_sekretaris');
 });
 
 //================ Auth Group: Admin ================
@@ -246,6 +257,13 @@ Route::middleware(['auth:pokja_1', 'role:Pokja_1'])->group(function () {
     Route::put('/pokja_1/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja1');
     Route::delete('/pokja_1/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja1');
     Route::post('/pokja_1/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja1'])->name('papan_data.import_pokja1');
+
+    // ---- Notulen Pokja 1 ----
+    Route::get('/pokja_1/notulen', [NotulenController::class, 'index_pokja1'])->name('Pokja_1.notulen');
+    Route::post('/pokja_1/notulen', [NotulenController::class, 'store_pokja1'])->name('notulen.store_pokja1');
+    Route::put('/pokja_1/notulen/{id}', [NotulenController::class, 'update_pokja1'])->name('notulen.update_pokja1');
+    Route::delete('/pokja_1/notulen/{id}', [NotulenController::class, 'destroy_pokja1'])->name('notulen.destroy_pokja1');
+    Route::post('/pokja_1/notulen/import', [NotulenController::class, 'import_pokja1'])->name('notulen.import_pokja1');
 });
 
 //================ Auth Group: Pokja 2 ================
@@ -283,6 +301,13 @@ Route::middleware(['auth:pokja_2', 'role:Pokja_2'])->group(function () {
     Route::put('/pokja_2/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja2');
     Route::delete('/pokja_2/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja2');
     Route::post('/pokja_2/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja2'])->name('papan_data.import_pokja2');
+
+    // ---- Notulen Pokja 2 ----
+    Route::get('/pokja_2/notulen', [NotulenController::class, 'index_pokja2'])->name('Pokja_2.notulen');
+    Route::post('/pokja_2/notulen', [NotulenController::class, 'store_pokja2'])->name('notulen.store_pokja2');
+    Route::put('/pokja_2/notulen/{id}', [NotulenController::class, 'update_pokja2'])->name('notulen.update_pokja2');
+    Route::delete('/pokja_2/notulen/{id}', [NotulenController::class, 'destroy_pokja2'])->name('notulen.destroy_pokja2');
+    Route::post('/pokja_2/notulen/import', [NotulenController::class, 'import_pokja2'])->name('notulen.import_pokja2');
 });
 
 //================ Auth Group: Pokja 3 ================
@@ -390,6 +415,9 @@ Route::middleware(['auth:pokja_3', 'role:Pokja_3'])->group(function () {
     Route::post('/pokja_3/data_potensi/import', [Pokja3DataController::class, 'import_data_potensi'])->name('Pokja_3.import_data_potensi');
     Route::put('/pokja_3/data_potensi/{id}', [Pokja3DataController::class, 'update_data_potensi'])->name('data_potensi.update_pokja3');
     Route::delete('/pokja_3/data_potensi/{id}', [Pokja3DataController::class, 'destroy_data_potensi'])->name('data_potensi.destroy_pokja3');
+
+    // ---- Import Notulen Pokja 3 ----
+    Route::post('/pokja_3/notulen/import', [NotulenController::class, 'import_pokja3'])->name('notulen.import_pokja3');
 });
 
 //================ Auth Group: Pokja 4 ================
@@ -427,6 +455,13 @@ Route::middleware(['auth:pokja_4', 'role:Pokja_4'])->group(function () {
     Route::put('/pokja_4/papan_data/{id}', [PapanDataController::class, 'update_papan_data'])->name('papan_data.update_pokja4');
     Route::delete('/pokja_4/papan_data/{id}', [PapanDataController::class, 'destroy_papan_data'])->name('papan_data.destroy_pokja4');
     Route::post('/pokja_4/papan_data/import', [PapanDataController::class, 'import_papan_data_pokja4'])->name('papan_data.import_pokja4');
+
+    // ---- Notulen Pokja 4 ----
+    Route::get('/pokja_4/notulen', [NotulenController::class, 'index_pokja4'])->name('Pokja_4.notulen');
+    Route::post('/pokja_4/notulen', [NotulenController::class, 'store_pokja4'])->name('notulen.store_pokja4');
+    Route::put('/pokja_4/notulen/{id}', [NotulenController::class, 'update_pokja4'])->name('notulen.update_pokja4');
+    Route::delete('/pokja_4/notulen/{id}', [NotulenController::class, 'destroy_pokja4'])->name('notulen.destroy_pokja4');
+    Route::post('/pokja_4/notulen/import', [NotulenController::class, 'import_pokja4'])->name('notulen.import_pokja4');
 });
 
 
