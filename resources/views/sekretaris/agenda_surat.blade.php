@@ -105,9 +105,9 @@
                                     @foreach ($surat_masuk ?? [] as $item)
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
-                                            <td>{{ $item->tanggal_terima ? \Carbon\Carbon::parse($item->tanggal_terima)->translatedFormat('d/m/Y') : '-' }}
+                                            <td>{{ $item->tanggal_terima ? \Carbon\Carbon::parse($item->tanggal_terima)->translatedFormat('d F Y') : '-' }}
                                             </td>
-                                            <td>{{ $item->tanggal_surat ? \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d/m/Y') : '-' }}
+                                            <td>{{ $item->tanggal_surat ? \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') : '-' }}
                                             </td>
                                             <td style="min-width: 200px; max-width: 400px; white-space: normal;">
                                                 {{ $item->no_surat ?? '-' }}</td>
@@ -187,7 +187,7 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td>{{ $item->nomor_kode_surat ?? '-' }}</td>
-                                            <td>{{ $item->tanggal_surat ? \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d/m/Y') : '-' }}
+                                            <td>{{ $item->tanggal_surat ? \Carbon\Carbon::parse($item->tanggal_surat)->translatedFormat('d F Y') : '-' }}
                                             </td>
                                             <td style="min-width: 200px; max-width: 400px; white-space: normal;">
                                                 {{ $item->kepada ?? '-' }}

@@ -60,11 +60,14 @@
             {{-- <li><a href="/landing#contact" class="{{ Request::is('contact') ? 'active' : '' }}">Hubungi
                         Kami</a>
                 </li> --}}
+                <!-- Marketplace & Sign In for Mobile -->
+                <li class="d-xl-none"><a href="/katalog">Marketplace UP2K</a></li>
+                <li class="d-xl-none"><a href="/login">Sign In</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted flex-md-shrink-0" href="/katalog">Marketplace UP2K</a>
-        <a class="btn-getstarted flex-md-shrink-0" href="/login">Sign In</a>
+        <a class="btn-getstarted flex-md-shrink-0 d-none d-xl-block" href="/katalog">Marketplace UP2K</a>
+        <a class="btn-getstarted flex-md-shrink-0 d-none d-xl-block" href="/login">Sign In</a>
     </div>
 </header>

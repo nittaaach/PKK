@@ -11,7 +11,7 @@ class BukuKeuanganController extends Controller
     // ==================== BENDAHARA (Full CRUD) ====================
     public function index_bendahara()
     {
-        $buku_keuangan = BukuKeuangan::where('role', 'Bendahara')->get();
+        $buku_keuangan = BukuKeuangan::where('role', 'Bendahara')->orderBy('tanggal_penerimaan', 'asc')->get();
         return view('bendahara.buku_keuangan', compact('buku_keuangan'));
     }
 
@@ -83,7 +83,7 @@ class BukuKeuanganController extends Controller
     public function index_sekretaris()
     {
         // Data disinkronkan dengan Bendahara: tampilkan data role='Bendahara'
-        $buku_keuangan = BukuKeuangan::orderBy('id', 'asc')->get();
+        $buku_keuangan = BukuKeuangan::orderBy('tanggal_penerimaan', 'asc')->get();
         return view('sekretaris.buku_keuangan', compact('buku_keuangan'));
     }
 
@@ -154,14 +154,14 @@ class BukuKeuanganController extends Controller
     // ==================== KETUA (Read-Only) ====================
     public function index_ketua()
     {
-        $buku_keuangan = BukuKeuangan::all();
+        $buku_keuangan = BukuKeuangan::orderBy('tanggal_penerimaan', 'asc')->get();
         return view('ketua.buku_keuangan', compact('buku_keuangan'));
     }
 
     // ==================== WAKIL (Read-Only) ====================
     public function index_wakil()
     {
-        $buku_keuangan = BukuKeuangan::all();
+        $buku_keuangan = BukuKeuangan::orderBy('tanggal_penerimaan', 'asc')->get();
         return view('wakil.buku_keuangan', compact('buku_keuangan'));
     }
 }

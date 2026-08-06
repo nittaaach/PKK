@@ -87,7 +87,7 @@ class NotulenController extends Controller
     // ==================== SEKRETARIS ====================
     public function index_sekretaris()
     {
-        return view('sekretaris.buku_notulen_rapat', ['data' => NotulenSekretaris::orderBy('id', 'asc')->get()]);
+        return view('sekretaris.buku_notulen_rapat', ['data' => NotulenSekretaris::orderBy('tanggal', 'asc')->get()]);
     }
 
     public function store_sekretaris(Request $request)
@@ -128,7 +128,7 @@ class NotulenController extends Controller
     // ==================== POKJA 1 ====================
     public function index_pokja1()
     {
-        return view('pokja_1.notulen', ['data' => NotulenPokja1::orderBy('id', 'asc')->get()]);
+        return view('pokja_1.notulen', ['data' => NotulenPokja1::orderBy('tanggal', 'asc')->get()]);
     }
 
     public function store_pokja1(Request $request)
@@ -169,7 +169,7 @@ class NotulenController extends Controller
     // ==================== POKJA 2 ====================
     public function index_pokja2()
     {
-        return view('pokja_2.notulen', ['data' => NotulenPokja2::orderBy('id', 'asc')->get()]);
+        return view('pokja_2.notulen', ['data' => NotulenPokja2::orderBy('tanggal', 'asc')->get()]);
     }
 
     public function store_pokja2(Request $request)
@@ -210,7 +210,7 @@ class NotulenController extends Controller
     // ==================== POKJA 4 ====================
     public function index_pokja4()
     {
-        return view('pokja_4.notulen', ['data' => NotulenPokja4::orderBy('id', 'asc')->get()]);
+        return view('pokja_4.notulen', ['data' => NotulenPokja4::orderBy('tanggal', 'asc')->get()]);
     }
 
     public function store_pokja4(Request $request)

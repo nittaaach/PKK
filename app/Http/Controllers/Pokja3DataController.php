@@ -52,7 +52,7 @@ class Pokja3DataController extends Controller
     // ==================== DATA PRESTASI ====================
     public function data_prestasi()
     {
-        return view('pokja_3.data_prestasi', ['data' => DataPrestasiPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.data_prestasi', ['data' => DataPrestasiPokja3::orderBy('tgl_tahun_lomba', 'asc')->get()]);
     }
     public function store_data_prestasi(Request $request)
     {
@@ -73,7 +73,7 @@ class Pokja3DataController extends Controller
     // ==================== GERTAM ====================
     public function gertam()
     {
-        return view('pokja_3.gertam', ['data' => GertamPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.gertam', ['data' => GertamPokja3::orderBy('waktu_penerimaan', 'asc')->get()]);
     }
     public function store_gertam(Request $request)
     {
@@ -94,7 +94,7 @@ class Pokja3DataController extends Controller
     // ==================== GPTP ====================
     public function gptp()
     {
-        return view('pokja_3.gptp', ['data' => GptpPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.gptp', ['data' => GptpPokja3::orderBy('tanggal_bantuan', 'asc')->get()]);
     }
     public function store_gptp(Request $request)
     {
@@ -115,7 +115,7 @@ class Pokja3DataController extends Controller
     // ==================== INVENTARIS ====================
     public function inventaris()
     {
-        return view('pokja_3.inventaris', ['data' => InventarisPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.inventaris', ['data' => InventarisPokja3::orderBy('tanggal_penerimaan', 'asc')->get()]);
     }
     public function store_inventaris(Request $request)
     {
@@ -136,7 +136,7 @@ class Pokja3DataController extends Controller
     // ==================== NOTULEN ====================
     public function notulen()
     {
-        return view('pokja_3.notulen', ['data' => NotulenPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.notulen', ['data' => NotulenPokja3::orderBy('tanggal', 'asc')->get()]);
     }
     public function store_notulen(Request $request)
     {
@@ -157,7 +157,7 @@ class Pokja3DataController extends Controller
     // ==================== LAPORAN KEGIATAN ====================
     public function lap_kegiatan()
     {
-        return view('pokja_3.lap_kegiatan', ['data' => LapKegiatanPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.lap_kegiatan', ['data' => LapKegiatanPokja3::orderBy('tanggal', 'asc')->get()]);
     }
     public function store_lap_kegiatan(Request $request)
     {
@@ -178,7 +178,7 @@ class Pokja3DataController extends Controller
     // ==================== PROGRAM KERJA ====================
     public function program_kerja()
     {
-        return view('pokja_3.program_kerja', ['data' => ProgramKerjaPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.program_kerja', ['data' => ProgramKerjaPokja3::orderBy('jadwal_kegiatan', 'asc')->get()]);
     }
     public function store_program_kerja(Request $request)
     {
@@ -199,7 +199,7 @@ class Pokja3DataController extends Controller
     // ==================== EVALUASI PROGRAM ====================
     public function eval_program()
     {
-        return view('pokja_3.eval_program', ['data' => EvalProgramPokja3::orderBy('id', 'asc')->get()]);
+        return view('pokja_3.eval_program', ['data' => EvalProgramPokja3::orderBy('jadwal_kegiatan', 'asc')->get()]);
     }
     public function store_eval_program(Request $request)
     {
@@ -269,25 +269,25 @@ class Pokja3DataController extends Controller
         ]);
     }
 
-    public function data_prestasi_ketua() { return $this->viewReadOnly('pokja_3.data_prestasi', DataPrestasiPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
-    public function gertam_ketua() { return $this->viewReadOnly('pokja_3.gertam', GertamPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
-    public function gptp_ketua() { return $this->viewReadOnly('pokja_3.gptp', GptpPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
-    public function inventaris_ketua() { return $this->viewReadOnly('pokja_3.inventaris', InventarisPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
-    public function notulen_ketua() { return $this->viewReadOnly('pokja_3.notulen', NotulenPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
-    public function lap_kegiatan_ketua() { return $this->viewReadOnly('pokja_3.lap_kegiatan', LapKegiatanPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
-    public function program_kerja_ketua() { return $this->viewReadOnly('pokja_3.program_kerja', ProgramKerjaPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
-    public function eval_program_ketua() { return $this->viewReadOnly('pokja_3.eval_program', EvalProgramPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
+    public function data_prestasi_ketua() { return $this->viewReadOnly('pokja_3.data_prestasi', DataPrestasiPokja3::orderBy('tgl_tahun_lomba', 'asc')->get(), 'ketua'); }
+    public function gertam_ketua() { return $this->viewReadOnly('pokja_3.gertam', GertamPokja3::orderBy('waktu_penerimaan', 'asc')->get(), 'ketua'); }
+    public function gptp_ketua() { return $this->viewReadOnly('pokja_3.gptp', GptpPokja3::orderBy('tanggal_bantuan', 'asc')->get(), 'ketua'); }
+    public function inventaris_ketua() { return $this->viewReadOnly('pokja_3.inventaris', InventarisPokja3::orderBy('tanggal_penerimaan', 'asc')->get(), 'ketua'); }
+    public function notulen_ketua() { return $this->viewReadOnly('pokja_3.notulen', NotulenPokja3::orderBy('tanggal', 'asc')->get(), 'ketua'); }
+    public function lap_kegiatan_ketua() { return $this->viewReadOnly('pokja_3.lap_kegiatan', LapKegiatanPokja3::orderBy('tanggal', 'asc')->get(), 'ketua'); }
+    public function program_kerja_ketua() { return $this->viewReadOnly('pokja_3.program_kerja', ProgramKerjaPokja3::orderBy('jadwal_kegiatan', 'asc')->get(), 'ketua'); }
+    public function eval_program_ketua() { return $this->viewReadOnly('pokja_3.eval_program', EvalProgramPokja3::orderBy('jadwal_kegiatan', 'asc')->get(), 'ketua'); }
     public function data_ptp_ketua() { return $this->viewReadOnly('pokja_3.data_ptp', DataPtpPokja3::get(), 'ketua'); }
     public function data_potensi_ketua() { return $this->viewReadOnly('pokja_3.data_potensi', DataPotensiPokja3::orderBy('id', 'asc')->get(), 'ketua'); }
 
-    public function data_prestasi_wakil() { return $this->viewReadOnly('pokja_3.data_prestasi', DataPrestasiPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
-    public function gertam_wakil() { return $this->viewReadOnly('pokja_3.gertam', GertamPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
-    public function gptp_wakil() { return $this->viewReadOnly('pokja_3.gptp', GptpPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
-    public function inventaris_wakil() { return $this->viewReadOnly('pokja_3.inventaris', InventarisPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
-    public function notulen_wakil() { return $this->viewReadOnly('pokja_3.notulen', NotulenPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
-    public function lap_kegiatan_wakil() { return $this->viewReadOnly('pokja_3.lap_kegiatan', LapKegiatanPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
-    public function program_kerja_wakil() { return $this->viewReadOnly('pokja_3.program_kerja', ProgramKerjaPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
-    public function eval_program_wakil() { return $this->viewReadOnly('pokja_3.eval_program', EvalProgramPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
+    public function data_prestasi_wakil() { return $this->viewReadOnly('pokja_3.data_prestasi', DataPrestasiPokja3::orderBy('tgl_tahun_lomba', 'asc')->get(), 'wakil'); }
+    public function gertam_wakil() { return $this->viewReadOnly('pokja_3.gertam', GertamPokja3::orderBy('waktu_penerimaan', 'asc')->get(), 'wakil'); }
+    public function gptp_wakil() { return $this->viewReadOnly('pokja_3.gptp', GptpPokja3::orderBy('tanggal_bantuan', 'asc')->get(), 'wakil'); }
+    public function inventaris_wakil() { return $this->viewReadOnly('pokja_3.inventaris', InventarisPokja3::orderBy('tanggal_penerimaan', 'asc')->get(), 'wakil'); }
+    public function notulen_wakil() { return $this->viewReadOnly('pokja_3.notulen', NotulenPokja3::orderBy('tanggal', 'asc')->get(), 'wakil'); }
+    public function lap_kegiatan_wakil() { return $this->viewReadOnly('pokja_3.lap_kegiatan', LapKegiatanPokja3::orderBy('tanggal', 'asc')->get(), 'wakil'); }
+    public function program_kerja_wakil() { return $this->viewReadOnly('pokja_3.program_kerja', ProgramKerjaPokja3::orderBy('jadwal_kegiatan', 'asc')->get(), 'wakil'); }
+    public function eval_program_wakil() { return $this->viewReadOnly('pokja_3.eval_program', EvalProgramPokja3::orderBy('jadwal_kegiatan', 'asc')->get(), 'wakil'); }
     public function data_ptp_wakil() { return $this->viewReadOnly('pokja_3.data_ptp', DataPtpPokja3::get(), 'wakil'); }
     public function data_potensi_wakil() { return $this->viewReadOnly('pokja_3.data_potensi', DataPotensiPokja3::orderBy('id', 'asc')->get(), 'wakil'); }
 }

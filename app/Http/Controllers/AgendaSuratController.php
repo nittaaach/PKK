@@ -48,32 +48,32 @@ class AgendaSuratController extends Controller
 
     public function agenda_surat_sekretaris()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Sekretaris')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Sekretaris')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Sekretaris')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Sekretaris')->orderBy('tanggal_surat', 'asc')->get();
         return view('sekretaris.agenda_surat', compact('surat_masuk', 'surat_keluar'));
     }
     public function agenda_surat_pokja1()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_1')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_1')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_1')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_1')->orderBy('tanggal_surat', 'asc')->get();
         return view('pokja_1.agenda_surat', compact('surat_masuk', 'surat_keluar'));
     }
     public function agenda_surat_pokja2()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_2')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_2')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_2')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_2')->orderBy('tanggal_surat', 'asc')->get();
         return view('pokja_2.agenda_surat', compact('surat_masuk', 'surat_keluar'));
     }
     public function agenda_surat_pokja3()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_3')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_3')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_3')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_3')->orderBy('tanggal_surat', 'asc')->get();
         return view('pokja_3.agenda_surat', compact('surat_masuk', 'surat_keluar'));
     }
     public function agenda_surat_pokja4()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_4')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_4')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_4')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_4')->orderBy('tanggal_surat', 'asc')->get();
         return view('pokja_4.agenda_surat', compact('surat_masuk', 'surat_keluar'));
     }
 
@@ -152,64 +152,64 @@ class AgendaSuratController extends Controller
     // ==================== KETUA (Read-Only) ====================
     public function agenda_surat_ketua_sekretaris()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Sekretaris')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Sekretaris')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Sekretaris')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Sekretaris')->orderBy('tanggal_surat', 'asc')->get();
         return view('ketua.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Sekretaris']);
     }
     public function agenda_surat_ketua_pokja1()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_1')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_1')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_1')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_1')->orderBy('tanggal_surat', 'asc')->get();
         return view('ketua.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 1']);
     }
     public function agenda_surat_ketua_pokja2()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_2')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_2')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_2')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_2')->orderBy('tanggal_surat', 'asc')->get();
         return view('ketua.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 2']);
     }
     public function agenda_surat_ketua_pokja3()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_3')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_3')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_3')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_3')->orderBy('tanggal_surat', 'asc')->get();
         return view('ketua.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 3']);
     }
     public function agenda_surat_ketua_pokja4()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_4')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_4')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_4')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_4')->orderBy('tanggal_surat', 'asc')->get();
         return view('ketua.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 4']);
     }
 
     // ==================== WAKIL (Read-Only) ====================
     public function agenda_surat_wakil_sekretaris()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Sekretaris')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Sekretaris')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Sekretaris')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Sekretaris')->orderBy('tanggal_surat', 'asc')->get();
         return view('wakil.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Sekretaris']);
     }
     public function agenda_surat_wakil_pokja1()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_1')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_1')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_1')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_1')->orderBy('tanggal_surat', 'asc')->get();
         return view('wakil.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 1']);
     }
     public function agenda_surat_wakil_pokja2()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_2')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_2')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_2')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_2')->orderBy('tanggal_surat', 'asc')->get();
         return view('wakil.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 2']);
     }
     public function agenda_surat_wakil_pokja3()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_3')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_3')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_3')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_3')->orderBy('tanggal_surat', 'asc')->get();
         return view('wakil.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 3']);
     }
     public function agenda_surat_wakil_pokja4()
     {
-        $surat_masuk = SuratMasukModels::where('role', 'Pokja_4')->get();
-        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_4')->get();
+        $surat_masuk = SuratMasukModels::where('role', 'Pokja_4')->orderBy('tanggal_terima', 'asc')->get();
+        $surat_keluar = SuratKeluarModels::where('role', 'Pokja_4')->orderBy('tanggal_surat', 'asc')->get();
         return view('wakil.agenda_surat', compact('surat_masuk', 'surat_keluar') + ['source_label' => 'Pokja 4']);
     }
 }

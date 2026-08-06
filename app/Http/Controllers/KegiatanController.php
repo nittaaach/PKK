@@ -38,7 +38,7 @@ class KegiatanController extends Controller
     public function kegiatan_sekretaris()
     {
         return view('sekretaris.kegiatan', [
-            'kegiatan' => KegiatanModels::where('role', 'Sekretaris')->get(),
+            'kegiatan' => KegiatanModels::where('role', 'Sekretaris')->orderBy('tanggal_kegiatan', 'asc')->get(),
             'dokumentasi_list' => Dokumentasi::where('role', 'Sekretaris')->get()
         ]);
     }
@@ -74,28 +74,28 @@ class KegiatanController extends Controller
     public function kegiatan_pokja1()
     {
         return view('pokja_1.kegiatan', [
-            'kegiatan' => KegiatanModels::where('role', 'Pokja_1')->get(),
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_1')->orderBy('tanggal_kegiatan', 'asc')->get(),
             'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 1')->get()
         ]);
     }
     public function kegiatan_pokja2()
     {
         return view('pokja_2.kegiatan', [
-            'kegiatan' => KegiatanModels::where('role', 'Pokja_2')->get(),
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_2')->orderBy('tanggal_kegiatan', 'asc')->get(),
             'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 2')->get()
         ]);
     }
     public function kegiatan_pokja3()
     {
         return view('pokja_3.kegiatan', [
-            'kegiatan' => KegiatanModels::where('role', 'Pokja_3')->get(),
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_3')->orderBy('tanggal_kegiatan', 'asc')->get(),
             'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 3')->get()
         ]);
     }
     public function kegiatan_pokja4()
     {
         return view('pokja_4.kegiatan', [
-            'kegiatan' => KegiatanModels::where('role', 'Pokja_4')->get(),
+            'kegiatan' => KegiatanModels::where('role', 'Pokja_4')->orderBy('tanggal_kegiatan', 'asc')->get(),
             'dokumentasi_list' => Dokumentasi::where('role', 'Pokja 4')->get()
         ]);
     }
@@ -160,45 +160,45 @@ class KegiatanController extends Controller
     // ==================== KETUA (Read-Only) ====================
     public function kegiatan_ketua_sekretaris()
     {
-        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Sekretaris')->get(), 'source_label' => 'Sekretaris']);
+        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Sekretaris')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Sekretaris']);
     }
     public function kegiatan_ketua_pokja1()
     {
-        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_1')->get(), 'source_label' => 'Pokja 1']);
+        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_1')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 1']);
     }
     public function kegiatan_ketua_pokja2()
     {
-        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_2')->get(), 'source_label' => 'Pokja 2']);
+        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_2')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 2']);
     }
     public function kegiatan_ketua_pokja3()
     {
-        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_3')->get(), 'source_label' => 'Pokja 3']);
+        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_3')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 3']);
     }
     public function kegiatan_ketua_pokja4()
     {
-        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_4')->get(), 'source_label' => 'Pokja 4']);
+        return view('ketua.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_4')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 4']);
     }
 
     // ==================== WAKIL (Read-Only) ====================
     public function kegiatan_wakil_sekretaris()
     {
-        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Sekretaris')->get(), 'source_label' => 'Sekretaris']);
+        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Sekretaris')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Sekretaris']);
     }
     public function kegiatan_wakil_pokja1()
     {
-        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_1')->get(), 'source_label' => 'Pokja 1']);
+        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_1')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 1']);
     }
     public function kegiatan_wakil_pokja2()
     {
-        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_2')->get(), 'source_label' => 'Pokja 2']);
+        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_2')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 2']);
     }
     public function kegiatan_wakil_pokja3()
     {
-        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_3')->get(), 'source_label' => 'Pokja 3']);
+        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_3')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 3']);
     }
     public function kegiatan_wakil_pokja4()
     {
-        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_4')->get(), 'source_label' => 'Pokja 4']);
+        return view('wakil.kegiatan', ['kegiatan' => KegiatanModels::where('role', 'Pokja_4')->orderBy('tanggal_kegiatan', 'asc')->get(), 'source_label' => 'Pokja 4']);
     }
 
     // ==================== HALAMAN PUBLIK ====================
