@@ -40,7 +40,6 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dt-responsive table-responsive">
-                            {{-- <h5 class="mb-3">KTP RW 12</h5> --}}
                             <div class="py-3">
                                 <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
                                     data-bs-target="#AddAnggotaModal">

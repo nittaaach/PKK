@@ -9,7 +9,7 @@
                 <div class="row d-flex justify-content-center text-center">
                     <div class="col-lg-8">
                         <h1>Galeri</h1>
-                        <p class="mb-0">Memori RW 12</p>
+                        <p class="mb-0">Memori PKK Cipinang Melayu</p>
                     </div>
                 </div>
             </div>

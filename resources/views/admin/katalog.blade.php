@@ -65,7 +65,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="dt-responsive table-responsive">
-                                {{-- <h5 class="mb-3">KTP RW 12</h5> --}}
                                 <div class="py-3">
                                     <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
                                         data-bs-target="#AddkatalogModal">
@@ -160,7 +159,7 @@
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">Form Tambah Katalog RW 12</h5>
+                    <h5 class="modal-title">Form Tambah Katalog PKK Cipinang Melayu</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -289,7 +288,7 @@
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content shadow-lg border-0">
                     <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title">Form Update Katalog RW 12</h5>
+                        <h5 class="modal-title">Form Update Katalog PKK Cipinang Melayu</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
@@ -576,7 +575,7 @@
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content shadow-lg border-0">
                     <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title">Detail Katalog RW 12</h5>
+                        <h5 class="modal-title">Detail Katalog PKK Cipinang Melayu</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>

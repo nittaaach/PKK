@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>PKK Cipinang Melayu - RW 12 (PKK Anyelir & Karang Taruna)</title>
+    <title>PKK Cipinang Melayu</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 

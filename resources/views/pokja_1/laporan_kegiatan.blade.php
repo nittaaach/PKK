@@ -1,18 +1,18 @@
-@extends('admin-temp.layout_pokja_2')
+@extends('admin-temp.layout_pokja_1')
 @section('content_admin')
     <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
                 <div class="col-md-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('Pokja_2.dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('Pokja_1.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item" aria-current="page">Laporan Kegiatan / Rapat</li>
                     </ul>
                 </div>
                 <div class="col-md-12">
                     <div class="page-header-title">
                         <h2 class="mb-0">Laporan Kegiatan / Rapat</h2>
-                        <p class="text-muted mt-1">TP PKK Kelurahan Cipinang Melayu - Pokja II</p>
+                        <p class="text-muted mt-1">TP PKK Kelurahan Cipinang Melayu - Pokja I</p>
                     </div>
                 </div>
             </div>
@@ -93,8 +93,8 @@
     </div>
 
     @include('admin-temp.partials.import_modal', [
-        'importRoute' => 'laporan_kegiatan.import_pokja2',
-        'title'       => 'Import Data Laporan Kegiatan / Rapat Pokja II',
+        'importRoute' => 'laporan_kegiatan.import_pokja1',
+        'title'       => 'Import Data Laporan Kegiatan / Rapat Pokja I',
         'columns'     => 'no, dasar, tanggal, waktu, tempat, acara, pimpinan_rapat, peserta, isi_notulen, kesimpulan, mengetahui_jabatan, mengetahui_nama, pencatat_nama',
     ])
 
@@ -105,10 +105,10 @@
                     <h5 class="modal-title">Tambah Laporan Kegiatan / Rapat</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <form action="{{ route('laporan_kegiatan.store_pokja2') }}" method="POST">@csrf
+                <form action="{{ route('laporan_kegiatan.store_pokja1') }}" method="POST">@csrf
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6 mb-3"><label class="form-label">Dasar (No. Surat)</label><input type="text" class="form-control" name="dasar" placeholder="cth: 001/Pokja II/PKK.Kel/I/2025"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Dasar (No. Surat)</label><input type="text" class="form-control" name="dasar" placeholder="cth: 001/Pokja I/PKK.Kel/I/2025"></div>
                             <div class="col-md-6 mb-3"><label class="form-label">Tanggal</label><input type="date" class="form-control" name="tanggal"></div>
                             <div class="col-md-6 mb-3"><label class="form-label">Waktu</label><input type="text" class="form-control" name="waktu" placeholder="cth: 09.00 s.d Selesai"></div>
                             <div class="col-md-6 mb-3"><label class="form-label">Tempat</label><input type="text" class="form-control" name="tempat"></div>
@@ -139,7 +139,7 @@
                         <h5 class="modal-title">Edit Laporan Kegiatan / Rapat</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <form action="{{ route('laporan_kegiatan.update_pokja2', $item->id) }}" method="POST">@csrf @method('PUT')
+                    <form action="{{ route('laporan_kegiatan.update_pokja1', $item->id) }}" method="POST">@csrf @method('PUT')
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3"><label class="form-label">Dasar (No. Surat)</label><input type="text" class="form-control" name="dasar" value="{{ $item->dasar }}"></div>
@@ -172,7 +172,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('laporan_kegiatan.destroy_pokja2', $item->id) }}" method="POST">@csrf @method('DELETE')
+                        <form action="{{ route('laporan_kegiatan.destroy_pokja1', $item->id) }}" method="POST">@csrf @method('DELETE')
                             <div class="text-center p-3"><h5>Hapus laporan kegiatan <strong class="text-danger">{{ $item->acara }}</strong>?</h5></div>
                             <div class="modal-footer justify-content-center"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button><button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i> Hapus</button></div>
                         </form>
@@ -190,7 +190,7 @@
             let selected = [];
             document.querySelectorAll('.select-item:checked').forEach(cb => selected.push(cb.value));
             if (selected.length === 0) { alert('Pilih minimal satu data laporan kegiatan yang ingin diprint!'); return; }
-            window.open("{{ route('laporan_kegiatan.print_report') }}?ids=" + selected.join(',') + "&role=pokja2", '_blank');
+            window.open("{{ route('laporan_kegiatan.print_report') }}?ids=" + selected.join(',') + "&role=pokja1", '_blank');
         }
     </script>
 @endsection

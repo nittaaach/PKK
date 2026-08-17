@@ -15,9 +15,12 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\Pokja3DataController;
 use App\Http\Controllers\NotulenController;
+use App\Http\Controllers\LaporanKegiatanController;
 
 // Shared notulen print report (accessible by any authenticated user)
 Route::get('/notulen/print-report', [NotulenController::class, 'print_report'])->name('notulen.print_report');
+// Shared laporan kegiatan print report (accessible by any authenticated user)
+Route::get('/laporan_kegiatan/print-report', [LaporanKegiatanController::class, 'print_report'])->name('laporan_kegiatan.print_report');
 // use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //route for auth
@@ -207,6 +210,13 @@ Route::middleware(['auth:sekretaris', 'role:Sekretaris'])->group(function () {
     Route::put('/sekretaris/notulen/{id}', [NotulenController::class, 'update_sekretaris'])->name('notulen.update_sekretaris');
     Route::delete('/sekretaris/notulen/{id}', [NotulenController::class, 'destroy_sekretaris'])->name('notulen.destroy_sekretaris');
     Route::post('/sekretaris/notulen/import', [NotulenController::class, 'import_sekretaris'])->name('notulen.import_sekretaris');
+
+    // ---- Laporan Kegiatan / Rapat Sekretaris ----
+    Route::get('/sekretaris/laporan_kegiatan', [LaporanKegiatanController::class, 'index_sekretaris'])->name('Sekretaris.laporan_kegiatan');
+    Route::post('/sekretaris/laporan_kegiatan', [LaporanKegiatanController::class, 'store_sekretaris'])->name('laporan_kegiatan.store_sekretaris');
+    Route::put('/sekretaris/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'update_sekretaris'])->name('laporan_kegiatan.update_sekretaris');
+    Route::delete('/sekretaris/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'destroy_sekretaris'])->name('laporan_kegiatan.destroy_sekretaris');
+    Route::post('/sekretaris/laporan_kegiatan/import', [LaporanKegiatanController::class, 'import_sekretaris'])->name('laporan_kegiatan.import_sekretaris');
 });
 
 //================ Auth Group: Admin ================
@@ -264,6 +274,13 @@ Route::middleware(['auth:pokja_1', 'role:Pokja_1'])->group(function () {
     Route::put('/pokja_1/notulen/{id}', [NotulenController::class, 'update_pokja1'])->name('notulen.update_pokja1');
     Route::delete('/pokja_1/notulen/{id}', [NotulenController::class, 'destroy_pokja1'])->name('notulen.destroy_pokja1');
     Route::post('/pokja_1/notulen/import', [NotulenController::class, 'import_pokja1'])->name('notulen.import_pokja1');
+
+    // ---- Laporan Kegiatan / Rapat Pokja 1 ----
+    Route::get('/pokja_1/laporan_kegiatan', [LaporanKegiatanController::class, 'index_pokja1'])->name('Pokja_1.laporan_kegiatan');
+    Route::post('/pokja_1/laporan_kegiatan', [LaporanKegiatanController::class, 'store_pokja1'])->name('laporan_kegiatan.store_pokja1');
+    Route::put('/pokja_1/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'update_pokja1'])->name('laporan_kegiatan.update_pokja1');
+    Route::delete('/pokja_1/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'destroy_pokja1'])->name('laporan_kegiatan.destroy_pokja1');
+    Route::post('/pokja_1/laporan_kegiatan/import', [LaporanKegiatanController::class, 'import_pokja1'])->name('laporan_kegiatan.import_pokja1');
 });
 
 //================ Auth Group: Pokja 2 ================
@@ -308,6 +325,13 @@ Route::middleware(['auth:pokja_2', 'role:Pokja_2'])->group(function () {
     Route::put('/pokja_2/notulen/{id}', [NotulenController::class, 'update_pokja2'])->name('notulen.update_pokja2');
     Route::delete('/pokja_2/notulen/{id}', [NotulenController::class, 'destroy_pokja2'])->name('notulen.destroy_pokja2');
     Route::post('/pokja_2/notulen/import', [NotulenController::class, 'import_pokja2'])->name('notulen.import_pokja2');
+
+    // ---- Laporan Kegiatan / Rapat Pokja 2 ----
+    Route::get('/pokja_2/laporan_kegiatan', [LaporanKegiatanController::class, 'index_pokja2'])->name('Pokja_2.laporan_kegiatan');
+    Route::post('/pokja_2/laporan_kegiatan', [LaporanKegiatanController::class, 'store_pokja2'])->name('laporan_kegiatan.store_pokja2');
+    Route::put('/pokja_2/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'update_pokja2'])->name('laporan_kegiatan.update_pokja2');
+    Route::delete('/pokja_2/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'destroy_pokja2'])->name('laporan_kegiatan.destroy_pokja2');
+    Route::post('/pokja_2/laporan_kegiatan/import', [LaporanKegiatanController::class, 'import_pokja2'])->name('laporan_kegiatan.import_pokja2');
 });
 
 //================ Auth Group: Pokja 3 ================
@@ -380,6 +404,13 @@ Route::middleware(['auth:pokja_3', 'role:Pokja_3'])->group(function () {
     Route::post('/pokja_3/notulen/import', [Pokja3DataController::class, 'import_notulen'])->name('Pokja_3.import_notulen');
     Route::put('/pokja_3/notulen/{id}', [Pokja3DataController::class, 'update_notulen'])->name('notulen.update_pokja3');
     Route::delete('/pokja_3/notulen/{id}', [Pokja3DataController::class, 'destroy_notulen'])->name('notulen.destroy_pokja3');
+
+    // ---- Laporan Kegiatan / Rapat Pokja 3 (baru, terpisah dari lap_kegiatan Pokja3) ----
+    Route::get('/pokja_3/laporan_kegiatan_rapat', [LaporanKegiatanController::class, 'index_pokja3'])->name('Pokja_3.laporan_kegiatan_rapat');
+    Route::post('/pokja_3/laporan_kegiatan_rapat', [LaporanKegiatanController::class, 'store_pokja3'])->name('laporan_kegiatan.store_pokja3');
+    Route::put('/pokja_3/laporan_kegiatan_rapat/{id}', [LaporanKegiatanController::class, 'update_pokja3'])->name('laporan_kegiatan.update_pokja3');
+    Route::delete('/pokja_3/laporan_kegiatan_rapat/{id}', [LaporanKegiatanController::class, 'destroy_pokja3'])->name('laporan_kegiatan.destroy_pokja3');
+    Route::post('/pokja_3/laporan_kegiatan_rapat/import', [LaporanKegiatanController::class, 'import_pokja3'])->name('laporan_kegiatan.import_pokja3');
 
     // ---- Laporan Kegiatan Pokja 3 ----
     Route::get('/pokja_3/lap_kegiatan', [Pokja3DataController::class, 'lap_kegiatan'])->name('Pokja_3.lap_kegiatan');
@@ -462,6 +493,13 @@ Route::middleware(['auth:pokja_4', 'role:Pokja_4'])->group(function () {
     Route::put('/pokja_4/notulen/{id}', [NotulenController::class, 'update_pokja4'])->name('notulen.update_pokja4');
     Route::delete('/pokja_4/notulen/{id}', [NotulenController::class, 'destroy_pokja4'])->name('notulen.destroy_pokja4');
     Route::post('/pokja_4/notulen/import', [NotulenController::class, 'import_pokja4'])->name('notulen.import_pokja4');
+
+    // ---- Laporan Kegiatan / Rapat Pokja 4 ----
+    Route::get('/pokja_4/laporan_kegiatan', [LaporanKegiatanController::class, 'index_pokja4'])->name('Pokja_4.laporan_kegiatan');
+    Route::post('/pokja_4/laporan_kegiatan', [LaporanKegiatanController::class, 'store_pokja4'])->name('laporan_kegiatan.store_pokja4');
+    Route::put('/pokja_4/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'update_pokja4'])->name('laporan_kegiatan.update_pokja4');
+    Route::delete('/pokja_4/laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'destroy_pokja4'])->name('laporan_kegiatan.destroy_pokja4');
+    Route::post('/pokja_4/laporan_kegiatan/import', [LaporanKegiatanController::class, 'import_pokja4'])->name('laporan_kegiatan.import_pokja4');
 });
 
 

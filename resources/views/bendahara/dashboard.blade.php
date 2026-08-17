@@ -21,7 +21,7 @@
                 <div class="card-body text-center py-5">
                     <i class="ti ti-report-money d-block f-46 text-primary mb-3"></i>
                     <h3>Selamat Datang, Bendahara</h3>
-                    <p class="text-muted">Kelola data keuangan PKK Cipinang Melayu RW 12</p>
+                    <p class="text-muted">Kelola data keuangan PKK Cipinang Melayu</p>
                 </div>
             </div>
         </div>

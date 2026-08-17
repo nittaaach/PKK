@@ -10,7 +10,7 @@
                     <span class="sitename">PKK Cipinang Melayu</span>
                 </a>
                 <div class="footer-contact pt-3">
-                    <p>RW 12 Jatiwaringin</p>
+                    <p>Makasar, Cipinang Melayu</p>
                     <p>Jakarta Timur, Indonesia</p>
                     <p class="mt-3"><strong>Phone:</strong> <span>+62 812-3456-7890</span></p>
                     <p><strong>Email:</strong> <span>info@PKK Cipinang Melayu.id</span></p>
@@ -41,7 +41,7 @@
             <!-- Media Sosial -->
             <div class="col-lg-4 col-md-12">
                 <h4>Ikuti Kami</h4>
-                <p>Terhubung dengan kami untuk informasi dan kegiatan terbaru di lingkungan RW 12.</p>
+                <p>Terhubung dengan kami untuk informasi dan kegiatan terbaru di lingkungan PKK Cipinang Melayu.</p>
                 <div class="social-links d-flex">
                     <a href="#"><i class="bi bi-facebook"></i></a>
                     <a href="https://www.instagram.com/pkk_kel_cipinang_melayu/"><i class="bi bi-instagram"></i></a>

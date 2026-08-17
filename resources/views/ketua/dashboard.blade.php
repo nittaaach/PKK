@@ -19,7 +19,7 @@
                 <div class="card-body text-center py-5">
                     <i class="ti ti-crown d-block f-46 text-warning mb-3"></i>
                     <h3>Selamat Datang, Ketua</h3>
-                    <p class="text-muted">Pantau seluruh data PKK Cipinang Melayu RW 12</p>
+                    <p class="text-muted">Pantau seluruh data PKK Cipinang Melayu</p>
                 </div>
             </div>
         </div>

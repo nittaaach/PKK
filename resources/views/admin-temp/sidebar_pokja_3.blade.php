@@ -128,12 +128,18 @@
                             <span class="pc-mtext">Notulen</span>
                         </a>
                     </li>
-                    <li class="pc-item {{ request()->routeIs($routePrefix . 'lap_kegiatan') ? 'pc-active' : '' }}">
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'laporan_kegiatan_rapat') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'laporan_kegiatan_rapat') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-report"></i></span>
+                            <span class="pc-mtext">Laporan Kegiatan / Rapat</span>
+                        </a>
+                    </li>
+                    {{-- <li class="pc-item {{ request()->routeIs($routePrefix . 'lap_kegiatan') ? 'pc-active' : '' }}">
                         <a href="{{ route($routePrefix . 'lap_kegiatan') }}" class="pc-link">
                             <span class="pc-micon"><i class="ti ti-report"></i></span>
                             <span class="pc-mtext">Laporan Kegiatan</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>

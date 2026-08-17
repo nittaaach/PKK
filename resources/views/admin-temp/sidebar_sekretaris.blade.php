@@ -93,6 +93,12 @@
                             <span class="pc-mtext">Buku Notulen Rapat</span>
                         </a>
                     </li>
+                    <li class="pc-item {{ request()->routeIs($routePrefix . 'laporan_kegiatan') ? 'pc-active' : '' }}">
+                        <a href="{{ route($routePrefix . 'laporan_kegiatan') }}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-report"></i></span>
+                            <span class="pc-mtext">Laporan Kegiatan / Rapat</span>
+                        </a>
+                    </li>
 
                     {{-- <li class="pc-item pc-caption">
                         <label>Pages</label>
